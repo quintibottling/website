@@ -7,7 +7,6 @@ import {
   BookmarkAltIcon,
   CalendarIcon,
   ChartBarIcon,
-  ChevronRightIcon,
   CursorClickIcon,
   MenuAlt3Icon,
   PhoneIcon,
@@ -16,9 +15,10 @@ import {
   ShieldCheckIcon,
   SupportIcon,
   ViewGridIcon,
-  XIcon,
 } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
+
+import MenuMobile from "./MenuMobile";
 
 const solutions = [
   {
@@ -98,7 +98,7 @@ const recentPosts = [
 ];
 
 import translate from "lib/locales";
-// import LanguageSwitcher from "./LanguageSwitcher";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -322,233 +322,7 @@ function Header(props) {
             </div>
           </div>
         </div>
-
-        <Transition
-          as={Fragment}
-          enter="duration-200 ease-out"
-          enterFrom="opacity-0 scale-95"
-          enterTo="opacity-100 scale-100"
-          leave="duration-100 ease-in"
-          leaveFrom="opacity-100 scale-100"
-          leaveTo="opacity-0 scale-95"
-        >
-          <Popover.Panel
-            focus
-            className="absolute top-0 inset-x-0 transition transform origin-top md:hidden overflow-hidden"
-          >
-            <div className="bg-brown">
-              <div className="pt-5 pb-6">
-                <div className="px-4 flex items-center justify-between">
-                  <div>
-                    <Image
-                      priority
-                      src="/logo/quinti_white.svg"
-                      height={35}
-                      width={150}
-                      alt="Logo Quinti Bottling"
-                    />
-                  </div>
-                  <div className="-mr-2">
-                    <Popover.Button className="inline-flex items-center justify-center text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange">
-                      <span className="sr-only">Close menu</span>
-                      <XIcon
-                        className="h-9 w-9 text-white"
-                        aria-hidden="true"
-                      />
-                    </Popover.Button>
-                  </div>
-                </div>
-                <div className="mt-3">
-                  <div className="grid border-b border-gray/20">
-                    {/* // Mobile panel Azienda */}
-                    <Disclosure>
-                      {({ open }) => (
-                        <>
-                          <Disclosure.Button className="py-4 text-white border-t border-gray/20 flex justify-between items-center px-4">
-                            <span
-                              className={`${
-                                open ? "text-gold-light" : ""
-                              } menu_item`}
-                            >
-                              {translate("company", locale)}
-                            </span>
-                            <ChevronRightIcon
-                              className={`${
-                                open ? "-rotate-90" : ""
-                              } w-5 h-5 rotate-90 text-gold-light`}
-                            />
-                          </Disclosure.Button>
-                          <Transition
-                            enter="transition duration-500 ease-out"
-                            enterFrom="transform opacity-0"
-                            enterTo="transform opacity-100"
-                            leave="transition duration-100 ease-out"
-                            leaveFrom="transform opacity-100"
-                            leaveTo="transform opacity-0"
-                          >
-                            <Disclosure.Panel className="px-4 bg-[#312D26] py-4 space-y-1 grid border-t border-gray/20">
-                              {site.allCompanyPages.map((item) => (
-                                <Link href={item.slug}>
-                                  <a
-                                    key={item.slug}
-                                    href={item.slug}
-                                    title={item.title}
-                                  >
-                                    <span className="text-white block text-sm">
-                                      {item.labelMenu}
-                                    </span>
-                                  </a>
-                                </Link>
-                              ))}
-                            </Disclosure.Panel>
-                          </Transition>
-                        </>
-                      )}
-                    </Disclosure>
-                    {/* // Mobile Prodotti */}
-                    <Disclosure>
-                      {({ open }) => (
-                        <>
-                          <Disclosure.Button className="py-4 text-white border-t border-gray/20 flex justify-between items-center px-4">
-                            <span
-                              className={`${
-                                open ? "text-gold-light" : ""
-                              } menu_item`}
-                            >
-                              {translate("products", locale)}
-                            </span>
-                            <ChevronRightIcon
-                              className={`${
-                                open ? "-rotate-90" : ""
-                              } w-5 h-5 rotate-90 text-gold-light`}
-                            />
-                          </Disclosure.Button>
-                          <Transition
-                            enter="transition duration-500 ease-out"
-                            enterFrom="transform opacity-0"
-                            enterTo="transform opacity-100"
-                            leave="transition duration-100 ease-out"
-                            leaveFrom="transform opacity-100"
-                            leaveTo="transform opacity-0"
-                          >
-                            <Disclosure.Panel className="px-4 bg-[#312D26] py-4 grid border-t border-gray/20 grid-cols-2">
-                              {site.allProducts.map((item) => (
-                                <Link href={item.slug}>
-                                  <a
-                                    key={item.slug}
-                                    href={item.slug}
-                                    title={item.title}
-                                    className="flex items-center gap-x-2 py-[2px]"
-                                  >
-                                    <div
-                                      className={`${item.code} w-3 h-3 -mt-[2px]`}
-                                    />
-                                    <div className="text-white text-sm">
-                                      {item.title}
-                                    </div>
-                                  </a>
-                                </Link>
-                              ))}
-                            </Disclosure.Panel>
-                          </Transition>
-                        </>
-                      )}
-                    </Disclosure>
-                    {/* // Mobile Tecnologie */}
-                    <Disclosure>
-                      {({ open }) => (
-                        <>
-                          <Disclosure.Button className="py-4 text-white border-t border-gray/20 flex justify-between items-center px-4">
-                            <span
-                              className={`${
-                                open ? "text-gold-light" : ""
-                              } menu_item`}
-                            >
-                              {translate("technologies", locale)}
-                            </span>
-                            <ChevronRightIcon
-                              className={`${
-                                open ? "-rotate-90" : ""
-                              } w-5 h-5 rotate-90 text-gold-light`}
-                            />
-                          </Disclosure.Button>
-                          <Transition
-                            enter="transition duration-500 ease-out"
-                            enterFrom="transform opacity-0"
-                            enterTo="transform opacity-100"
-                            leave="transition duration-100 ease-out"
-                            leaveFrom="transform opacity-100"
-                            leaveTo="transform opacity-0"
-                          >
-                            <Disclosure.Panel className="px-4 bg-[#312D26] py-4 grid border-t border-gray/20 grid-cols-2">
-                              {site.allTecnologies.map((item) => (
-                                <Link href={item.slug}>
-                                  <a
-                                    key={item.slug}
-                                    href={item.slug}
-                                    title={item.title}
-                                    className="flex items-center gap-x-2 py-[2px]"
-                                  >
-                                    <div className="text-white text-sm">
-                                      {item.title}
-                                    </div>
-                                  </a>
-                                </Link>
-                              ))}
-                            </Disclosure.Panel>
-                          </Transition>
-                        </>
-                      )}
-                    </Disclosure>
-                  </div>
-                </div>
-              </div>
-              <div className="py-6 px-5 space-y-6">
-                <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                  <a
-                    href="#"
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
-                  >
-                    Pricing
-                  </a>
-
-                  <a
-                    href="#"
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
-                  >
-                    Docs
-                  </a>
-                  {resources.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="text-base font-medium text-gray-900 hover:text-gray-700"
-                    >
-                      {item.name}
-                    </a>
-                  ))}
-                </div>
-                <div>
-                  <a
-                    href="#"
-                    className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
-                  >
-                    Sign up
-                  </a>
-                  <p className="mt-6 text-center text-base font-medium text-gray-500">
-                    Existing customer?{" "}
-                    <a
-                      href="#"
-                      className="text-indigo-600 hover:text-indigo-500"
-                    >
-                      Sign in
-                    </a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Popover.Panel>
-        </Transition>
+        <MenuMobile site={site} locale={locale} />
       </Popover>
     </header>
   );
