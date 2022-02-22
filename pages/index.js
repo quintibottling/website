@@ -1,4 +1,4 @@
-import Layout from "components/layout/Layout";
+import Layout from "components/Layout";
 import * as queries from "lib/queries";
 import fetchDato from "lib/dato";
 
