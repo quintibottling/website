@@ -454,6 +454,52 @@ function Header(props) {
                         </>
                       )}
                     </Disclosure>
+                    {/* // Mobile Tecnologie */}
+                    <Disclosure>
+                      {({ open }) => (
+                        <>
+                          <Disclosure.Button className="py-4 text-white border-t border-gray/20 flex justify-between items-center px-4">
+                            <span
+                              className={`${
+                                open ? "text-gold-light" : ""
+                              } menu_item`}
+                            >
+                              {translate("technologies", locale)}
+                            </span>
+                            <ChevronRightIcon
+                              className={`${
+                                open ? "-rotate-90" : ""
+                              } w-5 h-5 rotate-90 text-gold-light`}
+                            />
+                          </Disclosure.Button>
+                          <Transition
+                            enter="transition duration-500 ease-out"
+                            enterFrom="transform opacity-0"
+                            enterTo="transform opacity-100"
+                            leave="transition duration-100 ease-out"
+                            leaveFrom="transform opacity-100"
+                            leaveTo="transform opacity-0"
+                          >
+                            <Disclosure.Panel className="px-4 bg-[#312D26] py-4 grid border-t border-gray/20 grid-cols-2">
+                              {site.allTecnologies.map((item) => (
+                                <Link href={item.slug}>
+                                  <a
+                                    key={item.slug}
+                                    href={item.slug}
+                                    title={item.title}
+                                    className="flex items-center gap-x-2 py-[2px]"
+                                  >
+                                    <div className="text-white text-sm">
+                                      {item.title}
+                                    </div>
+                                  </a>
+                                </Link>
+                              ))}
+                            </Disclosure.Panel>
+                          </Transition>
+                        </>
+                      )}
+                    </Disclosure>
                   </div>
                 </div>
               </div>
