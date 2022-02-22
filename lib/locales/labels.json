@@ -18,7 +18,10 @@
     "404text": "Il link è sbagliato o non esiste",
     "404cta": "Torna in homepage",
     "skipContent": "Vai al contenuto principale",
-    "skipFooter": "Vai al footer"
+    "skipFooter": "Vai al footer",
+    "company": "Azienda",
+    "products": "Prodotti",
+    "technologies": "Tecnologie"
   },
   "en": {
     "it": "Italian",
@@ -39,6 +42,9 @@
     "404text": "The address may be misspelled or may not exist.",
     "404cta": "Back to home",
     "skipContent": "Go to main content",
-    "skipFooter": "Go to footer"
+    "skipFooter": "Go to footer",
+    "company": "Company",
+    "products": "Prodotti",
+    "technologies": "Technologies"
   }
 }

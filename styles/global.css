@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Graphik";
+    src: url("../public/fonts/Graphik-Regular.woff2") format("woff2");
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Graphik";
+    src: url("../public/fonts/Graphik-Semibold.woff2") format("woff2");
+    font-style: normal;
+    font-weight: bold;
+  }
+}
+
+body {
+  @apply text-black bg-pink-light font-normal text-base;
+}
+
+* {
+  @apply focus-visible:outline-yellow box-border scroll-smooth motion-reduce:scroll-auto motion-reduce:transition-none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
