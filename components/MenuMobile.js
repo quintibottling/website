@@ -6,7 +6,7 @@ import { ChevronRightIcon, XIcon } from "@heroicons/react/outline";
 import translate from "lib/locales";
 import LanguageSwitcher from "./LanguageSwitcher";
 
-export default function MenuMobile({ site, locale }) {
+export default function MenuMobile({ site, locale, model }) {
   return (
     <>
       <Transition
@@ -20,7 +20,7 @@ export default function MenuMobile({ site, locale }) {
       >
         <Popover.Panel
           focus
-          className="absolute top-0 inset-x-0 transition transform origin-top md:hidden overflow-hidden"
+          className="absolute top-0 inset-x-0 transition transform origin-top lg:hidden overflow-hidden"
         >
           <div className="bg-brown min-h-[100vh]">
             <div className="pt-5 pb-6">
@@ -41,7 +41,7 @@ export default function MenuMobile({ site, locale }) {
                   </Popover.Button>
                 </div>
               </div>
-              <div className="mt-3">
+              <nav className="mt-3">
                 <div className="grid border-b border-gray/20">
                   {/* // Mobile Azienda */}
                   <Disclosure>
@@ -71,12 +71,14 @@ export default function MenuMobile({ site, locale }) {
                         >
                           <Disclosure.Panel className="px-4 bg-[#312D26] py-4 space-y-1 grid border-t border-gray/20">
                             {site.allCompanyPages.map((item) => (
-                              <Link href={item.slug}>
-                                <a
-                                  key={item.slug}
-                                  href={item.slug}
-                                  title={item.title}
-                                >
+                              <Link
+                                href={`/${translate("company_url", locale)}/${
+                                  item.slug
+                                }`}
+                                locale={locale}
+                              >
+                                {" "}
+                                <a href={item.slug} title={item.title}>
                                   <span className="text-white block text-sm">
                                     {item.labelMenu}
                                   </span>
@@ -116,7 +118,13 @@ export default function MenuMobile({ site, locale }) {
                         >
                           <Disclosure.Panel className="px-4 bg-[#312D26] py-4 grid border-t border-gray/20 grid-cols-2">
                             {site.allProducts.map((item) => (
-                              <Link href={item.slug}>
+                              <Link
+                                href={`/${translate("products_url", locale)}/${
+                                  item.slug
+                                }`}
+                                locale={locale}
+                              >
+                                {" "}
                                 <a
                                   key={item.slug}
                                   href={item.slug}
@@ -176,7 +184,14 @@ export default function MenuMobile({ site, locale }) {
                         >
                           <Disclosure.Panel className="px-4 bg-[#312D26] py-4 grid border-t border-gray/20 grid-cols-2">
                             {site.allTecnologies.map((item) => (
-                              <Link href={item.slug}>
+                              <Link
+                                href={`/${translate(
+                                  "technologies_url",
+                                  locale
+                                )}/${item.slug}`}
+                                locale={locale}
+                              >
+                                {" "}
                                 <a
                                   key={item.slug}
                                   href={item.slug}
@@ -196,23 +211,19 @@ export default function MenuMobile({ site, locale }) {
                   </Disclosure>
                   {/* // Mobile Altre pagine editoriali */}
                   <div className="py-4 text-white border-t border-gray/20 grid gap-2 px-4">
-                    {site.allEditorialPages.map((item) => (
-                      <Link
-                        key={item.slug}
-                        locale={locale}
-                        href={`/${item.slug}`}
-                      >
-                        <a title={item.slug} className="">
-                          <span className={`menu_item`}>{item.labelMenu}</span>
-                        </a>
-                      </Link>
-                    ))}
+                    {site.allEditorialPages.map((item) =>
+                      item.inMenu == true ? (
+                        <Link locale={locale} href={`/${item.slug}`}>
+                          <a title={item.slug} className="">
+                            <span className={`menu_item`}>
+                              {item.labelMenu}
+                            </span>
+                          </a>
+                        </Link>
+                      ) : null
+                    )}
                     {/* // Mobile News */}
-                    <Link
-                      key={site.indexNews.slug}
-                      locale={locale}
-                      href={`/${site.indexNews.slug}`}
-                    >
+                    <Link locale={locale} href={`/${site.indexNews.slug}`}>
                       <a title={site.indexNews.slug} className="">
                         <span className={`menu_item`}>
                           {site.indexNews.labelMenu}
@@ -220,11 +231,7 @@ export default function MenuMobile({ site, locale }) {
                       </a>
                     </Link>
                     {/* // Mobile Contatti */}
-                    <Link
-                      key={site.contactPage.slug}
-                      locale={locale}
-                      href={`/${site.contactPage.slug}`}
-                    >
+                    <Link locale={locale} href={`/${site.contactPage.slug}`}>
                       <a title={site.contactPage.slug} className="">
                         <span className={`menu_item`}>
                           {site.contactPage.labelMenu}
@@ -233,10 +240,11 @@ export default function MenuMobile({ site, locale }) {
                     </Link>
                   </div>
                 </div>
-              </div>
+              </nav>
             </div>
             <div className="pb-6 px-5 space-y-6">
-              <LanguageSwitcher />
+              <div className="text-xxs text-white/70 mb-2">Lingua</div>
+              <LanguageSwitcher model={model} />
             </div>
           </div>
         </Popover.Panel>

@@ -4,19 +4,6 @@
   box-sizing: inherit;
 }
 
-html {
-  height: 100%;
-  box-sizing: border-box;
-  touch-action: manipulation;
-  scroll-behavior: smooth;
-}
-
-@media (prefers-reduced-motion) {
-  html {
-    scroll-behavior: auto;
-  }
-}
-
 a {
   color: var(--primary);
   text-decoration: none;
@@ -30,8 +17,4 @@ a {
 .object-contain img {
   object-fit: contain;
   object-position: left;
-}
-
-.container {
-  @apply mx-auto my-0 px-4 md:px-6;
 }

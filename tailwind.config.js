@@ -10,7 +10,7 @@ module.exports = {
         black: "#232019",
         gray: "#EEE9D7",
         brown: "#27231B",
-        orange: "#27231B",
+        orange: "#F49600",
         gold: {
           DEFAULT: "#CE7F00",
           light: "#A99159",
@@ -52,7 +52,36 @@ module.exports = {
         serif: ["Graphik", "serif"],
         sans: ["Graphik", "sans-serif"],
       },
+      screens: {
+        "3xl": "1920px",
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addComponents }) {
+      addComponents({
+        ".container": {
+          maxWidth: "100%",
+          "@screen sm": {
+            maxWidth: "640px",
+          },
+          "@screen md": {
+            maxWidth: "768px",
+          },
+          "@screen lg": {
+            maxWidth: "1024px",
+          },
+          "@screen xl": {
+            maxWidth: "1280px",
+          },
+          "@screen 2xl": {
+            maxWidth: "1350px",
+          },
+          "@screen 3xl": {
+            maxWidth: "1460px",
+          },
+        },
+      });
+    },
+  ],
 };

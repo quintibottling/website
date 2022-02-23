@@ -1,7 +1,7 @@
 {
   "it": {
-    "it": "Italiano",
-    "en": "Inglese",
+    "it": "Ita",
+    "en": "Ing",
     "cookiePolicyId": "24260280",
     "cookiePolicyTitle": "Vai a (link esterno) Cookie Policy",
     "privacyPolicyTitle": "Vai a (link esterno) Privacy Policy",
@@ -20,12 +20,15 @@
     "skipContent": "Vai al contenuto principale",
     "skipFooter": "Vai al footer",
     "company": "Azienda",
+    "company_url": "azienda",
     "products": "Prodotti",
-    "technologies": "Tecnologie"
+    "products_url": "prodotti",
+    "technologies": "Tecnologie",
+    "technologies_url": "tecnologie"
   },
   "en": {
-    "it": "Italian",
-    "en": "English",
+    "it": "Ita",
+    "en": "Eng",
     "cookiePolicyId": "30557991",
     "cookiePolicyTitle": "Go to (external link) Cookie Policy",
     "privacyPolicyTitle": "Go to (external link) Privacy Policy",
@@ -44,7 +47,10 @@
     "skipContent": "Go to main content",
     "skipFooter": "Go to footer",
     "company": "Company",
-    "products": "Prodotti",
-    "technologies": "Technologies"
+    "company_url": "company",
+    "products": "Products",
+    "products_url": "products",
+    "technologies": "Technologies",
+    "technologies_url": "technologies"
   }
 }
