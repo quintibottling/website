@@ -43,7 +43,13 @@ export default function PostContent({ record, locale, background }) {
     case "text_block":
       return <TextBlock record={record} locale={locale} />;
     case "text_image_two_column":
-      return <TextImageTwoColumn record={record} locale={locale} />;
+      return (
+        <TextImageTwoColumn
+          record={record}
+          background={background}
+          locale={locale}
+        />
+      );
     case "title_text_block":
       return (
         <TitleTextBlock

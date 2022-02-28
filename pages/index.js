@@ -44,6 +44,21 @@ export default function Home({ locale, site, home, products }) {
           ;
         </div>
       </section>
+      <section className="container--standard">
+        <div className="grid gap-y-10 xl:gap-y-24">
+          {home.blockContent.map((block) => {
+            return (
+              <div key={block.id}>
+                <PostContent
+                  record={block}
+                  background="light"
+                  locale={locale}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </section>
     </Layout>
   );
 }

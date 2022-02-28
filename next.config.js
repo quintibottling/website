@@ -14,4 +14,7 @@ module.exports = {
     preloadFonts: true,
     logLevel: "error",
   },
+  images: {
+    domains: ["www.datocms-assets.com"],
+  },
 };

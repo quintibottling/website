@@ -58,3 +58,7 @@ body {
 .container--small {
   @apply mx-auto space-y-5 py-12 px-4 lg:space-y-10 lg:py-16 lg:px-10 xl:container xl:py-20 2xl:px-28;
 }
+
+.container--standard {
+  @apply mx-auto space-y-5 py-12 px-4 lg:space-y-10 lg:py-16 xl:container xl:py-24;
+}
