@@ -7,12 +7,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        black: "#232019",
+        black: {
+          DEFAULT: "#232019",
+          DARK: "#000000",
+        },
         gray: "#EEE9D7",
         brown: "#27231B",
         orange: "#F49600",
         gold: {
-          DEFAULT: "#CE7F00",
+          DEFAULT: "#6D5B31",
           light: "#A99159",
         },
         pink: {
@@ -29,6 +32,7 @@ module.exports = {
         },
         yellow: {
           DEFAULT: "#A99F45",
+          medium: "#B2B250",
           light: "#F7F9A5",
         },
         red: {

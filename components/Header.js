@@ -19,12 +19,12 @@ function Header(props) {
   const router = useRouter();
 
   return (
-    <header>
+    <header className="relative z-50">
       <Popover className="relative rounded-b-2xl bg-brown">
-        <div className="px-4 sm:px-6 mb-40">
-          <div className="container">
-            <div className="flex justify-between items-center py-6 lg:justify-start lg:space-x-5">
-              <div className="flex justify-start items-center lg:w-0 lg:flex-1">
+        <div className="px-4 sm:px-6 xl:px-12">
+          <div className="xl:container xl:mx-auto">
+            <div className="flex items-center justify-between py-6 lg:justify-start lg:space-x-5">
+              <div className="flex items-center justify-start lg:w-0 lg:flex-1">
                 <Link href="/" locale={locale} key="homepage">
                   <a title="Homepage" className="h-[35px]">
                     <Image
@@ -37,22 +37,22 @@ function Header(props) {
                   </a>
                 </Link>
               </div>
-              <div className="-mr-2 -my-2 lg:hidden">
+              <div className="-my-2 -mr-2 lg:hidden">
                 <Popover.Button className="inline-flex items-center justify-center text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange">
                   <span className="sr-only">Open menu</span>
                   <MenuAlt3Icon className="h-9 w-9" aria-hidden="true" />
                 </Popover.Button>
               </div>
-              <Popover.Group as="nav" className="hidden lg:flex space-x-5">
+              <Popover.Group as="nav" className="hidden space-x-5 lg:flex">
                 <Popover className="relative">
                   {({ open }) => (
                     <>
-                      <Popover.Button className="group inline-flex items-center text-white text-sm hover:text-orange focus:outline-none">
+                      <Popover.Button className="group inline-flex items-center text-sm text-white hover:text-orange focus:outline-none">
                         <span>{translate("company", locale)}</span>
                         <ChevronDownIcon
                           className={classNames(
                             open ? "rotate-180 text-orange" : "text-gold-light",
-                            "ml-1 mt h-6 w-6 "
+                            "mt ml-1 h-6 w-6 "
                           )}
                           aria-hidden="true"
                         />
@@ -67,9 +67,9 @@ function Header(props) {
                         leaveFrom="opacity-100 translate-y-0"
                         leaveTo="opacity-0 translate-y-1"
                       >
-                        <Popover.Panel className="absolute z-10 -ml-4 mt-3 transform px-2 w-auto max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2">
-                          <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-                            <div className="relative bg-white text-xs divide-y grid divide-black/5">
+                        <Popover.Panel className="absolute z-10 -ml-4 mt-3 w-auto max-w-md transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2">
+                          <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+                            <div className="relative grid divide-y divide-black/5 bg-white text-xs">
                               {site.allCompanyPages.map((item) => (
                                 <Link
                                   href={`/${translate("company_url", locale)}/${
@@ -78,7 +78,7 @@ function Header(props) {
                                   locale={locale}
                                 >
                                   <a title={item.title}>
-                                    <span className="text-black block text-sm py-2 px-4 pr-12 whitespace-nowrap">
+                                    <span className="block whitespace-nowrap py-2 px-4 pr-12 text-sm text-black">
                                       {item.labelMenu}
                                     </span>
                                   </a>
@@ -94,12 +94,12 @@ function Header(props) {
                 <Popover className="relative">
                   {({ open }) => (
                     <>
-                      <Popover.Button className="group inline-flex items-center text-white text-sm hover:text-orange focus:outline-none">
+                      <Popover.Button className="group inline-flex items-center text-sm text-white hover:text-orange focus:outline-none">
                         <span>{translate("products", locale)}</span>
                         <ChevronDownIcon
                           className={classNames(
                             open ? "rotate-180 text-orange" : "text-gold-light",
-                            "ml-1 mt h-6 w-6 "
+                            "mt ml-1 h-6 w-6 "
                           )}
                           aria-hidden="true"
                         />
@@ -114,9 +114,9 @@ function Header(props) {
                         leaveFrom="opacity-100 translate-y-0"
                         leaveTo="opacity-0 translate-y-1"
                       >
-                        <Popover.Panel className="absolute z-10 -ml-4 mt-3 transform px-2 w-auto max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2">
-                          <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-                            <div className="relative bg-white text-xs divide-y grid divide-black/5">
+                        <Popover.Panel className="absolute z-10 -ml-4 mt-3 w-auto max-w-md transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2">
+                          <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+                            <div className="relative grid divide-y divide-black/5 bg-white text-xs">
                               {site.allProducts.map((item) => (
                                 <Link
                                   href={`/${translate(
@@ -141,9 +141,9 @@ function Header(props) {
                                             (item.slug == "bear")
                                           ? "rounded-tl-full bg-yellow-light"
                                           : "bg-red-light"
-                                      } w-3 h-3 -mt-[2px] mx-4`}
+                                      } mx-4 -mt-[2px] h-3 w-3`}
                                     />
-                                    <span className="text-black block text-sm py-2 pr-12 whitespace-nowrap">
+                                    <span className="block whitespace-nowrap py-2 pr-12 text-sm text-black">
                                       {item.title}
                                     </span>
                                   </a>
@@ -159,12 +159,12 @@ function Header(props) {
                 <Popover className="relative">
                   {({ open }) => (
                     <>
-                      <Popover.Button className="group inline-flex items-center text-white text-sm hover:text-orange focus:outline-none">
+                      <Popover.Button className="group inline-flex items-center text-sm text-white hover:text-orange focus:outline-none">
                         <span>{translate("technologies", locale)}</span>
                         <ChevronDownIcon
                           className={classNames(
                             open ? "rotate-180 text-orange" : "text-gold-light",
-                            "ml-1 mt h-6 w-6 "
+                            "mt ml-1 h-6 w-6 "
                           )}
                           aria-hidden="true"
                         />
@@ -179,9 +179,9 @@ function Header(props) {
                         leaveFrom="opacity-100 translate-y-0"
                         leaveTo="opacity-0 translate-y-1"
                       >
-                        <Popover.Panel className="absolute z-10 -ml-4 mt-3 transform px-2 w-auto max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2">
-                          <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-                            <div className="relative bg-white text-xs divide-y grid divide-black/5">
+                        <Popover.Panel className="absolute z-10 -ml-4 mt-3 w-auto max-w-md transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2">
+                          <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+                            <div className="relative grid divide-y divide-black/5 bg-white text-xs">
                               {site.allTecnologies.map((item) => (
                                 <Link
                                   href={`/${translate(
@@ -191,7 +191,7 @@ function Header(props) {
                                   locale={locale}
                                 >
                                   <a title={item.title}>
-                                    <span className="text-black block text-sm py-2 px-4 pr-12 whitespace-nowrap">
+                                    <span className="block whitespace-nowrap py-2 px-4 pr-12 text-sm text-black">
                                       {item.labelMenu}
                                     </span>
                                   </a>
@@ -237,7 +237,7 @@ function Header(props) {
                     </span>
                   </a>
                 </Link>
-                <div className="hidden lg:flex space-x-1 items-center">
+                <div className="hidden items-center space-x-1 lg:flex">
                   <LanguageSwitcher locale={locale} alts={alts} model={model} />
                 </div>
               </Popover.Group>

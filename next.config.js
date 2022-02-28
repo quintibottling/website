@@ -6,14 +6,12 @@
 module.exports = {
   reactStrictMode: true,
   i18n: {
-    locales: ['it', 'en'],
-    defaultLocale: 'it',
+    locales: ["it", "en"],
+    defaultLocale: "it",
   },
   optimizeCss: {
     inlineFonts: true,
     preloadFonts: true,
-    logLevel: 'error',
-  }
+    logLevel: "error",
+  },
 };
-
-

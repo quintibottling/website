@@ -20,11 +20,11 @@ export default function MenuMobile({ site, locale, model }) {
       >
         <Popover.Panel
           focus
-          className="absolute top-0 inset-x-0 transition transform origin-top lg:hidden overflow-hidden"
+          className="absolute inset-x-0 top-0 origin-top transform overflow-hidden transition lg:hidden"
         >
-          <div className="bg-brown min-h-[100vh]">
+          <div className="relative z-50 min-h-[100vh] bg-brown">
             <div className="pt-5 pb-6">
-              <div className="px-4 flex items-center justify-between">
+              <div className="flex items-center justify-between px-4">
                 <div>
                   <Image
                     priority
@@ -35,7 +35,7 @@ export default function MenuMobile({ site, locale, model }) {
                   />
                 </div>
                 <div className="-mr-2">
-                  <Popover.Button className="inline-flex items-center justify-center text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange">
+                  <Popover.Button className="text-gray-400 inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange">
                     <span className="sr-only">Close menu</span>
                     <XIcon className="h-9 w-9 text-white" aria-hidden="true" />
                   </Popover.Button>
@@ -47,7 +47,7 @@ export default function MenuMobile({ site, locale, model }) {
                   <Disclosure>
                     {({ open }) => (
                       <>
-                        <Disclosure.Button className="py-4 text-white border-t border-gray/20 flex justify-between items-center px-4">
+                        <Disclosure.Button className="flex items-center justify-between border-t border-gray/20 py-4 px-4 text-white">
                           <span
                             className={`${
                               open ? "text-gold-light" : ""
@@ -58,7 +58,7 @@ export default function MenuMobile({ site, locale, model }) {
                           <ChevronRightIcon
                             className={`${
                               open ? "-rotate-90" : ""
-                            } w-5 h-5 rotate-90 text-gold-light`}
+                            } h-5 w-5 rotate-90 text-gold-light`}
                           />
                         </Disclosure.Button>
                         <Transition
@@ -69,7 +69,7 @@ export default function MenuMobile({ site, locale, model }) {
                           leaveFrom="transform opacity-100"
                           leaveTo="transform opacity-0"
                         >
-                          <Disclosure.Panel className="px-4 bg-[#312D26] py-4 space-y-1 grid border-t border-gray/20">
+                          <Disclosure.Panel className="grid space-y-1 border-t border-gray/20 bg-[#312D26] px-4 py-4">
                             {site.allCompanyPages.map((item) => (
                               <Link
                                 href={`/${translate("company_url", locale)}/${
@@ -79,7 +79,7 @@ export default function MenuMobile({ site, locale, model }) {
                               >
                                 {" "}
                                 <a href={item.slug} title={item.title}>
-                                  <span className="text-white block text-sm">
+                                  <span className="block text-sm text-white">
                                     {item.labelMenu}
                                   </span>
                                 </a>
@@ -94,7 +94,7 @@ export default function MenuMobile({ site, locale, model }) {
                   <Disclosure>
                     {({ open }) => (
                       <>
-                        <Disclosure.Button className="py-4 text-white border-t border-gray/20 flex justify-between items-center px-4">
+                        <Disclosure.Button className="flex items-center justify-between border-t border-gray/20 py-4 px-4 text-white">
                           <span
                             className={`${
                               open ? "text-gold-light" : ""
@@ -105,7 +105,7 @@ export default function MenuMobile({ site, locale, model }) {
                           <ChevronRightIcon
                             className={`${
                               open ? "-rotate-90" : ""
-                            } w-5 h-5 rotate-90 text-gold-light`}
+                            } h-5 w-5 rotate-90 text-gold-light`}
                           />
                         </Disclosure.Button>
                         <Transition
@@ -116,7 +116,7 @@ export default function MenuMobile({ site, locale, model }) {
                           leaveFrom="transform opacity-100"
                           leaveTo="transform opacity-0"
                         >
-                          <Disclosure.Panel className="px-4 bg-[#312D26] py-4 grid border-t border-gray/20 grid-cols-2">
+                          <Disclosure.Panel className="grid grid-cols-2 border-t border-gray/20 bg-[#312D26] px-4 py-4">
                             {site.allProducts.map((item) => (
                               <Link
                                 href={`/${translate("products_url", locale)}/${
@@ -143,9 +143,9 @@ export default function MenuMobile({ site, locale, model }) {
                                           (item.slug == "bear")
                                         ? "rounded-tl-full bg-yellow-light"
                                         : "bg-red-light"
-                                    } w-3 h-3 -mt-[2px]`}
+                                    } -mt-[2px] h-3 w-3`}
                                   />
-                                  <div className="text-white text-sm">
+                                  <div className="text-sm text-white">
                                     {item.title}
                                   </div>
                                 </a>
@@ -160,7 +160,7 @@ export default function MenuMobile({ site, locale, model }) {
                   <Disclosure>
                     {({ open }) => (
                       <>
-                        <Disclosure.Button className="py-4 text-white border-t border-gray/20 flex justify-between items-center px-4">
+                        <Disclosure.Button className="flex items-center justify-between border-t border-gray/20 py-4 px-4 text-white">
                           <span
                             className={`${
                               open ? "text-gold-light" : ""
@@ -171,7 +171,7 @@ export default function MenuMobile({ site, locale, model }) {
                           <ChevronRightIcon
                             className={`${
                               open ? "-rotate-90" : ""
-                            } w-5 h-5 rotate-90 text-gold-light`}
+                            } h-5 w-5 rotate-90 text-gold-light`}
                           />
                         </Disclosure.Button>
                         <Transition
@@ -182,7 +182,7 @@ export default function MenuMobile({ site, locale, model }) {
                           leaveFrom="transform opacity-100"
                           leaveTo="transform opacity-0"
                         >
-                          <Disclosure.Panel className="px-4 bg-[#312D26] py-4 grid border-t border-gray/20 grid-cols-2">
+                          <Disclosure.Panel className="grid grid-cols-2 border-t border-gray/20 bg-[#312D26] px-4 py-4">
                             {site.allTecnologies.map((item) => (
                               <Link
                                 href={`/${translate(
@@ -198,7 +198,7 @@ export default function MenuMobile({ site, locale, model }) {
                                   title={item.title}
                                   className="flex items-center gap-x-2 py-[2px]"
                                 >
-                                  <div className="text-white text-sm">
+                                  <div className="text-sm text-white">
                                     {item.title}
                                   </div>
                                 </a>
@@ -210,7 +210,7 @@ export default function MenuMobile({ site, locale, model }) {
                     )}
                   </Disclosure>
                   {/* // Mobile Altre pagine editoriali */}
-                  <div className="py-4 text-white border-t border-gray/20 grid gap-2 px-4">
+                  <div className="grid gap-2 border-t border-gray/20 py-4 px-4 text-white">
                     {site.allEditorialPages.map((item) =>
                       item.inMenu == true ? (
                         <Link locale={locale} href={`/${item.slug}`}>
@@ -242,8 +242,8 @@ export default function MenuMobile({ site, locale, model }) {
                 </div>
               </nav>
             </div>
-            <div className="pb-6 px-5 space-y-6">
-              <div className="text-xxs text-white/70 mb-2">Lingua</div>
+            <div className="space-y-6 px-5 pb-6">
+              <div className="mb-2 text-xxs text-white/70">Lingua</div>
               <LanguageSwitcher model={model} />
             </div>
           </div>
