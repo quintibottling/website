@@ -3,7 +3,7 @@ import { renderHTML } from "lib/utils";
 export default function TwoColumnBlock({ locale, record }) {
   return (
     <>
-      <div className="grid gap-5 md:grid-cols-10 md:gap-10 lg:gap-x-24">
+      <div className="grid gap-5 md:grid-cols-10 md:gap-x-10 lg:gap-x-24">
         <h2
           className={`${
             record.typeTitle == true

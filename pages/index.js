@@ -59,6 +59,22 @@ export default function Home({ locale, site, home, products }) {
           })}
         </div>
       </section>
+      <section className="rounded-[20px] bg-pink">
+        <div className="container--small">
+          <div className="grid gap-5 md:grid-cols-3 lg:gap-y-16 lg:gap-x-8">
+            {home.serviceBlock.map((block) => {
+              return (
+                <PostContent
+                  key={block.id}
+                  record={block}
+                  background="yellow"
+                  locale={locale}
+                />
+              );
+            })}
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 }
