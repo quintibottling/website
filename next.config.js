@@ -17,4 +17,16 @@ module.exports = {
   images: {
     domains: ["www.datocms-assets.com"],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/azienda/:slug",
+        destination: "/company/:slug",
+      },
+      // {
+      //   source: "/contatti",
+      //   destination: "/contacts",
+      // },
+    ];
+  },
 };

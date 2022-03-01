@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import translate from "lib/locales";
+import { resolveLink } from "lib/utils";
 
 export default function Footer({ locale, site }) {
   const data = site.footer;
@@ -58,7 +59,7 @@ export default function Footer({ locale, site }) {
                 </div>
                 {site.allCompanyPages.map((item) => (
                   <Link
-                    href={`/${translate("company_url", locale)}/${item.slug}`}
+                    href={resolveLink(item.model, locale, item.slug)}
                     locale={locale}
                   >
                     <a className="group" title={item.title}>
@@ -78,7 +79,7 @@ export default function Footer({ locale, site }) {
                 </div>
                 {site.allProducts.map((item) => (
                   <Link
-                    href={`/${translate("products_url", locale)}/${item.slug}`}
+                    href={resolveLink(item.model, locale, item.slug)}
                     locale={locale}
                   >
                     <a
@@ -98,8 +99,11 @@ export default function Footer({ locale, site }) {
             <div className="col-span-10 grid grid-cols-2 content-start gap-1 md:col-span-2 md:grid-cols-1 lg:col-span-2 lg:gap-3">
               {site.allEditorialPages.map((item) =>
                 item.inMenu == true ? (
-                  <Link href={item.slug} locale={locale}>
-                    <a key={item.slug} href={item.slug} title={item.title}>
+                  <Link
+                    href={resolveLink(item.model, locale, item.slug)}
+                    locale={locale}
+                  >
+                    <a key={item.slug} title={item.title}>
                       <span className="block text-xs hover:text-orange lg:text-base">
                         {item.labelMenu}
                       </span>
@@ -107,23 +111,15 @@ export default function Footer({ locale, site }) {
                   </Link>
                 ) : null
               )}
-              <Link href={site.indexNews.slug}>
-                <a
-                  key={site.indexNews.slug}
-                  href={site.indexNews.slug}
-                  title={site.indexNews.title}
-                >
+              <Link href={`/${site.indexNews.slug}`} locale={locale}>
+                <a key={site.indexNews.slug} title={site.indexNews.title}>
                   <span className="block text-xs hover:text-orange lg:text-base">
                     {site.indexNews.labelMenu}
                   </span>
                 </a>
               </Link>
-              <Link href={site.contactPage.slug}>
-                <a
-                  key={site.contactPage.slug}
-                  href={site.contactPage.slug}
-                  title={site.contactPage.title}
-                >
+              <Link href={`/${site.contactPage.slug}`} locale={locale}>
+                <a key={site.contactPage.slug} title={site.contactPage.title}>
                   <span className="block text-xs hover:text-orange lg:text-base">
                     {site.contactPage.labelMenu}
                   </span>

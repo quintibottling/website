@@ -9,6 +9,7 @@ import { ChevronDownIcon } from "@heroicons/react/solid";
 import MenuMobile from "./MenuMobile";
 import translate from "lib/locales";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { resolveLink } from "lib/utils";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -72,9 +73,11 @@ function Header(props) {
                             <div className="relative grid divide-y divide-black/5 bg-white text-xs">
                               {site.allCompanyPages.map((item) => (
                                 <Link
-                                  href={`/${translate("company_url", locale)}/${
+                                  href={resolveLink(
+                                    item.model,
+                                    locale,
                                     item.slug
-                                  }`}
+                                  )}
                                   locale={locale}
                                 >
                                   <a title={item.title}>
@@ -119,10 +122,11 @@ function Header(props) {
                             <div className="relative grid divide-y divide-black/5 bg-white text-xs">
                               {site.allProducts.map((item) => (
                                 <Link
-                                  href={`/${translate(
-                                    "products_url",
-                                    locale
-                                  )}/${item.slug}`}
+                                  href={resolveLink(
+                                    item.model,
+                                    locale,
+                                    item.slug
+                                  )}
                                   locale={locale}
                                 >
                                   <a
@@ -173,10 +177,11 @@ function Header(props) {
                             <div className="relative grid divide-y divide-black/5 bg-white text-xs">
                               {site.allTecnologies.map((item) => (
                                 <Link
-                                  href={`/${translate(
-                                    "technologies_url",
-                                    locale
-                                  )}/${item.slug}`}
+                                  href={resolveLink(
+                                    item.model,
+                                    locale,
+                                    item.slug
+                                  )}
                                   locale={locale}
                                 >
                                   <a title={item.title}>
@@ -195,8 +200,11 @@ function Header(props) {
                 </Popover>
                 {site.allEditorialPages.map((item) =>
                   item.inMenu == true ? (
-                    <Link href={item.slug}>
-                      <a key={item.slug} href={item.slug} title={item.title}>
+                    <Link
+                      href={resolveLink(item.model, locale, item.slug)}
+                      locale={locale}
+                    >
+                      <a key={item.slug} title={item.title}>
                         <span className="text-white hover:text-orange">
                           {item.labelMenu}
                         </span>
@@ -204,23 +212,15 @@ function Header(props) {
                     </Link>
                   ) : null
                 )}
-                <Link href={site.indexNews.slug}>
-                  <a
-                    key={site.indexNews.slug}
-                    href={site.indexNews.slug}
-                    title={site.indexNews.title}
-                  >
+                <Link href={`/${site.indexNews.slug}`} locale={locale}>
+                  <a key={site.indexNews.slug} title={site.indexNews.title}>
                     <span className="text-white hover:text-orange">
                       {site.indexNews.labelMenu}
                     </span>
                   </a>
                 </Link>
-                <Link href={site.contactPage.slug}>
-                  <a
-                    key={site.contactPage.slug}
-                    href={site.contactPage.slug}
-                    title={site.contactPage.title}
-                  >
+                <Link href={`/${site.contactPage.slug}`} locale={locale}>
+                  <a key={site.contactPage.slug} title={site.contactPage.title}>
                     <span className="text-white hover:text-orange">
                       {site.contactPage.labelMenu}
                     </span>

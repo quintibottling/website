@@ -19,7 +19,7 @@ export default function Home({
   news,
 }) {
   return (
-    <Layout site={site} locale={locale} model={home.model}>
+    <Layout alts={alts} site={site} locale={locale} model={home.model}>
       <Head>{renderMetaTags(home.seo.concat(site.site.favicon))}</Head>
       <h1 className="sr-only">Homepage | Quinti Bottling</h1>
       <HeroHP locale={locale} data={home} />

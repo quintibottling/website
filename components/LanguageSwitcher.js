@@ -12,11 +12,11 @@ export default function LanguageSwitcher({ locale, model, alts }) {
       {locales &&
         locales.map((l, i) => {
           const isActive = locale === l;
-          const link = alts?.find((alt) => alt.locale === l)?.value || "/";
+          const link = alts?.find((alt) => alt.locale === l)?.value || "";
           return (
             <Fragment key={l}>
               {i > 0 && <span className="text-xs text-white">-</span>}
-              <Link href={`/${link}`} locale={l}>
+              <Link href={`/${resolveLink(model, l, link)}`} locale={l}>
                 <a
                   className={`${
                     isActive ? "" : "text-white/70"
@@ -25,7 +25,7 @@ export default function LanguageSwitcher({ locale, model, alts }) {
                   {translate(`${l}`, locale)}
                 </a>
               </Link>
-              <Link href={`/${link}`} locale={l}>
+              <Link href={`/${resolveLink(model, l, link)}`} locale={l}>
                 <a
                   className={`${
                     isActive ? "" : "text-white/70"
