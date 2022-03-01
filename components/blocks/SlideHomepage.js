@@ -3,7 +3,6 @@ import { useSwiper } from "swiper/react";
 import { ArrowRightIcon } from "@heroicons/react/solid";
 
 import Link from "next/link";
-
 import { resolveLink } from "lib/utils";
 
 export default function SlideHomepage({

@@ -34,7 +34,14 @@ export default function PostContent({ record, locale, background }) {
       return <Partner record={record} locale={locale} />;
     case "internal_link":
       return (
-        <InternalLink record={record} locale={locale} background={background} />
+        <InternalLink
+          data={record.label}
+          title={record.title}
+          locale={locale}
+          link={record.link.slug}
+          background={background}
+          model={record.link.model}
+        />
       );
     case "row":
       return <Row record={record} locale={locale} />;

@@ -7,8 +7,17 @@ import fetchDato from "lib/dato";
 import HeroHP from "components/HeroHp";
 import PostContent from "components/PostContent";
 import ProductCard from "components/ProductCard";
+import InternalLink from "components/blocks/InternalLink";
+import NewsCard from "components/NewsCard";
 
-export default function Home({ locale, site, home, products }) {
+export default function Home({
+  locale,
+  site,
+  home,
+  products,
+  indexNews,
+  news,
+}) {
   return (
     <Layout site={site} locale={locale} model={home.model}>
       <Head>{renderMetaTags(home.seo.concat(site.site.favicon))}</Head>
@@ -23,7 +32,7 @@ export default function Home({ locale, site, home, products }) {
           );
         })}
       </section>
-      <section className="rounded-[20px] bg-brown">
+      <section className="rounded-[20px] bg-brown xl:rounded-[50px]">
         <div className="container--small">
           {home.productsBlock.map((block) => {
             return (
@@ -59,7 +68,7 @@ export default function Home({ locale, site, home, products }) {
           })}
         </div>
       </section>
-      <section className="rounded-[20px] bg-pink">
+      <section className="rounded-[20px] bg-pink xl:rounded-[50px]">
         <div className="container--small">
           <div className="grid gap-5 md:grid-cols-3 lg:gap-y-16 lg:gap-x-8">
             {home.serviceBlock.map((block) => {
@@ -75,6 +84,26 @@ export default function Home({ locale, site, home, products }) {
           </div>
         </div>
       </section>
+      <section className="container--small">
+        <div className="flex items-center justify-between">
+          <h2 className="text-2xl lg:text-4xl xl:text-5xl">{home.titleNews}</h2>
+          <InternalLink
+            locale={locale}
+            background="light"
+            data={home.ctaNews}
+            model={indexNews.model}
+            link={indexNews.slug}
+            title={indexNews.title}
+          />
+        </div>
+        <div className="grid gap-y-6 divide-y divide-black/40 lg:grid-cols-2 lg:gap-x-8 lg:divide-y-0 xl:gap-x-20">
+          {news.map((item) => (
+            <div key={item.id}>
+              <NewsCard data={item} locale={locale} />
+            </div>
+          ))}
+        </div>
+      </section>
     </Layout>
   );
 }
@@ -87,6 +116,8 @@ export async function getStaticProps({ locale }) {
       locale,
       home: response.homepage,
       products: response.allProducts,
+      indexNews: response.indexNews,
+      news: response.news,
       site,
     },
   };
