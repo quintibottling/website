@@ -14,7 +14,7 @@ function Layout({ children, locale, site, model, alts }) {
         alts={alts}
       />
       <main id="content">{children}</main>
-      <Footer id="footer" />
+      <Footer id="footer" site={site} />
     </>
   );
 }

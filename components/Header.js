@@ -130,18 +130,7 @@ function Header(props) {
                                     className="flex items-center gap-x-2 py-[2px]"
                                   >
                                     <div
-                                      className={`${
-                                        (item.slug == "olio") |
-                                        (item.slug == "oil")
-                                          ? "rounded-full rounded-tl-sm bg-green-light"
-                                          : (item.slug == "vino") |
-                                            (item.slug == "wine")
-                                          ? "rounded-full bg-purple-light"
-                                          : (item.slug == "birra") |
-                                            (item.slug == "bear")
-                                          ? "rounded-tl-full bg-yellow-light"
-                                          : "bg-red-light"
-                                      } mx-4 -mt-[2px] h-3 w-3`}
+                                      className={`${item.code} mx-4 -mt-[2px] h-3 w-3`}
                                     />
                                     <span className="block whitespace-nowrap py-2 pr-12 text-sm text-black">
                                       {item.title}
