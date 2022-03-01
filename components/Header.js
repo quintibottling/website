@@ -235,6 +235,12 @@ function Header(props) {
         </div>
         <MenuMobile site={site} locale={locale} />
       </Popover>
+      <div aria-hidden="true" className="hidden">
+        <div className="rounded-tl-full bg-yellow-light" />
+        <div className="rounded-tl-sm bg-purple-light" />
+        <div className="bg-red-light" />
+        <div className="bg-green-light" />
+      </div>
     </header>
   );
 }

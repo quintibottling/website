@@ -86,7 +86,9 @@ export default function Footer({ locale, site }) {
                       title={item.title}
                       className="group flex items-center gap-x-2 py-[2px]"
                     >
-                      <div className={`${item.code} -mt-[2px] h-2 w-2`} />
+                      <div
+                        className={`${item.code} -mt-[2px] h-2 w-2 xl:h-3 xl:w-3`}
+                      />
                       <span className="block whitespace-nowrap text-xs opacity-70 group-hover:text-orange group-hover:opacity-100 lg:text-base">
                         {item.title}
                       </span>

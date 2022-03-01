@@ -5,6 +5,7 @@ import PostContent from "components/PostContent";
 import Layout from "components/Layout";
 import * as queries from "lib/queries";
 import fetchDato from "lib/dato";
+import CompanyHero from "components/CompanyHero";
 
 function Home({ locale, data, companyPage }) {
   return (
@@ -15,6 +16,7 @@ function Home({ locale, data, companyPage }) {
       model={companyPage.model}
     >
       <Head>{renderMetaTags(companyPage.seo.concat(data.site.favicon))}</Head>
+      <CompanyHero data={companyPage} />
     </Layout>
   );
 }

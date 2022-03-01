@@ -20,9 +20,11 @@ export default function NewsCard({ locale, data }) {
           <h2 className="duration-100 group-hover:text-orange lg:text-lg">
             {data.title}
           </h2>
-          <h3 className="my-3 text-sm opacity-80 line-clamp-4 lg:text-base xl:line-clamp-2">
-            {renderHTML(firstTextBlock.text)}
-          </h3>
+          {firstTextBlock && (
+            <h3 className="my-3 text-sm opacity-80 line-clamp-4 lg:text-base xl:line-clamp-2">
+              {renderHTML(firstTextBlock.text)}
+            </h3>
+          )}
           <div className="mt-2 flex items-center gap-x-2 lg:mt-4">
             <div className="text-sm tracking-wide xl:text-base">
               {translate("more", locale)}

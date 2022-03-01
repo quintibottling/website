@@ -1,4 +1,3 @@
-import translate from "lib/locales";
 import { ArrowRightIcon } from "@heroicons/react/solid";
 
 export default function Button({ locale, data, background }) {

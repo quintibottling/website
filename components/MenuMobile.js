@@ -5,6 +5,7 @@ import { Fragment } from "react";
 import { ChevronRightIcon, XIcon } from "@heroicons/react/outline";
 import translate from "lib/locales";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { resolveLink } from "lib/utils";
 
 export default function MenuMobile({ site, locale, model }) {
   return (
@@ -72,13 +73,14 @@ export default function MenuMobile({ site, locale, model }) {
                           <Disclosure.Panel className="grid space-y-1 border-t border-gray/20 bg-[#312D26] px-4 py-4">
                             {site.allCompanyPages.map((item) => (
                               <Link
-                                href={`/${translate("company_url", locale)}/${
+                                href={resolveLink(
+                                  item.model,
+                                  locale,
                                   item.slug
-                                }`}
+                                )}
                                 locale={locale}
                               >
-                                {" "}
-                                <a href={item.slug} title={item.title}>
+                                <a title={item.title}>
                                   <span className="block text-sm text-white">
                                     {item.labelMenu}
                                   </span>
@@ -119,31 +121,20 @@ export default function MenuMobile({ site, locale, model }) {
                           <Disclosure.Panel className="grid grid-cols-2 border-t border-gray/20 bg-[#312D26] px-4 py-4">
                             {site.allProducts.map((item) => (
                               <Link
-                                href={`/${translate("products_url", locale)}/${
+                                href={resolveLink(
+                                  item.model,
+                                  locale,
                                   item.slug
-                                }`}
+                                )}
                                 locale={locale}
                               >
-                                {" "}
                                 <a
                                   key={item.slug}
-                                  href={item.slug}
                                   title={item.title}
                                   className="flex items-center gap-x-2 py-[2px]"
                                 >
                                   <div
-                                    className={`${
-                                      (item.slug == "olio") |
-                                      (item.slug == "oil")
-                                        ? "rounded-full rounded-tl-sm bg-green-light"
-                                        : (item.slug == "vino") |
-                                          (item.slug == "wine")
-                                        ? "rounded-full bg-purple-light"
-                                        : (item.slug == "birra") |
-                                          (item.slug == "bear")
-                                        ? "rounded-tl-full bg-yellow-light"
-                                        : "bg-red-light"
-                                    } -mt-[2px] h-3 w-3`}
+                                    className={`${item.code} -mt-[2px] h-3 w-3`}
                                   />
                                   <div className="text-sm text-white">
                                     {item.title}
@@ -185,16 +176,15 @@ export default function MenuMobile({ site, locale, model }) {
                           <Disclosure.Panel className="grid grid-cols-2 border-t border-gray/20 bg-[#312D26] px-4 py-4">
                             {site.allTecnologies.map((item) => (
                               <Link
-                                href={`/${translate(
-                                  "technologies_url",
-                                  locale
-                                )}/${item.slug}`}
+                                href={resolveLink(
+                                  item.model,
+                                  locale,
+                                  item.slug
+                                )}
                                 locale={locale}
                               >
-                                {" "}
                                 <a
                                   key={item.slug}
-                                  href={item.slug}
                                   title={item.title}
                                   className="flex items-center gap-x-2 py-[2px]"
                                 >
@@ -213,7 +203,10 @@ export default function MenuMobile({ site, locale, model }) {
                   <div className="grid gap-2 border-t border-gray/20 py-4 px-4 text-white">
                     {site.allEditorialPages.map((item) =>
                       item.inMenu == true ? (
-                        <Link locale={locale} href={`/${item.slug}`}>
+                        <Link
+                          locale={locale}
+                          href={resolveLink(item.model, locale, item.slug)}
+                        >
                           <a title={item.slug} className="">
                             <span className={`menu_item`}>
                               {item.labelMenu}
@@ -224,7 +217,7 @@ export default function MenuMobile({ site, locale, model }) {
                     )}
                     {/* // Mobile News */}
                     <Link locale={locale} href={`/${site.indexNews.slug}`}>
-                      <a title={site.indexNews.slug} className="">
+                      <a title={site.indexNews.title} className="">
                         <span className={`menu_item`}>
                           {site.indexNews.labelMenu}
                         </span>
@@ -232,7 +225,7 @@ export default function MenuMobile({ site, locale, model }) {
                     </Link>
                     {/* // Mobile Contatti */}
                     <Link locale={locale} href={`/${site.contactPage.slug}`}>
-                      <a title={site.contactPage.slug} className="">
+                      <a title={site.contactPage.title} className="">
                         <span className={`menu_item`}>
                           {site.contactPage.labelMenu}
                         </span>

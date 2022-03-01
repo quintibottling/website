@@ -62,3 +62,7 @@ body {
 .container--standard {
   @apply mx-auto space-y-5 py-12 px-4 lg:space-y-10 lg:py-16 xl:container xl:py-24;
 }
+
+.image--cover img {
+  @apply object-cover;
+}
