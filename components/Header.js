@@ -46,7 +46,7 @@ function Header(props) {
               </div>
               <Popover.Group as="nav" className="hidden space-x-5 lg:flex">
                 <Popover className="relative">
-                  {({ open }) => (
+                  {({ open, close }) => (
                     <>
                       <Popover.Button className="group inline-flex items-center text-sm text-white hover:text-orange focus:outline-none">
                         <span>{translate("company", locale)}</span>
@@ -80,7 +80,7 @@ function Header(props) {
                                   )}
                                   locale={locale}
                                 >
-                                  <a title={item.title}>
+                                  <a title={item.title} onClick={() => close()}>
                                     <span className="block whitespace-nowrap py-2 px-4 pr-12 text-sm text-black">
                                       {item.labelMenu}
                                     </span>
@@ -95,7 +95,7 @@ function Header(props) {
                   )}
                 </Popover>
                 <Popover className="relative">
-                  {({ open }) => (
+                  {({ open, close }) => (
                     <>
                       <Popover.Button className="group inline-flex items-center text-sm text-white hover:text-orange focus:outline-none">
                         <span>{translate("products", locale)}</span>
@@ -132,6 +132,7 @@ function Header(props) {
                                   <a
                                     title={item.title}
                                     className="flex items-center gap-x-2 py-[2px]"
+                                    onClick={() => close()}
                                   >
                                     <div
                                       className={`${item.code} mx-4 -mt-[2px] h-3 w-3`}
@@ -150,7 +151,7 @@ function Header(props) {
                   )}
                 </Popover>
                 <Popover className="relative">
-                  {({ open }) => (
+                  {({ open, close }) => (
                     <>
                       <Popover.Button className="group inline-flex items-center text-sm text-white hover:text-orange focus:outline-none">
                         <span>{translate("technologies", locale)}</span>
@@ -184,7 +185,7 @@ function Header(props) {
                                   )}
                                   locale={locale}
                                 >
-                                  <a title={item.title}>
+                                  <a title={item.title} onClick={() => close()}>
                                     <span className="block whitespace-nowrap py-2 px-4 pr-12 text-sm text-black">
                                       {item.labelMenu}
                                     </span>
