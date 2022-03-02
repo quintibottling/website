@@ -59,6 +59,10 @@ module.exports = {
       screens: {
         "3xl": "1920px",
       },
+      backgroundImage: {
+        arrowSx: "url('/icons/arrow_left.svg')",
+        arrowDx: "url('/icons/arrow_right.svg')",
+      },
     },
   },
   plugins: [

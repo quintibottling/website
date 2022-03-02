@@ -66,3 +66,11 @@ body {
 .image--cover img {
   @apply object-cover;
 }
+
+.blockGallery .swiper-button-next {
+  @apply block h-[32px] w-[32px] bg-arrowDx bg-contain bg-no-repeat after:hidden;
+}
+
+.blockGallery .swiper-button-prev {
+  @apply block h-[32px] w-[32px] rotate-180 bg-arrowDx bg-contain bg-no-repeat after:hidden;
+}

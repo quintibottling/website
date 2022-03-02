@@ -17,6 +17,16 @@ function Home({ locale, data, companyPage }) {
     >
       <Head>{renderMetaTags(companyPage.seo.concat(data.site.favicon))}</Head>
       <CompanyHero data={companyPage} />
+      <section>
+        {companyPage.body.map((block) => {
+          return (
+            <div key={block.id}>
+              {console.log("block:", block)}
+              <PostContent record={block} background="light" locale={locale} />
+            </div>
+          );
+        })}
+      </section>
     </Layout>
   );
 }

@@ -13,6 +13,7 @@ import TextBlock from "./blocks/TextBlock.js";
 import TextImageTwoColumn from "./blocks/TextImageTwoColumn.js";
 import TitleTextBlock from "./blocks/TitleTextBlock.js";
 import TwoColumnBlock from "./blocks/TwoColumnBlock.js";
+import CertificationBlock from "./blocks/CertificationBlock.js";
 
 export default function PostContent({ record, locale, background }) {
   switch (record.model) {
@@ -30,7 +31,7 @@ export default function PostContent({ record, locale, background }) {
       return <IconTitleTextBlock record={record} locale={locale} />;
     case "image_block":
       return <ImageBlock record={record} locale={locale} />;
-    case "external_link_block":
+    case "partner":
       return <Partner record={record} locale={locale} />;
     case "internal_link":
       return (
@@ -67,5 +68,7 @@ export default function PostContent({ record, locale, background }) {
       );
     case "two_column_block":
       return <TwoColumnBlock record={record} locale={locale} />;
+    case "certification_block":
+      return <CertificationBlock record={record} locale={locale} />;
   }
 }
