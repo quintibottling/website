@@ -23,6 +23,10 @@ module.exports = {
         source: "/azienda/:slug",
         destination: "/company/:slug",
       },
+      {
+        source: "/prodotti/:slug",
+        destination: "/products/:slug",
+      },
       // {
       //   source: "/contatti",
       //   destination: "/contacts",

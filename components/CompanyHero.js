@@ -6,7 +6,7 @@ export default function CompanyHero({ locale, data }) {
     <header>
       <div className="-mt-4 bg-white">
         <div className="grid gap-4 px-4 pt-10 pb-6 md:pt-14 md:pb-10 lg:pt-20 lg:pb-16">
-          <div className="text-xs uppercase tracking-widest text-gold md:text-center lg:text-sm">
+          <div className="prefix text-gold md:text-center">
             {translate("company", locale)}
           </div>
           <h1 className="max-w-[1080px] text-lg text-brown md:text-center lg:mx-auto lg:text-4xl">

@@ -25,7 +25,8 @@
     "products_url": "prodotti",
     "technologies": "Tecnologie",
     "technologies_url": "tecnologie",
-    "play_video": "Vedi il video"
+    "play_video": "Vedi il video",
+    "liquid": "liquido"
   },
   "en": {
     "it": "Ita",
@@ -53,6 +54,7 @@
     "products_url": "products",
     "technologies": "Technologies",
     "technologies_url": "technologies",
-    "play_video": "Play video"
+    "play_video": "Play video",
+    "liquid": "liquid"
   }
 }
