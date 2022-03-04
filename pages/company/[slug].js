@@ -21,7 +21,6 @@ function Home({ locale, data, companyPage }) {
         {companyPage.body.map((block) => {
           return (
             <div key={block.id}>
-              {console.log("block:", block)}
               <PostContent record={block} background="light" locale={locale} />
             </div>
           );

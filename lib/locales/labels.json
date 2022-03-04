@@ -26,7 +26,8 @@
     "technologies": "Tecnologie",
     "technologies_url": "tecnologie",
     "play_video": "Vedi il video",
-    "liquid": "liquido"
+    "liquid": "liquido",
+    "compoment-no-remove": "Questi componenti non possono essere rimossi"
   },
   "en": {
     "it": "Ita",
@@ -55,6 +56,7 @@
     "technologies": "Technologies",
     "technologies_url": "technologies",
     "play_video": "Play video",
-    "liquid": "liquid"
+    "liquid": "liquid",
+    "compoment-no-remove": "These components cannot be removed"
   }
 }

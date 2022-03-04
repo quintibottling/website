@@ -10,7 +10,9 @@ export default function TitleTextBlock({ locale, record, background }) {
               ? "text-white"
               : background == "light"
               ? "text-gold"
-              : "text-black"
+              : background == "white"
+              ? "text-gold"
+              : null
           } text-2xl lg:text-4xl xl:text-5xl`}
         >
           {record.title}

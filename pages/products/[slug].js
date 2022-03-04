@@ -6,8 +6,33 @@ import Layout from "components/Layout";
 import * as queries from "lib/queries";
 import fetchDato from "lib/dato";
 import ProdutcHero from "components/ProdutcHero";
+import MachineCard from "components/MachineCard";
+import ComparisonTab from "components/ComparisonTab";
+import OptionalCard from "components/OptionalCard";
+import translate from "lib/locales";
 
-function Home({ locale, data, product }) {
+function Home({ locale, data, product, allTecnology }) {
+  const requestTecnology = [];
+  const allTecnologyArray = [];
+  product.machine.map((machine) =>
+    machine.tecnology.map((tecnology) => {
+      if (tecnology.request == true) {
+        requestTecnology.push(tecnology.title);
+      }
+      allTecnologyArray.push(tecnology.title);
+    })
+  );
+  const uniqueArray = [...new Set(requestTecnology)];
+  const resultAllTecnologyArray = [...new Set(allTecnologyArray)];
+
+  const allOptionalArray = [];
+  product.machine.map((machine) =>
+    machine.optional.map((optional) => {
+      allOptionalArray.push(optional);
+    })
+  );
+  const resultAllOptionalArray = [...new Set(allOptionalArray)];
+
   return (
     <Layout
       alts={product.alts}
@@ -17,7 +42,91 @@ function Home({ locale, data, product }) {
     >
       <Head>{renderMetaTags(product.seo.concat(data.site.favicon))}</Head>
       <ProdutcHero data={product} locale={locale} />
-      <section></section>
+      <section className="mt-10 xl:mt-16">
+        <div className="container--small">
+          {product.intro.map((block) => {
+            return (
+              <div key={block.id}>
+                <PostContent
+                  record={block}
+                  background="light"
+                  locale={locale}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </section>
+      <section>
+        <div className="container--small-x">
+          <div className="grid gap-7 pb-12">
+            {product.machine.map((machine) => (
+              <MachineCard
+                locale={locale}
+                machine={machine}
+                allProducts={data.allProducts}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+      <section>
+        <div className="rounded-t-[30px] bg-white lg:rounded-t-[50px]">
+          <div className="container--small">
+            {product.introTab.map((block) => {
+              return (
+                <div key={block.id}>
+                  <PostContent
+                    record={block}
+                    background="white"
+                    locale={locale}
+                  />
+                </div>
+              );
+            })}
+            <div className="font-bold text-black/80 lg:text-lg">
+              {translate("compoment-no-remove", locale)} (
+              <div
+                className={`${product.code} mx-1  inline-block h-[15px] w-[15px]`}
+              />
+              ):
+            </div>
+            <span className="text-black/80 lg:text-lg">
+              {uniqueArray.join(", ")}
+            </span>
+          </div>
+        </div>
+        <div className="rounded-b-[30px] bg-white pb-12 lg:pb-16 xl:pb-20">
+          <ComparisonTab
+            locale={locale}
+            machines={product.machine}
+            allTecnology={allTecnology}
+            resultAllTecnologyArray={resultAllTecnologyArray}
+          />
+        </div>
+      </section>
+      <section>
+        <div className="container--small">
+          {product.introPlus.map((block) => {
+            return (
+              <div key={block.id}>
+                <PostContent
+                  record={block}
+                  background="light"
+                  locale={locale}
+                />
+              </div>
+            );
+          })}
+          <div className="grid divide-y divide-pink">
+            {resultAllOptionalArray.map((optional) => (
+              <div key={optional.id}>
+                <OptionalCard locale={locale} optional={optional} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 }
@@ -46,6 +155,7 @@ export async function getStaticProps({ params, locale }) {
     props: {
       locale,
       product: response.product,
+      allTecnology: response.allTecnology,
       data,
     },
   };
