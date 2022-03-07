@@ -1,9 +1,11 @@
-export default function OptionalCard({ locale, optional }) {
+export default function OptionalCard({ locale, data }) {
   return (
-    <div className="p-y-2 my-2">
-      <div className="text-lg text-black">{optional.title}</div>
-      <div className="text-small mt-1">{optional.description}</div>
-      {console.log("optional:", optional)}
+    <div
+      key={data.id}
+      className="nth-child-3n my-2 border-pink md:border-r md:pr-4 lg:pr-8"
+    >
+      <div className="pt-2 text-lg text-black">{data.title}</div>
+      <div className="mt-2 text-xs opacity-80">{data.description}</div>
     </div>
   );
 }

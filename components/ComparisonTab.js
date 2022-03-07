@@ -1,79 +1,75 @@
-import { useState } from "react";
+import translate from "lib/locales";
 
 export default function ComparisonTab({
   locale,
   allTecnology,
   machines,
   resultAllTecnologyArray,
+  product,
 }) {
   let tecnologyOfMachineArray = [];
-  let uniqueTecnologyArray = [];
-  let tableArray = [];
-  const result = resultAllTecnologyArray.map((tec) => {
-    let rowObject = {};
-    let rowItem = {};
-    machines.map((machine) => {
-      // machine.tecnology.map((t) => {
-      //   tecnologyOfMachineArray.push(t.title);
-      // });
-      // uniqueTecnologyArray = [...new Set(tecnologyOfMachineArray)];
-      // let yesOrNot =
-      //   uniqueTecnologyArray.indexOf(tec) > -1 ? "YESSSS" : "NOOOO";
-      // tecnologyOfMachineArray = [];
-      let rowCell = { key: "value" };
-      rowItem = { ...rowItem, ...rowCell };
-    });
-    rowObject = { ...rowObject, ...rowItem };
-    tableArray.push(rowObject);
-  });
-
-  {
-    console.log("tableArray:", tableArray);
-    // console.log("result:", result);
-  }
 
   return (
     <>
-      <div className="flex justify-end gap-4">
-        {machines.map((machine) => (
-          <div key={machine.id} className="w-[100px] bg-red text-white">
-            {machine.title}
-          </div>
-        ))}
-      </div>
-
-      <div className="grid gap-4">
-        {resultAllTecnologyArray.map((tecnology) => (
-          <div
-            key={tecnology.key}
-            className="flex justify-between bg-black p-2 text-white"
-          >
-            <div className="">{tecnology}</div>
-            <div className="flex gap-4">
+      <div className="overflow-x-scroll pl-4 pb-4 lg:pl-10 xl:container xl:mx-auto xl:overflow-x-auto xl:pl-10 2xl:pl-28">
+        <table>
+          <tr>
+            <td></td>
+            {machines.map((machine) => (
+              <th scope="col">{machine.title}</th>
+            ))}
+          </tr>
+          {resultAllTecnologyArray.map((tec) => (
+            <tr>
+              <th scope="row">
+                <div className="flex items-center gap-2">
+                  {tec.request == true ? (
+                    <div className={`${product.code} h-3 w-3`} />
+                  ) : (
+                    ""
+                  )}
+                  {tec.title}
+                </div>
+              </th>
               {machines.map((machine) => {
                 let uniqueTecnologyArray;
-                return (
-                  <div className="bg-yellow p-2 text-black">
-                    {machine.tecnology.map((t) => {
-                      tecnologyOfMachineArray.push(t.title);
-                    })}
-                    {
-                      (uniqueTecnologyArray = [
-                        ...new Set(tecnologyOfMachineArray),
-                      ])
-                    }
-                    {uniqueTecnologyArray.indexOf(tecnology) > -1 ? (
-                      <>YESSSS</>
-                    ) : (
-                      <>NOOOO</>
-                    )}
-                    {(tecnologyOfMachineArray = [])}
-                  </div>
-                );
+                machine.tecnology.map((t) => {
+                  tecnologyOfMachineArray.push(t.title);
+                });
+                uniqueTecnologyArray = [...new Set(tecnologyOfMachineArray)];
+                tecnologyOfMachineArray = [];
+                let result =
+                  uniqueTecnologyArray.indexOf(tec.title) > -1 ? (
+                    <div className="mx-auto h-3 w-3 rounded-full border-2 border-gold-light bg-gold-light" />
+                  ) : (
+                    <div className="mx-auto h-3 w-3 rounded-full border-2 border-black" />
+                  );
+                return <td>{result}</td>;
               })}
+            </tr>
+          ))}
+        </table>
+      </div>
+      <div className="container--small-x pt-4">
+        <div className="flex gap-2">
+          <div className="text-xxs">{translate("legend", locale)}:</div>
+          <div className="grid gap-1 md:flex md:gap-3">
+            <div className="flex items-center gap-1">
+              <div className="h-3 w-3 rounded-full border-2 border-black" />
+              <div className="text-xxs">{translate("not_present", locale)}</div>
+            </div>
+            <div className="flex items-center gap-1">
+              <div className="h-3 w-3 rounded-full border-2 border-gold-light bg-gold-light" />
+              <div className="text-xxs">{translate("present", locale)}</div>
+            </div>
+            <div className="flex items-center gap-1">
+              <div className={`${product.code} h-3 w-3`} />
+              <div className="text-xxs">
+                {translate("not_removable", locale)}
+              </div>
             </div>
           </div>
-        ))}
+        </div>
       </div>
     </>
   );

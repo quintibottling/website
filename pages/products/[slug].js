@@ -12,26 +12,40 @@ import OptionalCard from "components/OptionalCard";
 import translate from "lib/locales";
 
 function Home({ locale, data, product, allTecnology }) {
+  // remove duplicate array from title
   const requestTecnology = [];
-  const allTecnologyArray = [];
   product.machine.map((machine) =>
     machine.tecnology.map((tecnology) => {
       if (tecnology.request == true) {
         requestTecnology.push(tecnology.title);
       }
-      allTecnologyArray.push(tecnology.title);
     })
   );
   const uniqueArray = [...new Set(requestTecnology)];
-  const resultAllTecnologyArray = [...new Set(allTecnologyArray)];
 
+  // remove duplicate array from object
+  const allTecnologyArray = [];
+  product.machine.map((machine) =>
+    machine.tecnology.map((tecnology) => {
+      allTecnologyArray.push(tecnology);
+    })
+  );
+  const idsTec = allTecnologyArray.map((t) => t.id);
+  const resultAllTecnologyArray = allTecnologyArray.filter(
+    ({ id }, index) => !idsTec.includes(id, index + 1)
+  );
+
+  // remove duplicate array from object
   const allOptionalArray = [];
   product.machine.map((machine) =>
     machine.optional.map((optional) => {
       allOptionalArray.push(optional);
     })
   );
-  const resultAllOptionalArray = [...new Set(allOptionalArray)];
+  const idsOpt = allOptionalArray.map((o) => o.id);
+  const filtered = allOptionalArray.filter(
+    ({ id }, index) => !idsOpt.includes(id, index + 1)
+  );
 
   return (
     <Layout
@@ -86,9 +100,7 @@ function Home({ locale, data, product, allTecnology }) {
             })}
             <div className="font-bold text-black/80 lg:text-lg">
               {translate("compoment-no-remove", locale)} (
-              <div
-                className={`${product.code} mx-1  inline-block h-[15px] w-[15px]`}
-              />
+              <div className={`${product.code} mx-1 inline-block h-3 w-3`} />
               ):
             </div>
             <span className="text-black/80 lg:text-lg">
@@ -101,6 +113,7 @@ function Home({ locale, data, product, allTecnology }) {
             locale={locale}
             machines={product.machine}
             allTecnology={allTecnology}
+            product={product}
             resultAllTecnologyArray={resultAllTecnologyArray}
           />
         </div>
@@ -118,11 +131,9 @@ function Home({ locale, data, product, allTecnology }) {
               </div>
             );
           })}
-          <div className="grid divide-y divide-pink">
-            {resultAllOptionalArray.map((optional) => (
-              <div key={optional.id}>
-                <OptionalCard locale={locale} optional={optional} />
-              </div>
+          <div className="grid divide-y divide-pink md:grid-cols-3 md:gap-x-4 md:gap-y-4 md:divide-y-0 lg:gap-x-4 xl:gap-x-10">
+            {filtered.map((data) => (
+              <OptionalCard locale={locale} data={data} />
             ))}
           </div>
         </div>

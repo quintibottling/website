@@ -82,3 +82,21 @@ body {
 .prefix {
   @apply text-xs uppercase tracking-widest lg:text-sm;
 }
+
+th[scope="col"] {
+  @apply min-w-[50px] px-1 text-xxs font-normal uppercase md:max-w-[150px] md:pb-3 md:text-xs md:font-semibold;
+}
+
+th[scope="row"] {
+  @apply min-w-[190px] text-left text-xxs font-normal md:min-w-[400px] md:py-3 md:text-base;
+}
+
+tr {
+  @apply h-9 border-y border-black/30 first:border-0;
+}
+
+@media (min-width: 768px) {
+  .nth-child-3n:nth-child(3n + 3) {
+    @apply border-r-0;
+  }
+}
