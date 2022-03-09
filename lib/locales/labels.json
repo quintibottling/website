@@ -10,8 +10,15 @@
     "firstName": "Nome",
     "lastName": "Cognome",
     "email": "Email",
+    "message": "Messaggio",
+    "submit": "Invia richiesta",
     "address": "Indirizzo",
     "phone": "Telefono",
+    "min30": "Deve essere inferiore a 30 caratteri",
+    "acceptCondition": "Devi accettare termini e condizioni",
+    "fieldRequest": "* Campo richiesto",
+    "phoneNoValid": "Numero di telefono non valido",
+    "emailNoValid": "Email non valida",
     "privacy_before": "Letta la",
     "privacy_after": "accetto ai sensi del Regolamento UE 2016/679 (GDPR)",
     "404title": "Pagina non trovata",
@@ -21,6 +28,7 @@
     "skipFooter": "Vai al footer",
     "company": "Azienda",
     "company_url": "azienda",
+    "contact_url": "contatti",
     "products": "Prodotti",
     "products_url": "prodotti",
     "technologies": "Tecnologie",
@@ -31,7 +39,9 @@
     "legend": "Legenda della tabella",
     "not_removable": "Non rimovibile",
     "not_present": "Non presente",
-    "present": "Presente"
+    "present": "Presente",
+    "contact_us": "Contattaci",
+    "fill_form": "compila il form"
   },
   "en": {
     "it": "Ita",
@@ -44,8 +54,15 @@
     "firstName": "First Name",
     "lastName": "Last Name",
     "email": "Email",
+    "message": "Messagge",
+    "submit": "Submit request",
     "address": "Address",
     "phone": "Phone",
+    "min30": "It must be less than 30 characters",
+    "acceptCondition": "You must agree to the terms and conditions",
+    "fieldRequest": "* Field request",
+    "phoneNoValid": "Phone number is not valid",
+    "emailNoValid": "Email format is not valid",
     "privacy_before": "I've read and agree with the",
     "privacy_after": "according to UE 2016/679 (GDPR)",
     "404title": "Page not found",
@@ -55,6 +72,7 @@
     "skipFooter": "Go to footer",
     "company": "Company",
     "company_url": "company",
+    "contact_url": "contact-us",
     "products": "Products",
     "products_url": "products",
     "technologies": "Technologies",
@@ -65,6 +83,8 @@
     "legend": "table legend",
     "not_removable": "Not removable",
     "not_present": "Not present",
-    "present": "Present"
+    "present": "Present",
+    "contact_us": "Contact us",
+    "fill_form": "Fill the form"
   }
 }

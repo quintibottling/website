@@ -108,7 +108,7 @@ function Home({ locale, data, product, allTecnology }) {
             </span>
           </div>
         </div>
-        <div className="rounded-b-[30px] bg-white pb-12 lg:pb-16 xl:pb-20">
+        <div className="rounded-b-[30px] bg-white pb-12 lg:rounded-b-[50px] lg:pb-16 xl:pb-20">
           <ComparisonTab
             locale={locale}
             machines={product.machine}
@@ -135,6 +135,24 @@ function Home({ locale, data, product, allTecnology }) {
             {filtered.map((data) => (
               <OptionalCard locale={locale} data={data} />
             ))}
+          </div>
+        </div>
+      </section>
+      <section>
+        <div className="-mb-8 rounded-t-[30px] bg-white pb-8 lg:rounded-t-[50px]">
+          <div className="container--small">
+            {product.introForm.map((block) => {
+              return (
+                <div key={block.id}>
+                  <PostContent
+                    record={block}
+                    background="white"
+                    locale={locale}
+                    titlePage={product.title}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

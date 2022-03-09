@@ -1,6 +1,7 @@
 import Download from "./blocks/Download";
 import ExternalLink from "./blocks/ExternalLink.js";
 import FormBlock from "./blocks/FormBlock.js";
+import Form from "./Form.js";
 import GalleryBlock from "./blocks/GalleryBlock.js";
 import GallerySlide from "./blocks/GallerySlide.js";
 import IconTitleTextBlock from "./blocks/IconTitleTextBlock.js";
@@ -15,14 +16,19 @@ import TitleTextBlock from "./blocks/TitleTextBlock.js";
 import TwoColumnBlock from "./blocks/TwoColumnBlock.js";
 import CertificationBlock from "./blocks/CertificationBlock.js";
 
-export default function PostContent({ record, locale, background }) {
+export default function PostContent({ record, locale, background, titlePage }) {
   switch (record.model) {
     case "download":
       return <Download record={record} locale={locale} />;
     case "external_link":
       return <ExternalLink record={record} locale={locale} />;
     case "form_block":
-      return <FormBlock record={record} locale={locale} />;
+      return (
+        <div className="grid place-content-start md:grid-cols-2 md:items-start md:gap-10 lg:gap-20">
+          <FormBlock record={record} locale={locale} />
+          <Form locale={locale} titlePage={titlePage} />
+        </div>
+      );
     case "gallery_block":
       return <GalleryBlock record={record} locale={locale} />;
     case "gallery_slide":

@@ -100,3 +100,15 @@ tr {
     @apply border-r-0;
   }
 }
+
+.form__label {
+  @apply sr-only;
+}
+
+.form__input {
+  @apply block w-full border border-black p-2 text-sm text-black placeholder:text-black;
+}
+
+.form__error {
+  @apply text-xs text-red-700;
+}

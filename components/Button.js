@@ -12,7 +12,7 @@ export default function Button({ locale, data, background }) {
         </div>
         <div
           className={`${
-            background == "light" ? "text-black" : "text-white"
+            background == "dark" ? "text-white" : "text-black"
           } relative z-10 pl-8 text-sm leading-[37px] duration-300 group-hover:text-white lg:pl-10 lg:leading-[50px]`}
         >
           {data}
