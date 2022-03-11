@@ -28,6 +28,10 @@ module.exports = {
         destination: "/products/:slug",
       },
       // {
+      //   source: "/prodotti/:slug/olio/:*",
+      //   destination: "/products/:slug/oil/:*",
+      // },
+      // {
       //   source: "/contatti",
       //   destination: "/contacts",
       // },

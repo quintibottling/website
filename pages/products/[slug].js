@@ -11,7 +11,7 @@ import ComparisonTab from "components/ComparisonTab";
 import OptionalCard from "components/OptionalCard";
 import translate from "lib/locales";
 
-function Home({ locale, data, product, allTecnology }) {
+function ProductDetail({ locale, data, product, allTecnology }) {
   // remove duplicate array from title
   const requestTecnology = [];
   product.machine.map((machine) =>
@@ -190,4 +190,4 @@ export async function getStaticProps({ params, locale }) {
   };
 }
 
-export default Home;
+export default ProductDetail;

@@ -21,7 +21,11 @@ function Header(props) {
 
   return (
     <header className="relative z-50">
-      <Popover className="relative rounded-b-2xl bg-brown">
+      <Popover
+        className={`${
+          model == "machine" ? "" : "bg-brown"
+        } relative rounded-b-2xl`}
+      >
         <div className="px-4 sm:px-6 xl:px-12">
           <div className="xl:container xl:mx-auto">
             <div className="flex items-center justify-between py-6 lg:justify-start lg:space-x-5">
@@ -241,6 +245,10 @@ function Header(props) {
         <div className="rounded-tl-sm bg-purple-light" />
         <div className="bg-red-light" />
         <div className="bg-green-light" />
+        <div className="bg-yellow" />
+        <div className="bg-purple" />
+        <div className="bg-red" />
+        <div className="bg-green" />
       </div>
     </header>
   );

@@ -7,7 +7,7 @@ import * as queries from "lib/queries";
 import fetchDato from "lib/dato";
 import CompanyHero from "components/CompanyHero";
 
-function Home({ locale, data, companyPage }) {
+function CompanyPage({ locale, data, companyPage }) {
   return (
     <Layout
       alts={companyPage.alts}
@@ -59,4 +59,4 @@ export async function getStaticProps({ params, locale }) {
   };
 }
 
-export default Home;
+export default CompanyPage;
