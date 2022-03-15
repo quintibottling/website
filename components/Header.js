@@ -16,7 +16,7 @@ function classNames(...classes) {
 }
 
 function Header(props) {
-  const { locale, site, model, alts } = props;
+  const { locale, site, model, alts, product } = props;
   const router = useRouter();
 
   return (
@@ -232,7 +232,12 @@ function Header(props) {
                   </a>
                 </Link>
                 <div className="hidden items-center space-x-1 lg:flex">
-                  <LanguageSwitcher locale={locale} alts={alts} model={model} />
+                  <LanguageSwitcher
+                    locale={locale}
+                    alts={alts}
+                    model={model}
+                    product={product}
+                  />
                 </div>
               </Popover.Group>
             </div>

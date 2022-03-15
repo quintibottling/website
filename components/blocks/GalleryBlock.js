@@ -24,6 +24,11 @@ export default function GalleryBlock({ locale, record }) {
                   title={slider.image.responsiveImage.title}
                 />
               </div>
+              {slider.description && (
+                <div className="pt-2 text-center text-xs text-black/70 lg:pt-8 lg:text-base">
+                  {slider.description}
+                </div>
+              )}
             </SwiperSlide>
           </div>
         ))}

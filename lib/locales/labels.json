@@ -1,7 +1,7 @@
 {
   "it": {
     "it": "Ita",
-    "en": "Ing",
+    "en": "Eng",
     "cookiePolicyId": "24260280",
     "cookiePolicyTitle": "Vai a (link esterno) Cookie Policy",
     "privacyPolicyTitle": "Vai a (link esterno) Privacy Policy",
@@ -41,7 +41,8 @@
     "not_present": "Non presente",
     "present": "Presente",
     "contact_us": "Contattaci",
-    "fill_form": "compila il form"
+    "fill_form": "compila il form",
+    "doc": "Documentazione"
   },
   "en": {
     "it": "Ita",
@@ -85,6 +86,7 @@
     "not_present": "Not present",
     "present": "Present",
     "contact_us": "Contact us",
-    "fill_form": "Fill the form"
+    "fill_form": "Fill the form",
+    "doc": "Documentation"
   }
 }

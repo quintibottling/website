@@ -4,10 +4,10 @@ import translate from "lib/locales";
 import { ArrowRightIcon } from "@heroicons/react/solid";
 import { Image as DatoImage } from "react-datocms";
 
-export default function MachineCard({ locale, machine }) {
+export default function MachineCard({ locale, machine, productSlug }) {
   return (
     <>
-      <Link href={resolveLink("machine", locale, machine.slug)}>
+      <Link href={resolveLink("machine", locale, machine.slug, productSlug)}>
         <a className="group" title={machine.title}>
           <div className="grid gap-2 border border-gold-light/40 bg-white px-4 py-6 md:flex md:flex-row-reverse md:gap-10 lg:p-12">
             <div className="grid md:content-center md:gap-2 lg:w-1/2 xl:gap-x-12">

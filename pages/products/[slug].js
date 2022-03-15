@@ -78,7 +78,7 @@ function ProductDetail({ locale, data, product, allTecnology }) {
               <MachineCard
                 locale={locale}
                 machine={machine}
-                allProducts={data.allProducts}
+                productSlug={product.slug}
               />
             ))}
           </div>

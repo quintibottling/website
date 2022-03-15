@@ -27,10 +27,22 @@ module.exports = {
         source: "/prodotti/:slug",
         destination: "/products/:slug",
       },
-      // {
-      //   source: "/prodotti/:slug/olio/:*",
-      //   destination: "/products/:slug/oil/:*",
-      // },
+      {
+        source: "/prodotti/olio/:slug",
+        destination: "/products/olive-oil/:slug",
+      },
+      {
+        source: "/prodotti/liquori/:slug",
+        destination: "/products/spirits/:slug",
+      },
+      {
+        source: "/prodotti/birra/:slug",
+        destination: "/products/beer/:slug",
+      },
+      {
+        source: "/prodotti/vino/:slug",
+        destination: "/products/wine/:slug",
+      },
       // {
       //   source: "/contatti",
       //   destination: "/contacts",

@@ -55,7 +55,14 @@ export default function SlideHomepage({
             />
           </div>
         </div>
-        <Link href={resolveLink(slide.link.model, locale, slide.link.slug)}>
+        <Link
+          href={resolveLink(
+            slide.link.model,
+            locale,
+            slide.link.slug,
+            slide.link.product.slug
+          )}
+        >
           <a
             title={slide.title}
             className={`${
