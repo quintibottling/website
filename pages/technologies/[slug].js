@@ -6,8 +6,25 @@ import Layout from "components/Layout";
 import * as queries from "lib/queries";
 import fetchDato from "lib/dato";
 import ProdutcHero from "components/hero/ProdutcHero";
+import TecDetailCard from "components/TecDetailCard";
 
-function TecnologyPage({ locale, data, technology }) {
+function TecnologyPage({ locale, data, technology, machines }) {
+  let productArray = [];
+  technology.tecnologyDetail.map((tDetail, i) => {
+    machines.map((m) => {
+      m.tecnology.map((t) => {
+        if (Object.values(t).indexOf(tDetail.id) > -1) {
+          productArray.push(m.product);
+        }
+      });
+    });
+    const idsCheck = productArray.map((prod) => prod.id);
+    const resultProd = productArray.filter(
+      ({ id }, index) => !idsCheck.includes(id, index + 1)
+    );
+    productArray = [];
+  });
+
   return (
     <Layout
       alts={technology.alts}
@@ -17,15 +34,66 @@ function TecnologyPage({ locale, data, technology }) {
     >
       <Head>{renderMetaTags(technology.seo.concat(data.site.favicon))}</Head>
       <ProdutcHero data={technology} />
-      {/* <section>
-        {technology.body.map((block) => {
-          return (
-            <div key={block.id}>
-              <PostContent record={block} background="light" locale={locale} />
-            </div>
-          );
-        })}
-      </section> */}
+      <section className="mt-10 xl:mt-16">
+        <div className="container--small">
+          {technology.introBlock.map((block) => {
+            return (
+              <div key={block.id}>
+                <PostContent
+                  record={block}
+                  background="light"
+                  locale={locale}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </section>
+      <section className="rounded-[20px] bg-white lg:rounded-[50px]">
+        <div className="container--small">
+          <div className="divide-y divide-black/70">
+            {technology.tecnologyDetail.map((tDetail, i) => {
+              machines.map((m) => {
+                m.tecnology.map((t) => {
+                  if (Object.values(t).indexOf(tDetail.id) > -1) {
+                    productArray.push(m.product);
+                  }
+                });
+              });
+              const idsCheck = productArray.map((prod) => prod.id);
+              const resultProd = productArray.filter(
+                ({ id }, index) => !idsCheck.includes(id, index + 1)
+              );
+              productArray = [];
+              return (
+                <TecDetailCard
+                  data={tDetail}
+                  products={resultProd}
+                  locale={locale}
+                />
+              );
+            })}
+          </div>
+        </div>
+      </section>
+      <section>
+        <div className="">
+          <div className="container--small">
+            {technology.form.map((block) => {
+              return (
+                <div key={block.id}>
+                  <PostContent
+                    record={block}
+                    background="white"
+                    locale={locale}
+                    titlePage={technology.title}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 }
@@ -54,6 +122,7 @@ export async function getStaticProps({ params, locale }) {
     props: {
       locale,
       technology: response.tecnology,
+      machines: response.allMachines,
       data,
     },
   };

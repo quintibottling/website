@@ -16,12 +16,13 @@ export default function GalleryBlock({ locale, record }) {
         {record.sliders.map((slider, i) => (
           <div key={slider.key}>
             <SwiperSlide>
-              <div className="relative overflow-hidden rounded-t-[20px]">
+              <div className="relative h-[270px] max-h-[600px] w-full overflow-hidden rounded-t-[20px] md:h-[40vw]">
                 <DatoImage
-                  className="image--cover h-[270px] max-h-[1100px] lg:block lg:h-auto"
+                  className="image--cover w-full lg:block"
                   data={slider.image.responsiveImage}
                   alt={slider.image.responsiveImage.alt}
                   title={slider.image.responsiveImage.title}
+                  layout="fill"
                 />
               </div>
               {slider.description && (

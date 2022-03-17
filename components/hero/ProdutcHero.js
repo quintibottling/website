@@ -32,8 +32,8 @@ export default function ProductHero({ locale, data }) {
         className={`${
           data.model == "product"
             ? "-my-[55px] xl:-my-[70px]"
-            : "rounded-b-[20px] bg-brown pt-12 md:rounded-b-[50px]"
-        } relative z-0 md:h-[40vw] xl:h-[30vw]`}
+            : "rounded-b-[20px] bg-brown pt-12 md:rounded-b-[50px] lg:pt-24"
+        } relative z-0 md:h-[40vw] xl:h-[40vw]`}
       >
         {data.deskImage != null ? (
           <>
@@ -65,6 +65,7 @@ export default function ProductHero({ locale, data }) {
                   title={data.title}
                 />
                 <VideoHero locale={locale} data={data} />
+                <div className="absolute inset-0 z-10 bg-black opacity-40"></div>
               </div>
             ))}
           </>

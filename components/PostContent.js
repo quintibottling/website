@@ -15,6 +15,7 @@ import TextImageTwoColumn from "./blocks/TextImageTwoColumn.js";
 import TitleTextBlock from "./blocks/TitleTextBlock.js";
 import TwoColumnBlock from "./blocks/TwoColumnBlock.js";
 import CertificationBlock from "./blocks/CertificationBlock.js";
+import VideoBlock from "./blocks/VideoBlock.js";
 
 export default function PostContent({ record, locale, background, titlePage }) {
   switch (record.model) {
@@ -76,5 +77,7 @@ export default function PostContent({ record, locale, background, titlePage }) {
       return <TwoColumnBlock record={record} locale={locale} />;
     case "certification_block":
       return <CertificationBlock record={record} locale={locale} />;
+    case "video_block":
+      return <VideoBlock record={record} locale={locale} />;
   }
 }

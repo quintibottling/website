@@ -43,7 +43,8 @@
     "present": "Presente",
     "contact_us": "Contattaci",
     "fill_form": "compila il form",
-    "doc": "Documentazione"
+    "doc": "Documentazione",
+    "compatible": "Compatibile con:"
   },
   "en": {
     "it": "Ita",
@@ -89,6 +90,7 @@
     "present": "Present",
     "contact_us": "Contact us",
     "fill_form": "Fill the form",
-    "doc": "Documentation"
+    "doc": "Documentation",
+    "compatible": "Compatible with:"
   }
 }
