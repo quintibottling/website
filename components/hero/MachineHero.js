@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 
-import SlideMachine from "./blocks/SlideMachine";
+import SlideMachine from "components/blocks/SlideMachine";
 
 export default function MachineHero({ locale, data, category }) {
   const numberSliders = data.galleryHero.length;

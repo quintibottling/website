@@ -16,6 +16,7 @@ module.exports = {
   },
   images: {
     domains: ["www.datocms-assets.com"],
+    domains: ["image.mux.com"],
   },
   async rewrites() {
     return [
@@ -42,6 +43,10 @@ module.exports = {
       {
         source: "/prodotti/vino/:slug",
         destination: "/products/wine/:slug",
+      },
+      {
+        source: "/tecnologie/:slug",
+        destination: "/technologies/:slug",
       },
       // {
       //   source: "/contatti",

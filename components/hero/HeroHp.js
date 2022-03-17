@@ -1,16 +1,15 @@
 import { Navigation, A11y, EffectFade } from "swiper";
 // import { useRef } from "react";
-import DialogVideo from "./DialogVideo";
+import DialogVideo from "/components/DialogVideo";
 
 import { SwiperSlide, Swiper } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 
-import SlideHomepage from "./blocks/SlideHomepage";
+import SlideHomepage from "/components/blocks/SlideHomepage";
 
 export default function HeroHp({ locale, data }) {
-  // const videoUrl = data.video.video.mp4Url;
   const numberSliders = data.slider.length;
   return (
     <div className="rounded-b-[50pt] bg-brown text-white">

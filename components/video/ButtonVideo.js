@@ -1,10 +1,16 @@
 import translate from "lib/locales";
 import { PlayIcon } from "@heroicons/react/solid";
 
-export default function ButtonVideo({ locale, data }) {
+export default function ButtonVideo({ locale, data, template = null }) {
   return (
     <>
-      <div className="group relative inline-block items-center space-x-2">
+      <div
+        className={`${
+          template == "product"
+            ? "group relative inline-block items-center space-x-2"
+            : "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 space-x-2 text-white"
+        }`}
+      >
         <div className="absolute h-[37px] w-[37px] rounded-full bg-gold duration-300 group-hover:w-[115%] lg:h-[50px] lg:w-[50px]">
           <div className="absolute inset-y-1/2 left-[8px] h-[20px] w-[20px] -translate-y-1/2 rounded-full bg-white lg:left-[14px]"></div>
           <PlayIcon

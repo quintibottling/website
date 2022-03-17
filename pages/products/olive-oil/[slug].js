@@ -6,7 +6,7 @@ import PostContent from "components/PostContent";
 import Layout from "components/Layout";
 import * as queries from "lib/queries";
 import fetchDato from "lib/dato";
-import MachineHero from "components/MachineHero";
+import MachineHero from "components/hero/MachineHero";
 import translate from "lib/locales";
 import TecnologyCard from "components/TecnologyCard";
 import OptionalCard from "components/OptionalCard";

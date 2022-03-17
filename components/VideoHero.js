@@ -5,13 +5,13 @@ import { XIcon } from "@heroicons/react/outline";
 import VideoBlock from "./blocks/VideoBlock";
 import ButtonVideo from "./video/ButtonVideo";
 
-export default function DialogVideo({ locale, data }) {
+export default function VideoHero({ locale, data }) {
   const [open, setOpen] = useState(false);
 
   return (
     <>
       <button onClick={() => setOpen(true)}>
-        <ButtonVideo locale={locale} data={data.video} />
+        <ButtonVideo locale={locale} data={data.video} template={data.model} />
       </button>
       <Transition.Root show={open} as={Fragment}>
         <Dialog

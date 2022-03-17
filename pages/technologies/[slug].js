@@ -5,35 +5,35 @@ import PostContent from "components/PostContent";
 import Layout from "components/Layout";
 import * as queries from "lib/queries";
 import fetchDato from "lib/dato";
-import CompanyHero from "components/hero/CompanyHero";
+import ProdutcHero from "components/hero/ProdutcHero";
 
-function CompanyPage({ locale, data, companyPage }) {
+function TecnologyPage({ locale, data, technology }) {
   return (
     <Layout
-      alts={companyPage.alts}
+      alts={technology.alts}
       site={data}
       locale={locale}
-      model={companyPage.model}
+      model={technology.model}
     >
-      <Head>{renderMetaTags(companyPage.seo.concat(data.site.favicon))}</Head>
-      <CompanyHero data={companyPage} />
-      <section>
-        {companyPage.body.map((block) => {
+      <Head>{renderMetaTags(technology.seo.concat(data.site.favicon))}</Head>
+      <ProdutcHero data={technology} />
+      {/* <section>
+        {technology.body.map((block) => {
           return (
             <div key={block.id}>
               <PostContent record={block} background="light" locale={locale} />
             </div>
           );
         })}
-      </section>
+      </section> */}
     </Layout>
   );
 }
 
 export async function getStaticPaths() {
-  const response = await fetchDato(queries.getAllCompanyPages);
-  const routesWithLocales = response.companyPages.reduce((all, companyPage) => {
-    const { slugs } = companyPage;
+  const response = await fetchDato(queries.getAllTechnologies);
+  const routesWithLocales = response.tecnologies.reduce((all, tecnology) => {
+    const { slugs } = tecnology;
     const slugXLocale = slugs.map(({ locale, slug }) => {
       return { slug, locale };
     });
@@ -48,15 +48,15 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params, locale }) {
   const { slug } = params;
-  const response = await fetchDato(queries.getCompanyPage, { slug, locale });
+  const response = await fetchDato(queries.getTecnology, { slug, locale });
   const data = await fetchDato(queries.site, { locale });
   return {
     props: {
       locale,
-      companyPage: response.companyPage,
+      technology: response.tecnology,
       data,
     },
   };
 }
 
-export default CompanyPage;
+export default TecnologyPage;

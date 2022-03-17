@@ -4,7 +4,7 @@ import { renderMetaTags } from "react-datocms";
 import Layout from "components/Layout";
 import * as queries from "lib/queries";
 import fetchDato from "lib/dato";
-import HeroHP from "components/HeroHp";
+import HeroHP from "components/hero/HeroHp";
 import PostContent from "components/PostContent";
 import ProductCard from "components/ProductCard";
 import InternalLink from "components/blocks/InternalLink";
