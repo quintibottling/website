@@ -44,7 +44,10 @@
     "contact_us": "Contattaci",
     "fill_form": "compila il form",
     "doc": "Documentazione",
-    "compatible": "Compatibile con:"
+    "compatible": "Compatibile con:",
+    "backNews": "Torna alle news",
+    "share": "Condividi",
+    "otherNews": "Altre News"
   },
   "en": {
     "it": "Ita",
@@ -91,6 +94,9 @@
     "contact_us": "Contact us",
     "fill_form": "Fill the form",
     "doc": "Documentation",
-    "compatible": "Compatible with:"
+    "compatible": "Compatible with:",
+    "backNews": "Back to news",
+    "share": "Share",
+    "otherNews": "Other News"
   }
 }

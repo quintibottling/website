@@ -27,6 +27,7 @@
     "react-hook-form": "^7.26.1",
     "react-player": "^2.9.0",
     "save": "^2.4.0",
+    "sharer.js": "^0.5.1",
     "swiper": "^8.0.6",
     "tailwind-nth-child": "^1.0.0",
     "yup": "^0.32.11"

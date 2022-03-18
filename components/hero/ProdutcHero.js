@@ -51,9 +51,9 @@ export default function ProductHero({ locale, data }) {
               layout="fill"
             />
           </>
-        ) : data.video.length > 0 && data.model != "tecnology" ? (
+        ) : data.video?.length > 0 && data.model != "tecnology" ? (
           <VideoHero locale={locale} data={data} />
-        ) : data.video.length > 0 && data.model == "tecnology" ? (
+        ) : data.video?.length > 0 && data.model == "tecnology" ? (
           <>
             {data.video.map((video) => (
               <div className="image--cover relative h-[380px] overflow-hidden rounded-b-[20px] md:h-full md:rounded-b-[50px]">

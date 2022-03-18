@@ -15,8 +15,7 @@ module.exports = {
     logLevel: "error",
   },
   images: {
-    domains: ["www.datocms-assets.com"],
-    domains: ["image.mux.com"],
+    domains: ["www.datocms-assets.com", "image.mux.com"],
   },
   async rewrites() {
     return [
