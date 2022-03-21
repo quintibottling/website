@@ -22,7 +22,9 @@ export default function PostContent({ record, locale, background, titlePage }) {
     case "download":
       return <Download record={record} locale={locale} />;
     case "external_link":
-      return <ExternalLink record={record} locale={locale} />;
+      return (
+        <ExternalLink record={record} locale={locale} background={background} />
+      );
     case "form_block":
       return (
         <div className="grid place-content-start md:grid-cols-2 md:items-start md:gap-10 lg:gap-20">

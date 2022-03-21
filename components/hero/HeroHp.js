@@ -1,5 +1,4 @@
 import { Navigation, A11y, EffectFade } from "swiper";
-// import { useRef } from "react";
 import DialogVideo from "/components/DialogVideo";
 
 import { SwiperSlide, Swiper } from "swiper/react";
@@ -19,7 +18,7 @@ export default function HeroHp({ locale, data }) {
             <h2 className="mb-6 text-lg lg:pt-16 lg:text-3xl xl:text-4xl">
               {data.titleHero}
             </h2>
-            <DialogVideo locale={locale} data={data} />
+            <DialogVideo locale={locale} data={data} template="product" />
           </div>
           <div className="swiper--homepage md:col-span-2 md:-mt-[30%]">
             <Swiper

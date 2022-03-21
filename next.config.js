@@ -47,10 +47,10 @@ module.exports = {
         source: "/tecnologie/:slug",
         destination: "/technologies/:slug",
       },
-      // {
-      //   source: "/contatti",
-      //   destination: "/contacts",
-      // },
+      {
+        source: "/contatti",
+        destination: "/contacts",
+      },
     ];
   },
 };

@@ -7,13 +7,15 @@ export default function ProductHero({ locale, data }) {
   return (
     <header>
       <div className="bg-brown text-white">
-        <div className="mx-auto -mt-4 px-4 pt-8 lg:px-10 lg:pt-16 xl:container 2xl:px-28">
+        <div className="mx-auto -mt-4 px-4 pt-8 md:pb-10 lg:px-10 lg:pb-16 lg:pt-16 xl:container 2xl:px-28">
           <div className="grid gap-3 md:grid-cols-2 lg:gap-6">
             <div className="prefix text-gold-light md:col-span-2">
               {data.model == "product" ? (
                 <>{translate("liquid", locale)}</>
               ) : data.model == "tecnology" ? (
                 <>{translate("technology", locale)}</>
+              ) : data.model == "contact_page" ? (
+                <>{data.title}</>
               ) : null}
             </div>
             <h1 className="text-3xl lg:text-5xl">{data.titleHero}</h1>

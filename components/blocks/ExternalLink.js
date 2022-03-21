@@ -1,7 +1,8 @@
 import Link from "next/link";
 import translate from "lib/locales";
+import Button from "components/Button";
 
-export default function ExternalLink({ locale, record }) {
+export default function ExternalLink({ locale, record, background }) {
   return (
     <>
       <div className="mb-2">
@@ -11,7 +12,7 @@ export default function ExternalLink({ locale, record }) {
             className="button"
             target="_blank"
           >
-            {record.ctaLink}
+            <Button data={record.cta} background={background} />
           </a>
         </Link>
       </div>
