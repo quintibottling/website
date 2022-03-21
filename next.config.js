@@ -5,8 +5,6 @@
 
 module.exports = {
   reactStrictMode: true,
-  siteUrl: process.env.SITE_URL,
-  generateRobotsTxt: true,
   i18n: {
     locales: ["it", "en"],
     defaultLocale: "it",

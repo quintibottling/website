@@ -165,7 +165,7 @@ export default function Footer({ locale, site }) {
                   </div>
                   <div className="text-xs opacity-70">
                     <a
-                      href="https://www.cantierecreativo.net"
+                      href="//www.cantierecreativo.net"
                       title={`${translate(
                         "externalLink",
                         locale
@@ -178,7 +178,7 @@ export default function Footer({ locale, site }) {
                     </a>
                     <span className="px-1"> - </span>
                     <a
-                      href="https://datocms.com"
+                      href="//datocms.com"
                       title={`${translate(
                         "externalLink",
                         locale
@@ -192,7 +192,7 @@ export default function Footer({ locale, site }) {
                   </div>
                   <div className="text-xs opacity-70">
                     <a
-                      href={`https://www.iubenda.com/privacy-policy/${translate(
+                      href={`//www.iubenda.com/privacy-policy/${translate(
                         "cookiePolicyId"
                       )}`}
                       title={`${translate(
@@ -205,7 +205,7 @@ export default function Footer({ locale, site }) {
                     </a>
                     <span className="px-1"> - </span>
                     <a
-                      href={`https://www.iubenda.com/privacy-policy/${translate(
+                      href={`//www.iubenda.com/privacy-policy/${translate(
                         "cookiePolicyId"
                       )}/cookie-policy`}
                       title={`${translate(
