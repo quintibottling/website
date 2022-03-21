@@ -10,7 +10,7 @@ export default function TwoColumnBlock({ locale, record }) {
               {record.title}
             </h2>
           ) : (
-            <h2 className="prefix text-gold-light">{record.prefix}</h2>
+            <h2 className="prefix text-gold">{record.prefix}</h2>
           )}
         </div>
         <h3 className="md:col-span-5 lg:text-lg">{record.bigText}</h3>

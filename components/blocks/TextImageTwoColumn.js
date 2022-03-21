@@ -35,8 +35,8 @@ export default function TextImageTwoColumn({ locale, record }) {
           <DatoImage
             className=""
             data={record.image.responsiveImage}
-            alt={record.image.alt}
-            title={record.image.title}
+            alt={record.image.responsiveImage.alt}
+            title={record.image.responsiveImage.title}
             layout=""
           />
         </div>

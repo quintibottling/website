@@ -10,11 +10,12 @@ export default function ProductCard({ locale, data }) {
       <Link href={resolveLink("product", locale, data.slug)}>
         <a title={data.title} className="group grid gap-2 py-2">
           <div className="relative xl:pr-[41px]">
+            {console.log("data.imageHero:", data.imageHero)}
             <DatoImage
               className=""
               data={data.imageHero.responsiveImage}
-              alt={data.imageHero.alt}
-              title={data.imageHero.title}
+              alt={data.imageHero.responsiveImage.alt}
+              title={data.imageHero.responsiveImage.title}
               layout=""
             />
             <div

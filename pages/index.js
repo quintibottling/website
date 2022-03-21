@@ -36,9 +36,12 @@ export default function Home({
         <div className="container--small">
           {home.productsBlock.map((block) => {
             return (
-              <div key={block.id}>
-                <PostContent record={block} background="dark" locale={locale} />
-              </div>
+              <PostContent
+                key={block.id}
+                record={block}
+                background="dark"
+                locale={locale}
+              />
             );
           })}
           <div className="md:grid md:grid-cols-2 md:gap-4 lg:gap-8 xl:gap-x-24">

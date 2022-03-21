@@ -21,8 +21,8 @@ export default function NewsCard({ locale, data, template = null }) {
             <div className="relative">
               <DatoImage
                 data={data.imageHero.responsiveImage}
-                alt={data.imageHero.alt}
-                title={data.imageHero.title}
+                alt={data.imageHero.responsiveImage.alt}
+                title={data.imageHero.responsiveImage.title}
               />
             </div>
           )}

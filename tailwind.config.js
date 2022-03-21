@@ -66,6 +66,9 @@ module.exports = {
         arrowSx: "url('/icons/arrow_left.svg')",
         arrowDx: "url('/icons/arrow_right.svg')",
       },
+      zIndex: {
+        60: "60",
+      },
     },
   },
   plugins: [

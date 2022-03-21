@@ -27,7 +27,7 @@ function LanguageSwitcher({ locale, model, alts, product }) {
                 <a
                   className={`${
                     isActive ? "" : "text-white/70"
-                  } hidden text-white hover:text-orange lg:block`}
+                  } hidden text-white hover:text-orange lg:-mt-[1px] lg:ml-8 lg:block`}
                 >
                   {translate(`${l}`, locale)}
                 </a>

@@ -7,7 +7,7 @@ function Layout({ children, locale, site, model, alts, product = null }) {
     <>
       <SkipLinks />
       <Header
-        className="relative z-50"
+        className="relative z-40"
         locale={locale}
         site={site}
         model={model}

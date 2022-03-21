@@ -24,7 +24,7 @@ export default function MenuMobile({ site, locale, model }) {
           className="absolute inset-x-0 top-0 origin-top transform overflow-hidden transition lg:hidden"
         >
           {({ open, close: handleClose }) => (
-            <div className="relative z-50 min-h-[100vh] bg-brown">
+            <div className="relative z-40 min-h-[100vh] bg-brown">
               <div className="pt-5 pb-6">
                 <div className="flex items-center justify-between px-4">
                   <div>
@@ -37,7 +37,7 @@ export default function MenuMobile({ site, locale, model }) {
                     />
                   </div>
                   <div className="-mr-2">
-                    <Popover.Button className="text-gray-400 inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange">
+                    <Popover.Button className="inline-flex items-center justify-center text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange">
                       <span className="sr-only">Close menu</span>
                       <XIcon
                         className="h-9 w-9 text-white"

@@ -17,14 +17,14 @@ export default function CompanyHero({ locale, data }) {
       <DatoImage
         className="relative overflow-hidden rounded-b-[20px] md:hidden"
         data={data.mobileImage.responsiveImage}
-        alt={data.mobileImage.alt}
-        title={data.mobileImage.title}
+        alt={data.mobileImage.responsiveImage.alt}
+        title={data.mobileImage.responsiveImage.title}
       />
       <DatoImage
         className="image--cover relative hidden max-h-[700px] overflow-hidden rounded-b-[50px] md:block"
         data={data.deskImage.responsiveImage}
-        alt={data.deskImage.alt}
-        title={data.deskImage.title}
+        alt={data.deskImage.responsiveImage.alt}
+        title={data.deskImage.responsiveImage.title}
       />
     </header>
   );

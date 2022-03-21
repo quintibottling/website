@@ -32,8 +32,8 @@ export default function MachineCard({ locale, machine, productSlug }) {
               <DatoImage
                 className="duration-300 group-hover:scale-110"
                 data={machine.imageHero.responsiveImage}
-                alt={machine.imageHero.alt}
-                title={machine.imageHero.title}
+                alt={machine.imageHero.responsiveImage.alt}
+                title={machine.imageHero.responsiveImage.title}
                 layout=""
               />
             </div>

@@ -30,7 +30,7 @@ export default function SlideMachine({
           } text-xs duration-100 xl:text-base`}
         >
           0{i + 1}
-          <span className="pl-1 text-gold">- 0{numberSliders}</span>
+          <span className="pl-1 text-gold-light">- 0{numberSliders}</span>
         </div>
         <div
           onClick={() => swiper.slideNext()}

@@ -56,8 +56,8 @@ export default function TecnologyCard({ locale, data, i, machine }) {
                       <DatoImage
                         className=""
                         data={data.imagePreview.responsiveImage}
-                        alt={data.imagePreview.alt}
-                        title={data.imagePreview.title}
+                        alt={data.imagePreview.responsiveImage.alt}
+                        title={data.imagePreview.responsiveImage.title}
                       />
                     </div>
                   )}

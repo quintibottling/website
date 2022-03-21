@@ -20,7 +20,7 @@ function Header(props) {
   const router = useRouter();
 
   return (
-    <header className="relative z-50">
+    <header className="relative z-40">
       <Popover
         className={`${
           model == "machine" ? "" : "bg-brown"
@@ -52,7 +52,7 @@ function Header(props) {
                 <Popover className="relative">
                   {({ open, close }) => (
                     <>
-                      <Popover.Button className="group inline-flex items-center text-sm text-white hover:text-orange focus:outline-none">
+                      <Popover.Button className="group inline-flex items-center text-sm text-white hover:text-orange focus:ring-orange">
                         <span>{translate("company", locale)}</span>
                         <ChevronDownIcon
                           className={classNames(
@@ -101,7 +101,7 @@ function Header(props) {
                 <Popover className="relative">
                   {({ open, close }) => (
                     <>
-                      <Popover.Button className="group inline-flex items-center text-sm text-white hover:text-orange focus:outline-none">
+                      <Popover.Button className="group inline-flex items-center text-sm text-white hover:text-orange focus:ring-orange">
                         <span>{translate("products", locale)}</span>
                         <ChevronDownIcon
                           className={classNames(
@@ -157,7 +157,7 @@ function Header(props) {
                 <Popover className="relative">
                   {({ open, close }) => (
                     <>
-                      <Popover.Button className="group inline-flex items-center text-sm text-white hover:text-orange focus:outline-none">
+                      <Popover.Button className="group inline-flex items-center text-sm text-white hover:text-orange focus:ring-orange">
                         <span>{translate("technologies", locale)}</span>
                         <ChevronDownIcon
                           className={classNames(
