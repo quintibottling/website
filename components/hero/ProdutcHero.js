@@ -35,7 +35,7 @@ export default function ProductHero({ locale, data }) {
           data.model == "product"
             ? "-my-[55px] xl:-my-[70px]"
             : "rounded-b-[20px] bg-brown pt-12 md:rounded-b-[50px] lg:pt-24"
-        } relative z-0 md:h-[40vw] xl:h-[40vw]`}
+        } relative z-0 max-h-[700px] md:h-[40vw] xl:h-[40vw]`}
       >
         {data.deskImage != null ? (
           <>
