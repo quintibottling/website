@@ -13,7 +13,9 @@ export default function TwoColumnBlock({ locale, record }) {
             <h2 className="prefix text-gold">{record.prefix}</h2>
           )}
         </div>
-        <h3 className="md:col-span-5 lg:text-lg">{record.bigText}</h3>
+        <h3 className="md:col-span-5 lg:text-lg">
+          {renderHTML(record.bigText)}
+        </h3>
         <div className="text-sm text-black/80 md:col-span-4 lg:text-base">
           {renderHTML(record.smallText)}
         </div>

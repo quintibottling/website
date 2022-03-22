@@ -7,7 +7,11 @@ export default function CompanyHero({ locale, data }) {
       <div className="-mt-4 bg-white">
         <div className="grid gap-4 px-4 pt-10 pb-6 md:pt-14 md:pb-10 lg:pt-20 lg:pb-16">
           <div className="prefix text-gold md:text-center">
-            {translate("company", locale)}
+            {data.model == "company_page" ? (
+              <>{translate("company", locale)}</>
+            ) : (
+              <>{data.title}</>
+            )}
           </div>
           <h1 className="max-w-[1080px] text-lg text-brown md:text-center lg:mx-auto lg:text-4xl">
             {data.titleHero}

@@ -1,7 +1,8 @@
 import PostContent from "components/PostContent";
 import { Image as DatoImage } from "react-datocms";
+import { renderHTML } from "lib/utils";
 
-export default function TextImageTwoColumn({ locale, record }) {
+export default function TextImageTwoColumn({ locale, record, background }) {
   return (
     <>
       <div
@@ -15,9 +16,19 @@ export default function TextImageTwoColumn({ locale, record }) {
               {record.prefix}
             </div>
           </div>
-          <div className="lg:text-xl">{record.title}</div>
-          <div className="text-sm opacity-80 lg:text-base">{record.text}</div>
-          <div className="">
+          <div
+            className={`${background == "dark" ? "text-white" : ""} lg:text-xl`}
+          >
+            {record.title}
+          </div>
+          <div
+            className={`${
+              background == "dark" ? "text-white" : ""
+            } text-sm opacity-80 lg:text-base`}
+          >
+            {renderHTML(record.text)}
+          </div>
+          <div>
             {record.link.map((block) => {
               return (
                 <div key={block.id}>
@@ -33,11 +44,9 @@ export default function TextImageTwoColumn({ locale, record }) {
         </div>
         <div className="md:w-1/2 lg:w-7/12">
           <DatoImage
-            className=""
             data={record.image.responsiveImage}
             alt={record.image.responsiveImage.alt}
             title={record.image.responsiveImage.title}
-            layout=""
           />
         </div>
       </div>

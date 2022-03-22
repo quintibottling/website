@@ -22,7 +22,7 @@ export default function Section({ locale, record }) {
                   ? ""
                   : block.model == "certification_block"
                   ? ""
-                  : "container--small"
+                  : "container--small-x py-12 lg:py-16 xl:py-32"
               }`}
               key={block.id}
             >

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { renderHTML } from "lib/utils";
 
 export default function CertificationCard({ locale, item }) {
   return (
@@ -16,7 +17,9 @@ export default function CertificationCard({ locale, item }) {
           <div className="text-lg text-gold lg:mt-6 lg:text-2xl">
             {item.title}
           </div>
-          <div className="opacity-9 text-sm lg:text-base">{item.text}</div>
+          <div className="opacity-9 text-sm lg:text-base">
+            {renderHTML(item.text)}
+          </div>
         </div>
       </div>
     </>
