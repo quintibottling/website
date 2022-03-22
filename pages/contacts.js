@@ -55,7 +55,10 @@ export default function ContactPage({ locale, site, page, info }) {
               </div>
               {info.social.map((s) => (
                 <Link href={s.link}>
-                  <a title={s.title} className="block hover:text-orange">
+                  <a
+                    title={s.title}
+                    className="block duration-200 hover:text-orange"
+                  >
                     {s.title}
                   </a>
                 </Link>

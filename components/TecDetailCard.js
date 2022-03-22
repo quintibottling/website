@@ -24,7 +24,7 @@ export default function TecDetailCard({ data, products, locale }) {
                     <div className="flex items-center gap-x-2">
                       {console.log("p.model:", p.model)}
                       <div className={`${p.code} h-[12px] w-[12px]`}></div>
-                      <div className="text-xs group-hover:text-orange">
+                      <div className="text-xs duration-200 group-hover:text-orange">
                         {p.title}
                       </div>
                     </div>

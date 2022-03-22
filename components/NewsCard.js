@@ -39,7 +39,7 @@ export default function NewsCard({ locale, data, template = null }) {
                 {formatDate(data.createdAt, locale)}
               </div>
             </div>
-            <h2 className="duration-100 group-hover:text-orange lg:text-lg">
+            <h2 className="duration-200 group-hover:text-orange lg:text-lg">
               {data.title}
             </h2>
             {firstTextBlock && (

@@ -50,7 +50,7 @@ export default function VideoHero({ locale, data }) {
                 <div className="absolute -top-6 right-0">
                   <button
                     type="button"
-                    className="rounded-md text-gray-400 hover:text-gray-500"
+                    className="rounded-md text-gray-400 duration-200 hover:text-gray-500"
                     onClick={() => setOpen(false)}
                   >
                     <span className="sr-only">Close</span>

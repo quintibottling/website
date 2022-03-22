@@ -47,7 +47,7 @@ export default function SlideHomepage({
           </div>
           <div
             onClick={() => swiper.slideNext()}
-            className="relative h-[50px] w-[50px] cursor-pointer rounded-full bg-white/10 hover:bg-orange"
+            className="relative h-[50px] w-[50px] cursor-pointer rounded-full bg-white/10 duration-200 hover:bg-orange"
           >
             <ArrowRightIcon
               className="absolute--centered h-4 w-4 text-white"
@@ -70,7 +70,7 @@ export default function SlideHomepage({
             } group relative z-30 bg-red duration-100`}
           >
             <div className="flex items-center gap-x-2 pt-3 md:-mt-[150px] md:-ml-2 md:-translate-x-1/2 xl:-ml-4">
-              <div className="text-sm uppercase tracking-wide group-hover:text-orange xl:text-base">
+              <div className="text-sm uppercase tracking-wide duration-200 group-hover:text-orange xl:text-base">
                 {slide.titleLink}
               </div>
               <ArrowRightIcon

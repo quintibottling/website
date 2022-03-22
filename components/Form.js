@@ -219,7 +219,7 @@ export default function FormComponent({ locale, titlePage }) {
                     {translate("submit", locale)}
                   </div>
                   <ArrowRightIcon
-                    className="h-4 w-4 -rotate-45 text-orange duration-300 group-hover:-rotate-[22.5px]"
+                    className="h-4 w-4 -rotate-45 text-orange duration-200 group-hover:-rotate-[22.5px]"
                     aria-hidden="true"
                   />
                 </button>

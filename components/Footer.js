@@ -63,7 +63,7 @@ export default function Footer({ locale, site }) {
                     locale={locale}
                   >
                     <a className="group" title={item.title}>
-                      <span className="block whitespace-nowrap text-xs opacity-70 group-hover:text-orange group-hover:opacity-100 lg:text-base">
+                      <span className="block whitespace-nowrap text-xs opacity-70 duration-200 group-hover:text-orange  group-hover:opacity-100 lg:text-base">
                         {item.labelMenu}
                       </span>
                     </a>
@@ -89,7 +89,7 @@ export default function Footer({ locale, site }) {
                       <div
                         className={`${item.code} -mt-[2px] h-2 w-2 xl:h-3 xl:w-3`}
                       />
-                      <span className="block whitespace-nowrap text-xs opacity-70 group-hover:text-orange group-hover:opacity-100 lg:text-base">
+                      <span className="block whitespace-nowrap text-xs opacity-70 duration-200 group-hover:text-orange  group-hover:opacity-100 lg:text-base">
                         {item.title}
                       </span>
                     </a>
@@ -106,7 +106,7 @@ export default function Footer({ locale, site }) {
                     locale={locale}
                   >
                     <a key={item.slug} title={item.title}>
-                      <span className="block text-xs hover:text-orange lg:text-base">
+                      <span className="block text-xs duration-200  hover:text-orange lg:text-base">
                         {item.labelMenu}
                       </span>
                     </a>
@@ -115,14 +115,14 @@ export default function Footer({ locale, site }) {
               )}
               <Link href={`/${site.indexNews.slug}`} locale={locale}>
                 <a key={site.indexNews.slug} title={site.indexNews.title}>
-                  <span className="block text-xs hover:text-orange lg:text-base">
+                  <span className="block text-xs duration-200  hover:text-orange lg:text-base">
                     {site.indexNews.labelMenu}
                   </span>
                 </a>
               </Link>
               <Link href={`/${site.contactPage.slug}`} locale={locale}>
                 <a key={site.contactPage.slug} title={site.contactPage.title}>
-                  <span className="block text-xs hover:text-orange lg:text-base">
+                  <span className="block text-xs duration-200  hover:text-orange lg:text-base">
                     {site.contactPage.labelMenu}
                   </span>
                 </a>
@@ -144,7 +144,7 @@ export default function Footer({ locale, site }) {
                             title={`${translate("externaLink", locale)} ${
                               social.title
                             }`}
-                            className="opacity-70 hover:text-orange"
+                            className="opacity-70 hover:text-orange "
                             target="_blank"
                             rel="noopener"
                           >
@@ -170,7 +170,7 @@ export default function Footer({ locale, site }) {
                         "externalLink",
                         locale
                       )} Cantiere Creativo Agenzia web Firenze`}
-                      className="hover:text-orange"
+                      className="duration-200 hover:text-orange"
                       target="_blank"
                       rel="noreferrer noopener"
                     >
@@ -183,7 +183,7 @@ export default function Footer({ locale, site }) {
                         "externalLink",
                         locale
                       )} Cantiere Creativo Agenzia web Firenze`}
-                      className="hover:text-orange"
+                      className="duration-200 hover:text-orange"
                       target="_blank"
                       rel="noreferrer noopener"
                     >
@@ -199,7 +199,7 @@ export default function Footer({ locale, site }) {
                         "externaLink",
                         locale
                       )} Privacy Policy`}
-                      className="iubenda-nostyle no-brand iubenda-embed iubenda-noiframe hover:text-orange"
+                      className="iubenda-nostyle no-brand iubenda-embed iubenda-noiframe duration-200 hover:text-orange"
                     >
                       Privacy Policy
                     </a>
@@ -212,7 +212,7 @@ export default function Footer({ locale, site }) {
                         "externaLink",
                         locale
                       )} Cookie Policy`}
-                      className="iubenda-nostyle no-brand iubenda-embed iubenda-noiframe hover:text-orange"
+                      className="iubenda-nostyle no-brand iubenda-embed iubenda-noiframe duration-200 hover:text-orange"
                     >
                       Cookie Policy
                     </a>

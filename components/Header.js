@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Fragment } from "react";
-import { Popover, Disclosure, Transition } from "@headlessui/react";
+import { Popover, Transition } from "@headlessui/react";
 import { useRouter } from "next/router";
 import { MenuAlt3Icon } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
@@ -52,8 +52,15 @@ function Header(props) {
                 <Popover className="relative">
                   {({ open, close }) => (
                     <>
-                      <Popover.Button className="group inline-flex items-center text-sm text-white hover:text-orange focus:ring-orange">
+                      <Popover.Button
+                        className={`${
+                          Object(router.pathname).indexOf("company") > -1
+                            ? "border-b-2 border-orange"
+                            : "none"
+                        } group inline-flex items-center text-sm text-white duration-200 hover:text-orange focus:ring-orange`}
+                      >
                         <span>{translate("company", locale)}</span>
+                        {console.log("router", router)}
                         <ChevronDownIcon
                           className={classNames(
                             open ? "rotate-180 text-orange" : "text-gold-light",
@@ -85,7 +92,7 @@ function Header(props) {
                                   locale={locale}
                                 >
                                   <a title={item.title} onClick={() => close()}>
-                                    <span className="block whitespace-nowrap py-2 px-4 pr-12 text-sm text-black">
+                                    <span className="block whitespace-nowrap py-3 px-4 pr-12 text-sm text-black">
                                       {item.labelMenu}
                                     </span>
                                   </a>
@@ -101,7 +108,13 @@ function Header(props) {
                 <Popover className="relative">
                   {({ open, close }) => (
                     <>
-                      <Popover.Button className="group inline-flex items-center text-sm text-white hover:text-orange focus:ring-orange">
+                      <Popover.Button
+                        className={`${
+                          Object(router.pathname).indexOf("product") > -1
+                            ? "border-b-2 border-orange"
+                            : "none"
+                        } group inline-flex items-center text-sm text-white duration-200 hover:text-orange focus:ring-orange`}
+                      >
                         <span>{translate("products", locale)}</span>
                         <ChevronDownIcon
                           className={classNames(
@@ -157,7 +170,13 @@ function Header(props) {
                 <Popover className="relative">
                   {({ open, close }) => (
                     <>
-                      <Popover.Button className="group inline-flex items-center text-sm text-white hover:text-orange focus:ring-orange">
+                      <Popover.Button
+                        className={`${
+                          Object(router.pathname).indexOf("technologies") > -1
+                            ? "border-b-2 border-orange"
+                            : "none"
+                        } group inline-flex items-center text-sm text-white duration-200 hover:text-orange focus:ring-orange`}
+                      >
                         <span>{translate("technologies", locale)}</span>
                         <ChevronDownIcon
                           className={classNames(
@@ -190,7 +209,7 @@ function Header(props) {
                                   locale={locale}
                                 >
                                   <a title={item.title} onClick={() => close()}>
-                                    <span className="block whitespace-nowrap py-2 px-4 pr-12 text-sm text-black">
+                                    <span className="block whitespace-nowrap py-3 px-4 pr-12 text-sm text-black">
                                       {item.labelMenu}
                                     </span>
                                   </a>
@@ -209,8 +228,16 @@ function Header(props) {
                       href={resolveLink(item.model, locale, item.slug)}
                       locale={locale}
                     >
-                      <a key={item.slug} title={item.title}>
-                        <span className="text-white hover:text-orange">
+                      <a
+                        key={item.slug}
+                        title={item.title}
+                        className={`${
+                          Object(router.asPath).indexOf(item.slug) > -1
+                            ? "border-b-2 border-orange"
+                            : "none"
+                        }`}
+                      >
+                        <span className="text-white duration-200 hover:text-orange">
                           {item.labelMenu}
                         </span>
                       </a>
@@ -218,15 +245,31 @@ function Header(props) {
                   ) : null
                 )}
                 <Link href={`/${site.indexNews.slug}`} locale={locale}>
-                  <a key={site.indexNews.slug} title={site.indexNews.title}>
-                    <span className="text-white hover:text-orange">
+                  <a
+                    key={site.indexNews.slug}
+                    className={`${
+                      Object(router.pathname).indexOf("news") > -1
+                        ? "border-b-2 border-orange"
+                        : "none"
+                    }`}
+                    title={site.indexNews.title}
+                  >
+                    <span className="text-white duration-200 hover:text-orange">
                       {site.indexNews.labelMenu}
                     </span>
                   </a>
                 </Link>
                 <Link href={`/${site.contactPage.slug}`} locale={locale}>
-                  <a key={site.contactPage.slug} title={site.contactPage.title}>
-                    <span className="text-white hover:text-orange">
+                  <a
+                    key={site.contactPage.slug}
+                    title={site.contactPage.title}
+                    className={`${
+                      Object(router.pathname).indexOf("contacts") > -1
+                        ? "border-b-2 border-orange"
+                        : "none"
+                    }`}
+                  >
+                    <span className="text-white duration-200 hover:text-orange">
                       {site.contactPage.labelMenu}
                     </span>
                   </a>

@@ -11,7 +11,7 @@ export default function MachineCard({ locale, machine, productSlug }) {
         <a className="group" title={machine.title}>
           <div className="grid gap-2 border border-gold-light/40 bg-white px-4 py-6 md:flex md:flex-row-reverse md:gap-10 lg:p-12">
             <div className="grid md:content-center md:gap-2 lg:w-1/2 xl:gap-x-12">
-              <h2 className="text-2xl group-hover:text-orange xl:text-3xl">
+              <h2 className="text-2xl duration-200 group-hover:text-orange xl:text-3xl">
                 {machine.title}
               </h2>
               <div className="max-w-[400px] text-xs opacity-70 lg:text-xs">

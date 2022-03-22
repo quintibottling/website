@@ -34,7 +34,7 @@ export default function SlideMachine({
         </div>
         <div
           onClick={() => swiper.slideNext()}
-          className="relative h-[50px] w-[50px] cursor-pointer rounded-full bg-white/10 hover:bg-orange"
+          className="relative h-[50px] w-[50px] cursor-pointer rounded-full bg-white/10 duration-200 hover:bg-orange"
         >
           <ArrowRightIcon
             className="absolute--centered h-4 w-4 text-white"

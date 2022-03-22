@@ -19,7 +19,7 @@ function BlogIndex({ blogIndex, posts, site, locale }) {
         <div className="-mt-12 rounded-b-[20px] bg-brown pt-12 pb-16 text-white md:rounded-b-[50px]">
           <div className="mx-auto px-4 pt-8 lg:px-10 lg:pt-16 xl:container 2xl:px-28">
             <div className="grid gap-3 md:grid-cols-2 lg:gap-6">
-              <div className="prefix text-gold md:col-span-2">
+              <div className="prefix text-gold-light md:col-span-2">
                 {blogIndex.prefixHero}
               </div>
               <h1 className="text-3xl lg:text-5xl">{blogIndex.titleHero}</h1>
