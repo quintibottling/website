@@ -31,7 +31,7 @@ export default function TecnologyCard({ locale, data, i, machine }) {
                 ) : (
                   ""
                 )}
-                <span className={`${open ? "font-semibold	" : ""} lg:text-2xl`}>
+                <span className={`${open ? "text-orange" : ""} lg:text-2xl`}>
                   {data.title}
                 </span>
               </div>

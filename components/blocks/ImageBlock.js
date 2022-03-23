@@ -1,9 +1,8 @@
 import { Image as DatoImage } from "react-datocms";
 
-export default function ImageBlock({ locale, record, background }) {
+export default function ImageBlock({ record }) {
   return (
     <>
-      {/* {console.log("record:", record)} */}
       <div className="">
         <DatoImage
           className="w-100"

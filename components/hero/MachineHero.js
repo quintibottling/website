@@ -29,6 +29,7 @@ export default function MachineHero({ locale, data, category }) {
               modules={[Navigation, A11y, EffectFade]}
               spaceBetween={0}
               navigation
+              rewind="true"
               effect="fade"
               slidesPerView={1}
             >

@@ -85,7 +85,7 @@ const MyCheckbox = ({ locale, children, ...props }) => {
 
 export default function FormComponent({ locale, titlePage }) {
   async function handleSubmit(formValues) {
-    console.log("formValues", formValues);
+    // console.log("formValues", formValues);
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: {
@@ -104,9 +104,9 @@ export default function FormComponent({ locale, titlePage }) {
       }),
     });
     const result = await response.json();
-    if (result.success) {
-      console.log(result);
-    }
+    // if (result.success) {
+    //   console.log(result);
+    // }
   }
 
   const router = useRouter();

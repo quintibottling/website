@@ -11,10 +11,18 @@ import ComparisonTab from "components/ComparisonTab";
 import OptionalCard from "components/OptionalCard";
 import translate from "lib/locales";
 
-function ProductDetail({ locale, data, product, allTecnology }) {
+function ProductDetail({ locale, data, product, allTecnology, machines }) {
+  const machineCheck = [];
+  machines.map((machine) => {
+    if (Object.values(machine.product).indexOf(product.id) > -1) {
+      machineCheck.push(machine);
+    }
+    console.log("machineCheck", machineCheck);
+  });
+
   // remove duplicate array from title
   const requestTecnology = [];
-  product.machine.map((machine) =>
+  machineCheck.map((machine) =>
     machine.tecnology.map((tecnology) => {
       if (tecnology.request == true) {
         requestTecnology.push(tecnology.title);
@@ -25,7 +33,7 @@ function ProductDetail({ locale, data, product, allTecnology }) {
 
   // remove duplicate array from object
   const allTecnologyArray = [];
-  product.machine.map((machine) =>
+  machineCheck.map((machine) =>
     machine.tecnology.map((tecnology) => {
       allTecnologyArray.push(tecnology);
     })
@@ -37,7 +45,7 @@ function ProductDetail({ locale, data, product, allTecnology }) {
 
   // remove duplicate array from object
   const allOptionalArray = [];
-  product.machine.map((machine) =>
+  machineCheck.map((machine) =>
     machine.optional.map((optional) => {
       allOptionalArray.push(optional);
     })
@@ -74,7 +82,7 @@ function ProductDetail({ locale, data, product, allTecnology }) {
       <section>
         <div className="container--small-x">
           <div className="grid gap-7 pb-12">
-            {product.machine.map((machine) => (
+            {machineCheck.map((machine) => (
               <MachineCard
                 locale={locale}
                 machine={machine}
@@ -111,7 +119,7 @@ function ProductDetail({ locale, data, product, allTecnology }) {
         <div className="rounded-b-[30px] bg-white pb-12 lg:rounded-b-[50px] lg:pb-16 xl:pb-20">
           <ComparisonTab
             locale={locale}
-            machines={product.machine}
+            machines={machineCheck}
             allTecnology={allTecnology}
             product={product}
             resultAllTecnologyArray={resultAllTecnologyArray}
@@ -185,6 +193,7 @@ export async function getStaticProps({ params, locale }) {
       locale,
       product: response.product,
       allTecnology: response.allTecnology,
+      machines: response.allMachines,
       data,
     },
   };

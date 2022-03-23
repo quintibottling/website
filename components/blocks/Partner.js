@@ -7,9 +7,10 @@ export default function Partner({ locale, record }) {
         {record.logo.map((item) => (
           <div>
             <div
-              className="relative h-[75px] w-full bg-gold-light/20 lg:h-[105px]"
+              className="relative inline-block w-full rounded-lg bg-gold-light/20 lg:rounded-2xl"
               key={item.id}
             >
+              <div className="mt-[75%]"></div>
               <div className="absolute inset-1/2 h-[80%] w-[70%] -translate-x-1/2 -translate-y-1/2">
                 <Image src={item.url} layout="fill" alt={item.title} />
               </div>

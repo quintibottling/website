@@ -181,9 +181,6 @@ export async function getStaticPaths() {
     locale,
   }));
   return { paths, fallback: false };
-  {
-    console.log("paths:", paths);
-  }
 }
 
 export async function getStaticProps({ params, locale }) {

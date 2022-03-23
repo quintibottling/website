@@ -60,7 +60,6 @@ function Header(props) {
                         } group inline-flex items-center text-sm text-white duration-200 hover:text-orange focus:ring-orange`}
                       >
                         <span>{translate("company", locale)}</span>
-                        {console.log("router", router)}
                         <ChevronDownIcon
                           className={classNames(
                             open ? "rotate-180 text-orange" : "text-gold-light",
