@@ -13,7 +13,7 @@ export default function HeroHp({ locale, data }) {
   return (
     <div className="rounded-b-[50pt] bg-brown text-white">
       <div className="xl:pl-[calc((100vw-1280px)/2)] 2xl:pl-[calc((100vw-1350px)/2)] 3xl:container 3xl:mx-auto 3xl:pl-0">
-        <div className="md:-mt-6 md:grid md:grid-cols-2">
+        <div className="md:-mt-6 md:grid md:grid-cols-2 xl:pt-10">
           <div className="-mt-6 px-4 pt-12 md:mt-4 md:max-w-[370px] md:pl-6 md:pr-0 lg:max-w-[520px] xl:max-w-[650px] xl:px-0">
             <h2 className="mb-6 text-lg lg:pt-16 lg:text-3xl xl:text-4xl">
               {data.titleHero}
@@ -25,6 +25,7 @@ export default function HeroHp({ locale, data }) {
               modules={[Navigation, A11y, EffectFade]}
               spaceBetween={0}
               navigation
+              rewind="true"
               effect="fade"
               slidesPerView={1}
             >

@@ -8,7 +8,7 @@ export default function ProductCard({ locale, data }) {
   return (
     <>
       <Link href={resolveLink("product", locale, data.slug)}>
-        <a title={data.title} className="group grid gap-2 py-2">
+        <a title={data.title} className="group grid gap-2 py-2 lg:gap-6">
           <div className="relative xl:pr-[41px]">
             {console.log("data.imageHero:", data.imageHero)}
             <DatoImage

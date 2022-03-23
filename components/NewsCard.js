@@ -29,7 +29,7 @@ export default function NewsCard({ locale, data, template = null }) {
           <div className="">
             <div
               className={`${
-                template == "twoColumns" ? "" : "mt-2"
+                template == "twoColumns" ? "" : "mb-2"
               } flex content-start items-center gap-4 py-3 xl:gap-8`}
             >
               <div className="inline-block rounded-full bg-pink px-3 py-1 text-xxs text-gold lg:text-sm">
@@ -39,16 +39,14 @@ export default function NewsCard({ locale, data, template = null }) {
                 {formatDate(data.createdAt, locale)}
               </div>
             </div>
-            <h2 className="duration-200 group-hover:text-orange lg:text-lg">
-              {data.title}
-            </h2>
+            <h2 className="lg:text-lg">{data.title}</h2>
             {firstTextBlock && (
               <h3 className="my-3 text-sm opacity-80 line-clamp-4 lg:text-base xl:line-clamp-2">
                 {renderHTML(firstTextBlock.text)}
               </h3>
             )}
             <div className="mt-2 flex items-center gap-x-2 lg:mt-4">
-              <div className="text-sm tracking-wide xl:text-base">
+              <div className="text-sm tracking-wide duration-200 group-hover:text-orange xl:text-base">
                 {translate("more", locale)}
               </div>
               <ArrowRightIcon

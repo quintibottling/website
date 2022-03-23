@@ -3,7 +3,7 @@ import { renderHTML } from "lib/utils";
 export default function TitleTextBlock({ locale, record, background }) {
   return (
     <>
-      <div className="grid gap-5 md:col-span-full md:gap-x-10 lg:gap-x-12 xl:gap-x-24">
+      <div className="grid gap-5 md:col-span-full md:gap-x-10 lg:gap-x-12 lg:gap-y-8 xl:gap-x-24">
         <h2
           className={`${
             background == "dark"

@@ -44,7 +44,7 @@ export default function Home({
               />
             );
           })}
-          <div className="md:grid md:grid-cols-2 md:gap-4 lg:gap-8 xl:gap-x-24">
+          <div className="pt-2 md:grid md:grid-cols-2 md:gap-4 lg:gap-8 xl:gap-x-24">
             {products.map((product) => {
               return (
                 <div key={products.id}>

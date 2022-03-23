@@ -72,11 +72,11 @@ body {
 }
 
 .blockGallery .swiper-button-next {
-  @apply block h-[32px] w-[32px] bg-arrowDx bg-contain bg-no-repeat after:hidden;
+  @apply mr-2 block h-[32px] w-[32px] bg-arrowDx bg-contain bg-no-repeat after:hidden lg:mr-6;
 }
 
 .blockGallery .swiper-button-prev {
-  @apply block h-[32px] w-[32px] rotate-180 bg-arrowDx bg-contain bg-no-repeat after:hidden;
+  @apply ml-2 block h-[32px] w-[32px] rotate-180 bg-arrowDx bg-contain bg-no-repeat after:hidden lg:ml-6;
 }
 
 .prefix {

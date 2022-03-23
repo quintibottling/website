@@ -212,10 +212,10 @@ export default function FormComponent({ locale, titlePage }) {
               </div>
               <div className="mt-2">
                 <button
-                  className="button mt-2 flex items-center gap-x-2 lg:mt-4"
+                  className="button group mt-2 flex items-center gap-x-2 lg:mt-4"
                   type="submit"
                 >
-                  <div className="text-sm tracking-wide xl:text-base">
+                  <div className="text-sm tracking-wide duration-200 group-hover:text-orange xl:text-base">
                     {translate("submit", locale)}
                   </div>
                   <ArrowRightIcon

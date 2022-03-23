@@ -30,7 +30,7 @@ function MachineDetail({ locale, machine, data, allProducts }) {
       <MachineHero locale={locale} data={machine} category={machine.product} />
       <section className="mt-10 xl:mt-16">
         <div className="container--small">
-          <div className="text-black">{machine.textIntro}</div>
+          <div lg:text-lgclassName="text-black">{machine.textIntro}</div>
           {machine.introBlock.map((block) => {
             return (
               <div key={block.id}>
@@ -105,7 +105,7 @@ function MachineDetail({ locale, machine, data, allProducts }) {
       <section>
         <div className="rounded-[30pt] bg-brown pb-8 lg:rounded-[50pt]">
           <div className="container--small">
-            <div className="grid gap-5 md:col-span-full md:gap-x-10 lg:gap-x-12 xl:gap-x-24">
+            <div className="grid gap-5 md:col-span-full md:gap-x-10 lg:gap-x-12 lg:gap-y-8 xl:gap-x-24">
               <h2 className="text-2xl text-gold-light lg:text-4xl xl:text-5xl">
                 {machine.titleDetail}
               </h2>
