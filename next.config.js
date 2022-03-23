@@ -49,7 +49,7 @@ module.exports = {
       },
       {
         source: "/contatti",
-        destination: "/contacts",
+        destination: "/contact-us",
       },
     ];
   },

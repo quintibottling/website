@@ -13,6 +13,8 @@ import translate from "lib/locales";
 
 function ProductDetail({ locale, data, product, allTecnology, machines }) {
   const machineCheck = [];
+
+  // Check machines of the products
   machines.map((machine) => {
     if (Object.values(machine.product).indexOf(product.id) > -1) {
       machineCheck.push(machine);

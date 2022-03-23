@@ -12,7 +12,6 @@ function LanguageSwitcher({ locale, model, alts, product }) {
       {locales &&
         locales.map((l, i) => {
           const isActive = locale === l;
-          const isOther = locale !== l;
           const link = alts?.find((alt) => alt.locale === l)?.value || "";
           const productsLink =
             product?.find((p) => p.locale === l)?.value || "";
