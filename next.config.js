@@ -47,10 +47,6 @@ module.exports = {
         source: "/tecnologie/:slug",
         destination: "/technologies/:slug",
       },
-      {
-        source: "/contatti",
-        destination: "/contact-us",
-      },
     ];
   },
 };
