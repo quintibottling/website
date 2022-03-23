@@ -16,7 +16,7 @@ function EditorialPage({ locale, data, page }) {
         {page.body.map((block) => {
           return (
             <div key={block.id}>
-              <PostContent record={block} background="light" locale={locale} />
+              <PostContent record={block} locale={locale} />
             </div>
           );
         })}
