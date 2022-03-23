@@ -28,9 +28,12 @@ function MachineDetail({ locale, machine, data, allProducts }) {
     >
       <Head>{renderMetaTags(machine.seo.concat(data.site.favicon))}</Head>
       <MachineHero locale={locale} data={machine} category={machine.product} />
+
       <section className="mt-10 xl:mt-16">
         <div className="container--small">
-          <div className="text-black lg:text-lg">{machine.textIntro}</div>
+          {machine.textHero && (
+            <div className="text-black lg:text-lg">{machine.textIntro}</div>
+          )}
           {machine.introBlock.map((block) => {
             return (
               <div key={block.id}>
