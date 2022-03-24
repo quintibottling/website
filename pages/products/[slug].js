@@ -23,15 +23,15 @@ function ProductDetail({ locale, data, product, allTecnology, machines }) {
   });
 
   // remove duplicate array from title
-  const requestTecnology = [];
-  machineCheck.map((machine) =>
-    machine.tecnology.map((tecnology) => {
-      if (tecnology.request == true) {
-        requestTecnology.push(tecnology.title);
-      }
-    })
-  );
-  const uniqueArray = [...new Set(requestTecnology)];
+  // const requestTecnology = [];
+  // machineCheck.map((machine) =>
+  //   machine.tecnology.map((tecnology) => {
+  //     if (tecnology.request == true) {
+  //       requestTecnology.push(tecnology.title);
+  //     }
+  //   })
+  // );
+  // const uniqueArray = [...new Set(requestTecnology)];
 
   // remove duplicate array from object
   const allTecnologyArray = [];
@@ -40,10 +40,14 @@ function ProductDetail({ locale, data, product, allTecnology, machines }) {
       allTecnologyArray.push(tecnology);
     })
   );
-  const idsTec = allTecnologyArray.map((t) => t.id);
-  const resultAllTecnologyArray = allTecnologyArray.filter(
-    ({ id }, index) => !idsTec.includes(id, index + 1)
-  );
+  const uniqueIds = new Set();
+  const resultAllTecnologyArray = allTecnologyArray.filter((element) => {
+    const isDuplicate = uniqueIds.has(element.id);
+    uniqueIds.add(element.id);
+    if (!isDuplicate) {
+      return true;
+    }
+  });
 
   // remove duplicate array from object
   const allOptionalArray = [];
@@ -113,16 +117,15 @@ function ProductDetail({ locale, data, product, allTecnology, machines }) {
               <div className={`${product.code} mx-1 inline-block h-3 w-3`} />
               ):
             </div>
-            <span className="text-black/80 lg:text-lg">
+            {/* <span className="text-black/80 lg:text-lg">
               {uniqueArray.join(", ")}
-            </span>
+            </span> */}
           </div>
         </div>
         <div className="rounded-b-[30px] bg-white pb-12 lg:rounded-b-[50px] lg:pb-16 xl:pb-20">
           <ComparisonTab
             locale={locale}
             machines={machineCheck}
-            allTecnology={allTecnology}
             product={product}
             resultAllTecnologyArray={resultAllTecnologyArray}
           />

@@ -77,7 +77,7 @@ export default function SlideHomepage({
           <a
             title={slide.title}
             className={`${
-              isActive ? "opacity-100" : "opacity-0"
+              isActive ? "" : "hidden"
             } group relative z-30 bg-red duration-100`}
           >
             <div className="flex items-center gap-x-2 pt-3 md:-mt-[150px] md:-ml-2 md:-translate-x-1/2 xl:-ml-4">

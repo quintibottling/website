@@ -25,10 +25,13 @@ export default function ComparisonTab({
                 <div className="flex items-center gap-2">
                   {tec.request == true ? (
                     <div className={`${product.code} h-3 w-3`} />
-                  ) : (
-                    ""
-                  )}
-                  {tec.title}
+                  ) : null}
+                  <div>
+                    {tec.title}
+                    {tec.subtitle && (
+                      <div className="text-xs opacity-70">{tec.subtitle}</div>
+                    )}
+                  </div>
                 </div>
               </th>
               {machines.map((machine) => {

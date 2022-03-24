@@ -25,7 +25,7 @@ export default function ProductHero({ locale, data }) {
           </div>
           {data.model == "product" ? (
             <div
-              className={`${data.code} relative z-10 mt-8 h-[110px] w-[110px] xl:h-[140px] xl:w-[140px]`}
+              className={`${data.code} relative z-10 mt-8 -mb-12 h-[110px] w-[110px] xl:h-40 xl:w-40`}
             ></div>
           ) : null}
         </div>

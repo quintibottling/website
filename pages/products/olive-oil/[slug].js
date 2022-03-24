@@ -32,7 +32,9 @@ function MachineDetail({ locale, machine, data, allProducts }) {
       <section className="mt-10 xl:mt-16">
         <div className="container--small">
           {machine.textHero && (
-            <div className="text-black lg:text-lg">{machine.textIntro}</div>
+            <div className="text-black lg:text-lg">
+              {renderHTML(machine.textIntro)}
+            </div>
           )}
           {machine.introBlock.map((block) => {
             return (

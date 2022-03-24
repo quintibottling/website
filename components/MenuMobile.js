@@ -7,7 +7,7 @@ import translate from "lib/locales";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { resolveLink } from "lib/utils";
 
-export default function MenuMobile({ site, locale, model }) {
+export default function MenuMobile({ locale, model, alts, product }) {
   return (
     <>
       <Transition
@@ -246,7 +246,7 @@ export default function MenuMobile({ site, locale, model }) {
               </div>
               <div className="space-y-6 px-5 pb-6">
                 <div className="mb-2 text-xxs text-white/70">Lingua</div>
-                <LanguageSwitcher model={model} />
+                <LanguageSwitcher model={model} alts={alts} locale={locale} />
               </div>
             </div>
           )}
