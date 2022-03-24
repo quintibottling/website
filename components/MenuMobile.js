@@ -7,7 +7,7 @@ import translate from "lib/locales";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { resolveLink } from "lib/utils";
 
-export default function MenuMobile({ locale, model, alts, product }) {
+export default function MenuMobile({ site, locale, model, alts, product }) {
   return (
     <>
       <Transition
@@ -37,7 +37,7 @@ export default function MenuMobile({ locale, model, alts, product }) {
                     />
                   </div>
                   <div className="-mr-2">
-                    <Popover.Button className="inline-flex items-center justify-center text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange">
+                    <Popover.Button className="inline-flex items-center justify-center text-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-orange">
                       <span className="sr-only">Close menu</span>
                       <XIcon
                         className="h-9 w-9 text-white"
@@ -88,7 +88,7 @@ export default function MenuMobile({ locale, model, alts, product }) {
                                     title={item.title}
                                     onClick={() => handleClose()}
                                   >
-                                    <span className="block text-sm text-white">
+                                    <span className="block py-1 text-sm text-white lg:py-0">
                                       {item.labelMenu}
                                     </span>
                                   </a>
@@ -142,9 +142,9 @@ export default function MenuMobile({ locale, model, alts, product }) {
                                     className="flex items-center gap-x-2 py-[2px]"
                                   >
                                     <div
-                                      className={`${item.code} -mt-[2px] h-3 w-3`}
+                                      className={`${item.code} -mt-[2px] h-3 w-3 `}
                                     />
-                                    <div className="text-sm text-white">
+                                    <div className="py-1 text-sm text-white">
                                       {item.title}
                                     </div>
                                   </a>
@@ -197,7 +197,7 @@ export default function MenuMobile({ locale, model, alts, product }) {
                                     onClick={() => handleClose()}
                                     className="flex items-center gap-x-2 py-[2px]"
                                   >
-                                    <div className="text-sm text-white">
+                                    <div className="py-1 text-sm text-white">
                                       {item.title}
                                     </div>
                                   </a>
@@ -246,7 +246,12 @@ export default function MenuMobile({ locale, model, alts, product }) {
               </div>
               <div className="space-y-6 px-5 pb-6">
                 <div className="mb-2 text-xxs text-white/70">Lingua</div>
-                <LanguageSwitcher model={model} alts={alts} locale={locale} />
+                <LanguageSwitcher
+                  locale={locale}
+                  alts={alts}
+                  model={model}
+                  product={product}
+                />
               </div>
             </div>
           )}

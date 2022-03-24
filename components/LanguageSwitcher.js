@@ -21,12 +21,14 @@ function LanguageSwitcher({ locale, model, alts, product }) {
             : `/${resolveLink(model, l, link)}`;
           return (
             <Fragment key={l}>
-              {i > 0 && <span className="text-xs text-white">-</span>}
+              {i > 0 && (
+                <span className="px-2 text-xs text-white lg:px-0">-</span>
+              )}
               <Link href={hrefCheck} locale={l}>
                 <a
                   className={`${
                     isActive ? "" : "text-white/70"
-                  } duration-200lg:-mt-[1px] hidden text-white hover:text-orange  lg:ml-8 lg:block`}
+                  } text-white duration-200 hover:text-orange lg:-mt-[1px] lg:ml-8 lg:block`}
                 >
                   {translate(`${l}`, locale)}
                 </a>

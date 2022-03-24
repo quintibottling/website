@@ -43,7 +43,7 @@ function Header(props) {
                 </Link>
               </div>
               <div className="-my-2 -mr-2 lg:hidden">
-                <Popover.Button className="inline-flex items-center justify-center text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange">
+                <Popover.Button className="inline-flex items-center justify-center text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-orange">
                   <span className="sr-only">Open menu</span>
                   <MenuAlt3Icon className="h-9 w-9" aria-hidden="true" />
                 </Popover.Button>
@@ -285,12 +285,7 @@ function Header(props) {
             </div>
           </div>
         </div>
-        <MenuMobile
-          locale={locale}
-          alts={alts}
-          model={model}
-          product={product}
-        />
+        <MenuMobile site={site} locale={locale} alts={alts} product={product} />
       </Popover>
       <div aria-hidden="true" className="hidden">
         <div className="rounded-tl-full bg-yellow-light" />
