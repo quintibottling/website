@@ -4,8 +4,10 @@ import { Fragment } from "react";
 import { resolveLink } from "lib/utils";
 import translate from "lib/locales";
 
-function LanguageSwitcher({ locale, model, alts, product }) {
+function LanguageSwitcher({ locale, model, alts, altsProduct }) {
   const locales = ["it", "en"];
+  console.log("ats:", alts);
+  console.log("ats:", altsProduct);
 
   return (
     <>
@@ -13,18 +15,15 @@ function LanguageSwitcher({ locale, model, alts, product }) {
         locales.map((l, i) => {
           const isActive = locale === l;
           const link = alts?.find((alt) => alt.locale === l)?.value || "";
-          const productsLink =
-            product?.find((p) => p.locale === l)?.value || "";
+          const productLink =
+            altsProduct?.find((p) => p.locale === l)?.value || "";
 
-          let hrefCheck = product
-            ? `/${resolveLink(model, l, link, productsLink)}`
-            : `/${resolveLink(model, l, link)}`;
           return (
             <Fragment key={l}>
               {i > 0 && (
                 <span className="px-2 text-xs text-white lg:px-0">-</span>
               )}
-              <Link href={hrefCheck} locale={l}>
+              <Link href={resolveLink(model, l, link, productLink)} locale={l}>
                 <a
                   className={`${
                     isActive ? "" : "text-white/70"

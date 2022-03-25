@@ -14,9 +14,9 @@ export default function CertificationCard({ locale, item }) {
               title={item.logo.title}
             />
           </div>
-          <div className="text-lg text-gold lg:mt-6 lg:text-2xl">
+          <h3 className="text-lg text-gold lg:mt-6 lg:text-2xl">
             {item.title}
-          </div>
+          </h3>
           <div className="opacity-9 text-sm lg:text-base">
             {renderHTML(item.text)}
           </div>

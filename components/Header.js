@@ -16,7 +16,7 @@ function classNames(...classes) {
 }
 
 function Header(props) {
-  const { locale, site, model, alts, product } = props;
+  const { locale, site, model, alts, altsProduct } = props;
   const router = useRouter();
 
   return (
@@ -278,14 +278,19 @@ function Header(props) {
                     locale={locale}
                     alts={alts}
                     model={model}
-                    product={product}
+                    altsProduct={altsProduct}
                   />
                 </div>
               </Popover.Group>
             </div>
           </div>
         </div>
-        <MenuMobile site={site} locale={locale} alts={alts} product={product} />
+        <MenuMobile
+          site={site}
+          locale={locale}
+          alts={alts}
+          altsProduct={altsProduct}
+        />
       </Popover>
       <div aria-hidden="true" className="hidden">
         <div className="rounded-tl-full bg-yellow-light" />

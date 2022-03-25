@@ -22,17 +22,6 @@ function ProductDetail({ locale, data, product, allTecnology, machines }) {
     console.log("machineCheck", machineCheck);
   });
 
-  // remove duplicate array from title
-  // const requestTecnology = [];
-  // machineCheck.map((machine) =>
-  //   machine.tecnology.map((tecnology) => {
-  //     if (tecnology.request == true) {
-  //       requestTecnology.push(tecnology.title);
-  //     }
-  //   })
-  // );
-  // const uniqueArray = [...new Set(requestTecnology)];
-
   // remove duplicate array from object
   const allTecnologyArray = [];
   machineCheck.map((machine) =>

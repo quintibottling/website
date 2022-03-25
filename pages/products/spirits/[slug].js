@@ -12,6 +12,10 @@ import TecnologyCard from "components/TecnologyCard";
 import OptionalCard from "components/OptionalCard";
 
 function MachineDetail({ locale, machine, data, allProducts }) {
+  const altsProduct = [
+    { locale: "it", value: "liquori" },
+    { locale: "en", value: "spirits" },
+  ];
   const requestTecnology = [];
   machine.tecnology.map((tecnology) => {
     if (tecnology.request == true) {
@@ -24,7 +28,7 @@ function MachineDetail({ locale, machine, data, allProducts }) {
       site={data}
       locale={locale}
       model={machine.model}
-      product={machine.product.slugProduct}
+      altsProduct={altsProduct}
     >
       <Head>{renderMetaTags(machine.seo.concat(data.site.favicon))}</Head>
       <MachineHero locale={locale} data={machine} category={machine.product} />

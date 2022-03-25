@@ -41,9 +41,9 @@ export default function NewsCard({ locale, data, template = null }) {
             </div>
             <h2 className="lg:text-lg">{data.title}</h2>
             {firstTextBlock && (
-              <h3 className="my-3 text-sm opacity-80 line-clamp-4 lg:text-base xl:line-clamp-2">
+              <div className="my-3 text-sm opacity-80 line-clamp-4 lg:text-base xl:line-clamp-2">
                 {renderHTML(firstTextBlock.text)}
-              </h3>
+              </div>
             )}
             <div className="mt-2 flex items-center gap-x-2 lg:mt-4">
               <div className="text-sm tracking-wide duration-200 group-hover:text-orange xl:text-base">

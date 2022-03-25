@@ -24,9 +24,9 @@ function BlogIndex({ blogIndex, posts, site, locale }) {
               </div>
               <h1 className="text-3xl lg:text-5xl">{blogIndex.titleHero}</h1>
               {blogIndex.textHero && (
-                <h2 className="max-w-[530px] opacity-80 lg:text-lg">
+                <div className="max-w-[530px] opacity-80 lg:text-lg">
                   {blogIndex.textHero}
-                </h2>
+                </div>
               )}
             </div>
           </div>

@@ -39,7 +39,14 @@ export default function Footer({ locale, site }) {
                   {translate("phone", locale)}
                 </div>
                 <div className="text-xs opacity-70 lg:text-base">
-                  {data.phone}
+                  <Link href={`tel:${data.phone}`}>
+                    <a
+                      className="duration-200 hover:text-orange"
+                      title={`call: ${data.phone}`}
+                    >
+                      {data.phone}
+                    </a>
+                  </Link>
                 </div>
               </div>
               <div className="grid gap-1 lg:gap-3">
@@ -47,7 +54,14 @@ export default function Footer({ locale, site }) {
                   {translate("email", locale)}
                 </div>
                 <div className="text-xs opacity-70 lg:text-base">
-                  {data.email}
+                  <Link href={`mailto:${data.email}`}>
+                    <a
+                      className="duration-200 hover:text-orange"
+                      title={`call: ${data.email}`}
+                    >
+                      {data.email}
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>

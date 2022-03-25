@@ -11,20 +11,27 @@ import translate from "lib/locales";
 import TecnologyCard from "components/TecnologyCard";
 import OptionalCard from "components/OptionalCard";
 
-function MachineDetail({ locale, machine, data, allProducts }) {
+function MachineDetail({ locale, machine, data }) {
+  const altsProduct = [
+    { locale: "it", value: "birra" },
+    { locale: "en", value: "beer" },
+  ];
   const requestTecnology = [];
+
   machine.tecnology.map((tecnology) => {
     if (tecnology.request == true) {
       requestTecnology.push(tecnology.title);
     }
   });
+  console.log("sss", machine.product.slug);
   return (
     <Layout
       alts={machine.alts}
       site={data}
       locale={locale}
       model={machine.model}
-      product={machine.product.slugProduct}
+      product={machine.product}
+      altsProduct={altsProduct}
     >
       <Head>{renderMetaTags(machine.seo.concat(data.site.favicon))}</Head>
       <MachineHero locale={locale} data={machine} category={machine.product} />
