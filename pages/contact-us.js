@@ -67,7 +67,9 @@ export default function ContactPage({ locale, site, page, info }) {
           </div>
           <div>
             <div className="prefix mb-4 text-gold">{page.prefix}</div>
-            <div className="my-2 text-lg lg:my-4 lg:pt-4">{page.text}</div>
+            <div className="my-2 text-lg lg:my-4 lg:pt-4">
+              {renderHTML(page.text)}
+            </div>
             <div className="mt-6">
               {page.linkWork.map((block) => {
                 return (
