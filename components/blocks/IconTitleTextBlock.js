@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { renderHTML } from "lib/utils";
 
 export default function IconTitleTextBlock({ locale, record }) {
   return (
@@ -10,7 +11,9 @@ export default function IconTitleTextBlock({ locale, record }) {
         <Image src={record.icon.url} layout="fill" alt={record.title} />
       </div>
       <div className="text-lg lg:text-xl">{record.title}</div>
-      <div className="text-sm text-black/80 lg:text-base">{record.title}</div>
+      <div className="text-sm text-black/80 lg:text-base">
+        {renderHTML(record.text)}
+      </div>
     </div>
   );
 }

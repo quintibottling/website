@@ -2,7 +2,6 @@ import translate from "lib/locales";
 
 export default function ComparisonTab({
   locale,
-  allTecnology,
   machines,
   resultAllTecnologyArray,
   product,

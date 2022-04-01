@@ -6,8 +6,6 @@ import translate from "lib/locales";
 
 function LanguageSwitcher({ locale, model, alts, altsProduct }) {
   const locales = ["it", "en"];
-  console.log("ats:", alts);
-  console.log("ats:", altsProduct);
 
   return (
     <>
