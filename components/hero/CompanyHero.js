@@ -24,12 +24,14 @@ export default function CompanyHero({ locale, data }) {
         alt={data.mobileImage.responsiveImage.alt}
         title={data.mobileImage.responsiveImage.title}
       />
-      <DatoImage
-        className="image--cover relative hidden max-h-[700px] overflow-hidden rounded-b-[50px] md:block"
-        data={data.deskImage.responsiveImage}
-        alt={data.deskImage.responsiveImage.alt}
-        title={data.deskImage.responsiveImage.title}
-      />
+      <div className="image--cover relative hidden h-[50vw] max-h-[700px] overflow-hidden rounded-b-[50px] md:block xl:h-[30vw]">
+        <DatoImage
+          data={data.deskImage.responsiveImage}
+          alt={data.deskImage.responsiveImage.alt}
+          title={data.deskImage.responsiveImage.title}
+          layout="fill"
+        />
+      </div>
     </header>
   );
 }

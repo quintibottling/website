@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.2",
-    "next-sitemap": "^2.5.11",
+    "next-sitemap": "^2.5.20",
     "pa11y": "^6.1.1",
     "pa11y-ci": "^3.0.1",
     "postcss": "^8.4.6",
