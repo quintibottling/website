@@ -14,7 +14,7 @@ export default function MachineHero({ locale, data, category }) {
     <div
       className={`${category.color} relative rounded-b-[20pt] text-white xl:rounded-b-[50pt]`}
     >
-      <div className="container -mt-20 px-4 pt-24 pb-10 md:px-6">
+      <div className="container -mt-20 px-4 pt-24 pb-10 md:px-6 md:pb-24 lg:pb-36">
         <div className="lg:grid lg:grid-cols-12">
           <div className="lg:col-span-5 lg:max-w-[300px]">
             <h1 className="mb-2 text-3xl lg:pt-10 lg:text-3xl xl:text-5xl">

@@ -23,36 +23,38 @@ export default function SlideMachine({
         layout="responsive"
         usePlaceholder={false}
       />
-      <div className="relative z-20 my-2 mb-6 flex items-center justify-between">
-        <div
-          className={`${
-            isActive ? "opacity-100" : "opacity-0"
-          } text-xs duration-100 xl:text-base`}
-        >
-          0{i + 1}
-          <span className="pl-1 text-gold-light">- 0{numberSliders}</span>
-        </div>
-        <div className="flex gap-2">
+      {i > 0 ? (
+        <div className="relative z-20 my-2 mb-6 flex items-center justify-between">
           <div
-            onClick={() => swiper.slidePrev()}
-            className="relative h-[50px] w-[50px] cursor-pointer rounded-full bg-white/10 duration-200 hover:bg-orange"
+            className={`${
+              isActive ? "opacity-100" : "opacity-0"
+            } text-xs duration-100 xl:text-base`}
           >
-            <ArrowLeftIcon
-              className="absolute--centered h-4 w-4 text-white"
-              aria-hidden="true"
-            />
+            0{i + 1}
+            <span className="pl-1 text-gold-light">- 0{numberSliders}</span>
           </div>
-          <div
-            onClick={() => swiper.slideNext()}
-            className="relative h-[50px] w-[50px] cursor-pointer rounded-full bg-white/10 duration-200 hover:bg-orange"
-          >
-            <ArrowRightIcon
-              className="absolute--centered h-4 w-4 text-white"
-              aria-hidden="true"
-            />
+          <div className="flex gap-2">
+            <div
+              onClick={() => swiper.slidePrev()}
+              className="relative h-[50px] w-[50px] cursor-pointer rounded-full bg-white/10 duration-200 hover:bg-orange"
+            >
+              <ArrowLeftIcon
+                className="absolute--centered h-4 w-4 text-white"
+                aria-hidden="true"
+              />
+            </div>
+            <div
+              onClick={() => swiper.slideNext()}
+              className="relative h-[50px] w-[50px] cursor-pointer rounded-full bg-white/10 duration-200 hover:bg-orange"
+            >
+              <ArrowRightIcon
+                className="absolute--centered h-4 w-4 text-white"
+                aria-hidden="true"
+              />
+            </div>
           </div>
         </div>
-      </div>
+      ) : null}
     </div>
   );
 }

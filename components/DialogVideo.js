@@ -16,7 +16,7 @@ export default function DialogVideo({ locale, data, template = null }) {
       <Transition.Root show={open} as={Fragment}>
         <Dialog
           onClose={setOpen}
-          className="fixed inset-0 z-10 overflow-y-auto"
+          className="fixed inset-0 z-50 overflow-y-auto"
           as="div"
         >
           <div className="flex min-h-screen items-center justify-center">

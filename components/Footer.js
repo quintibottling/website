@@ -209,6 +209,7 @@ export default function Footer({ locale, site }) {
                       href={`//www.iubenda.com/privacy-policy/${translate(
                         "cookiePolicyId"
                       )}`}
+                      target="_blank"
                       title={`${translate(
                         "externaLink",
                         locale
@@ -222,6 +223,7 @@ export default function Footer({ locale, site }) {
                       href={`//www.iubenda.com/privacy-policy/${translate(
                         "cookiePolicyId"
                       )}/cookie-policy`}
+                      target="_blank"
                       title={`${translate(
                         "externaLink",
                         locale

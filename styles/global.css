@@ -71,6 +71,10 @@ body {
   @apply w-full object-cover;
 }
 
+.image--contain img {
+  @apply w-full object-contain;
+}
+
 .blockGallery .swiper-button-next {
   @apply mr-2 block h-[32px] w-[32px] bg-arrowDx bg-contain bg-no-repeat after:hidden lg:mr-6;
 }

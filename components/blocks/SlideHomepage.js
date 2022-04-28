@@ -19,20 +19,20 @@ export default function SlideHomepage({
       <div
         className={`${
           isActive ? "scale-1" : "scale-0"
-        } absolute left-[40%] top-0 z-10 h-[70vw] w-[70vw] rounded-full bg-yellow-medium duration-[.6s] md:top-10 md:left-[5%] md:h-[440px] md:w-[440px] lg:top-6 lg:h-[680px] lg:w-[680px] xl:h-[770px] xl:w-[770px] 2xl:h-[700px] 2xl:w-[700px] 3xl:-left-[0px]`}
+        } absolute left-[40%] top-0 z-10 h-[70vw] w-[70vw] rounded-full bg-yellow-medium duration-[.6s] md:top-16 md:left-[5%] md:h-[300px] md:w-[300px] lg:top-20 lg:h-[400px] lg:w-[400px] xl:top-28 xl:h-[600px] xl:w-[600px] 2xl:h-[700px] 2xl:w-[700px] 3xl:-left-[0px]`}
       />
       <div className="px-4 md:pt-[40px] 3xl:-mt-12 3xl:pt-0">
-        <div className="relative md:w-[70vw] 3xl:w-full">
+        <div className="relative h-[70vw] w-full md:h-[50vw] md:w-[40vw] lg:h-[60vw] lg:w-[50vw] xl:h-[52vw] 2xl:h-[42vw] 3xl:h-[800px] 3xl:w-full">
           <DatoImage
             className={`${
               isActive
                 ? "translate-x-0 3xl:-translate-x-20"
                 : "translate-x-full"
-            } relative z-20 h-auto w-full max-w-[800px] delay-100 duration-[1s] lg:mb-20 3xl:mb-10 3xl:max-w-[900px]`}
+            } image--contain relative z-20 delay-100 duration-[1s] lg:mb-20 3xl:mb-10 3xl:max-w-[900px]`}
             data={slide.image.responsiveImage}
             alt={slide.image.responsiveImage.alt}
             title={slide.image.responsiveImage.title}
-            layout="responsive"
+            layout="fill"
             usePlaceholder={false}
           />
         </div>
@@ -48,7 +48,9 @@ export default function SlideHomepage({
           <div className="flex gap-2">
             <div
               onClick={() => swiper.slidePrev()}
-              className="relative h-[50px] w-[50px] cursor-pointer rounded-full bg-white/10 duration-200 hover:bg-orange"
+              className={`${
+                isActive ? "opacity-100" : "opacity-0"
+              } relative h-[50px] w-[50px] cursor-pointer rounded-full bg-white/10 duration-200 hover:bg-orange`}
             >
               <ArrowLeftIcon
                 className="absolute--centered h-4 w-4 text-white"
@@ -57,7 +59,9 @@ export default function SlideHomepage({
             </div>
             <div
               onClick={() => swiper.slideNext()}
-              className="relative h-[50px] w-[50px] cursor-pointer rounded-full bg-white/10 duration-200 hover:bg-orange"
+              className={`${
+                isActive ? "opacity-100" : "opacity-0"
+              } relative h-[50px] w-[50px] cursor-pointer rounded-full bg-white/10 duration-200 hover:bg-orange`}
             >
               <ArrowRightIcon
                 className="absolute--centered h-4 w-4 text-white"
@@ -89,7 +93,7 @@ export default function SlideHomepage({
                 aria-hidden="true"
               />
             </div>
-            <div className="pb-10 text-xs tracking-wide opacity-80 md:-ml-2 md:-translate-x-1/2 xl:-ml-4 xl:text-sm">
+            <div className="pb-10 text-xs tracking-wide opacity-80 md:-ml-3 md:w-1/2 md:-translate-x-full xl:-ml-6 xl:text-sm">
               {slide.subtitleLink}
             </div>
           </a>

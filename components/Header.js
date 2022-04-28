@@ -90,8 +90,12 @@ function Header(props) {
                                   )}
                                   locale={locale}
                                 >
-                                  <a title={item.title} onClick={() => close()}>
-                                    <span className="block whitespace-nowrap py-3 px-4 pr-12 text-sm text-black">
+                                  <a
+                                    className="group"
+                                    title={item.title}
+                                    onClick={() => close()}
+                                  >
+                                    <span className="block whitespace-nowrap py-3 px-4 pr-12 text-sm text-black duration-200 group-hover:text-orange">
                                       {item.labelMenu}
                                     </span>
                                   </a>
@@ -147,13 +151,13 @@ function Header(props) {
                                 >
                                   <a
                                     title={item.title}
-                                    className="flex items-center gap-x-2 py-[2px]"
+                                    className="group flex items-center gap-x-2 py-[2px]"
                                     onClick={() => close()}
                                   >
                                     <div
-                                      className={`${item.code} mx-4 -mt-[2px] h-3 w-3`}
+                                      className={`${item.code} mx-4 -mt-[2px] h-3 w-3 duration-300 group-hover:scale-110`}
                                     />
-                                    <span className="block whitespace-nowrap py-2 pr-12 text-sm text-black">
+                                    <span className="block whitespace-nowrap py-2 pr-12 text-sm text-black duration-300 group-hover:text-orange">
                                       {item.title}
                                     </span>
                                   </a>
@@ -207,8 +211,12 @@ function Header(props) {
                                   )}
                                   locale={locale}
                                 >
-                                  <a title={item.title} onClick={() => close()}>
-                                    <span className="block whitespace-nowrap py-3 px-4 pr-12 text-sm text-black">
+                                  <a
+                                    className="group"
+                                    title={item.title}
+                                    onClick={() => close()}
+                                  >
+                                    <span className="block whitespace-nowrap py-3 px-4 pr-12 text-sm text-black duration-200 group-hover:text-orange">
                                       {item.labelMenu}
                                     </span>
                                   </a>

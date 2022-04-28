@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { renderMetaTags } from "react-datocms";
+import { getCommon } from "lib/utils";
 
 import PostContent from "components/PostContent";
 import Layout from "components/Layout";
@@ -19,7 +20,6 @@ function ProductDetail({ locale, data, product, allTecnology, machines }) {
     if (Object.values(machine.product).indexOf(product.id) > -1) {
       machineCheck.push(machine);
     }
-    console.log("machineCheck", machineCheck);
   });
 
   // remove duplicate array from object
@@ -37,6 +37,8 @@ function ProductDetail({ locale, data, product, allTecnology, machines }) {
       return true;
     }
   });
+
+  const orderedTecnology = getCommon(allTecnology, resultAllTecnologyArray);
 
   // remove duplicate array from object
   const allOptionalArray = [];
@@ -116,7 +118,7 @@ function ProductDetail({ locale, data, product, allTecnology, machines }) {
             locale={locale}
             machines={machineCheck}
             product={product}
-            resultAllTecnologyArray={resultAllTecnologyArray}
+            resultAllTecnologyArray={orderedTecnology}
           />
         </div>
       </section>

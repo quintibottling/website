@@ -197,11 +197,18 @@ export default function FormComponent({ locale, titlePage }) {
                   <span className="pl-2 text-xs">
                     {translate("privacy_before", locale)}
                     <Link
-                      href={`//www.iubenda.com/privacy-policy/${COOKIE_TOKEN}`}
+                      href={`https://www.iubenda.com/privacy-policy/${translate(
+                        "cookiePolicyId",
+                        locale
+                      )}`}
                     >
                       <a
                         target="_blank"
-                        className="iubenda-nostyle no-brand iubenda-embed mx-1"
+                        title={`Privacy Policy ${translate(
+                          "externaLink",
+                          locale
+                        )}`}
+                        className="iubenda-nostyle no-brand iubenda-embed mx-1 underline"
                       >
                         Privacy Policy
                       </a>
