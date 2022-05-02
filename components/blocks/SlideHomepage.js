@@ -34,6 +34,7 @@ export default function SlideHomepage({
             title={slide.image.responsiveImage.title}
             layout="fill"
             usePlaceholder={false}
+            priority
           />
         </div>
         <div className="relative z-20 mt-8 flex items-center justify-between md:-ml-2 md:-mt-5 md:w-1/2 md:-translate-x-full md:-translate-y-[150px] lg:-mt-10 xl:-ml-6">
