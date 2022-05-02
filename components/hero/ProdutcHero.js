@@ -35,7 +35,7 @@ export default function ProductHero({ locale, data }) {
           data.model == "product"
             ? "-my-[55px] xl:-my-[70px]"
             : "rounded-b-[20px] bg-brown pt-12 md:rounded-b-[50px] lg:pt-24"
-        } relative z-0 max-h-[700px] md:h-[40vw] xl:h-[40vw]`}
+        } relative z-0 max-h-[500px] md:h-[40vw] xl:h-[40vw]`}
       >
         {data.deskImage != null ? (
           <>
@@ -45,7 +45,7 @@ export default function ProductHero({ locale, data }) {
               alt={data.mobileImage.responsiveImage.alt}
               title={data.mobileImage.responsiveImage.title}
             />
-            <div className="image--cover relative hidden h-[50vw] max-h-[700px] overflow-hidden rounded-b-[50px] md:block xl:h-[30vw]">
+            <div className="image--cover relative hidden h-[50vw] max-h-[500px] overflow-hidden rounded-b-[50px] md:block xl:h-[30vw]">
               <DatoImage
                 data={data.deskImage.responsiveImage}
                 alt={data.deskImage.responsiveImage.alt}

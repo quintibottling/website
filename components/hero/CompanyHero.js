@@ -24,7 +24,7 @@ export default function CompanyHero({ locale, data }) {
         alt={data.mobileImage.responsiveImage.alt}
         title={data.mobileImage.responsiveImage.title}
       />
-      <div className="image--cover relative hidden h-[50vw] max-h-[700px] overflow-hidden rounded-b-[50px] md:block xl:h-[30vw]">
+      <div className="image--cover relative hidden h-[50vw] max-h-[500px] overflow-hidden rounded-b-[50px] md:block xl:h-[30vw]">
         <DatoImage
           data={data.deskImage.responsiveImage}
           alt={data.deskImage.responsiveImage.alt}

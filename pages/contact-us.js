@@ -16,7 +16,7 @@ export default function ContactPage({ locale, site, page, info }) {
       <Head>{renderMetaTags(page.seo.concat(site.site.favicon))}</Head>
       <ProdutcHero data={page} />
       <section className="container--small">
-        <div className="grid gap-10 md:grid-cols-2 lg:gap-28">
+        <div className="grid gap-10 md:grid-cols-2 lg:gap-28 2xl:pt-20">
           <div className="grid gap-4 lg:grid-cols-2 lg:gap-8 lg:text-lg">
             <div className="prefix mb-2 text-gold lg:col-span-2">
               {translate("contacts", locale)}
@@ -31,7 +31,11 @@ export default function ContactPage({ locale, site, page, info }) {
               <div className="mb-1 text-sm text-black/80 lg:text-base">
                 {translate("phone", locale)}
               </div>
-              <p>{info.phone}</p>
+              <Link href={`tel:${info.phone}`}>
+                <a title="tel" className="hover:text-orange">
+                  <span>{info.phone}</span>
+                </a>
+              </Link>
             </div>
             <div>
               <div className="mb-1 text-sm text-black/80 lg:text-base">
@@ -47,7 +51,11 @@ export default function ContactPage({ locale, site, page, info }) {
               <div className="mb-1 text-sm text-black/80 lg:text-base">
                 After Sales
               </div>
-              <p>{info.afterSale}</p>
+              <Link href={`tel:${info.afterSale}`}>
+                <a title="tel" className="hover:text-orange">
+                  <span>{info.afterSale}</span>
+                </a>
+              </Link>
             </div>
             <div>
               <div className="mb-1 text-sm text-black/80 lg:text-base">
@@ -57,6 +65,7 @@ export default function ContactPage({ locale, site, page, info }) {
                 <Link href={s.link}>
                   <a
                     title={s.title}
+                    target="_blank"
                     className="block duration-200 hover:text-orange"
                   >
                     {s.title}

@@ -9,14 +9,14 @@ export default function ShareToSocial({ locale }) {
         <div className="text-black-dark mb-1 lg:text-lg">
           {translate("share", locale)}
         </div>
-        <button
+        {/* <button
           className="block text-left text-xs text-black/80 lg:text-base"
           data-sharer="facebook"
           data-hashtag="hashtag"
           data-url="https://ellisonleao.github.io/sharer.js/"
         >
           Facebook
-        </button>
+        </button> */}
         <button
           className="block text-left text-xs text-black/80 lg:text-base"
           data-sharer="linkedin"

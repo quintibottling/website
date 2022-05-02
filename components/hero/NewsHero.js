@@ -34,7 +34,7 @@ export default function NewsHero({ locale, data }) {
             </h1>
           </div>
         </div>
-        <div className="mt-12 max-h-[700px] rounded-b-[20px] md:relative md:h-[40vw] md:rounded-b-[50px] lg:pt-24">
+        <div className="mt-12 max-h-[500px] rounded-b-[20px] md:relative md:h-[40vw] md:rounded-b-[50px] lg:pt-24">
           <DatoImage
             className="relative overflow-hidden rounded-b-[20px] md:hidden"
             data={data.mobileImage.responsiveImage}
