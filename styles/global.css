@@ -116,3 +116,13 @@ tr {
 .form__error {
   @apply text-xs text-red-700;
 }
+
+/* .line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: left;
+} */

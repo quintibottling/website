@@ -41,7 +41,7 @@ export default function NewsCard({ locale, data, template = null }) {
             </div>
             <h2 className="lg:text-lg">{data.title}</h2>
             {firstTextBlock && (
-              <div className="my-3 text-sm opacity-80 line-clamp-4 lg:text-base xl:line-clamp-2">
+              <div className="my-3 text-sm opacity-80 line-clamp-4 lg:text-base xl:line-clamp-4">
                 {renderHTML(firstTextBlock.text)}
               </div>
             )}
