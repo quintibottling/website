@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import translate from "lib/locales";
 import { resolveLink } from "lib/utils";
+import Script from "next/script";
 
 export default function Footer({ locale, site }) {
   const data = site.footer;
@@ -232,6 +233,11 @@ export default function Footer({ locale, site }) {
                     >
                       Cookie Policy
                     </a>
+                    <Script
+                      dangerouslySetInnerHTML={{
+                        __html: `(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);`,
+                      }}
+                    />
                   </div>
                 </div>
               </div>
