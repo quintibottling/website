@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import { resolveLink } from "lib/utils";
 import translate from "lib/locales";
 
-function LanguageSwitcher({ locale, model, alts, altsProduct }) {
+function LanguageSwitcher({ locale, model, alts, altsProduct, handleClose }) {
   const locales = ["it", "en"];
 
   return (
@@ -23,6 +23,7 @@ function LanguageSwitcher({ locale, model, alts, altsProduct }) {
               )}
               <Link href={resolveLink(model, l, link, productLink)} locale={l}>
                 <a
+                  onClick={() => handleClose()}
                   className={`${
                     isActive ? "" : "text-white/70"
                   } text-white duration-200 hover:text-orange lg:-mt-[1px] lg:ml-8 lg:block`}

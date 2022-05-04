@@ -297,6 +297,7 @@ function Header(props) {
           site={site}
           locale={locale}
           alts={alts}
+          model={model}
           altsProduct={altsProduct}
         />
       </Popover>
