@@ -16,7 +16,7 @@ function CompanyPage({ locale, data, companyPage }) {
       model={companyPage.model}
     >
       <Head>{renderMetaTags(companyPage.seo.concat(data.site.favicon))}</Head>
-      <CompanyHero data={companyPage} />
+      <CompanyHero data={companyPage} locale={locale} />
       <section>
         {companyPage.body.map((block) => {
           return (

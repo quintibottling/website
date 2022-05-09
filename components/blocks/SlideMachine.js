@@ -33,26 +33,28 @@ export default function SlideMachine({
             0{i + 1}
             <span className="pl-1 text-gold-light">- 0{numberSliders}</span>
           </div>
-          <div className="flex gap-2">
-            <div
-              onClick={() => swiper.slidePrev()}
-              className="relative h-[50px] w-[50px] cursor-pointer rounded-full bg-white/10 duration-200 hover:bg-orange"
-            >
-              <ArrowLeftIcon
-                className="absolute--centered h-4 w-4 text-white"
-                aria-hidden="true"
-              />
+          {numberSliders > 1 ? (
+            <div className="flex gap-2">
+              <div
+                onClick={() => swiper.slidePrev()}
+                className="relative h-[50px] w-[50px] cursor-pointer rounded-full bg-white/10 duration-200 hover:bg-orange"
+              >
+                <ArrowLeftIcon
+                  className="absolute--centered h-4 w-4 text-white"
+                  aria-hidden="true"
+                />
+              </div>
+              <div
+                onClick={() => swiper.slideNext()}
+                className="relative h-[50px] w-[50px] cursor-pointer rounded-full bg-white/10 duration-200 hover:bg-orange"
+              >
+                <ArrowRightIcon
+                  className="absolute--centered h-4 w-4 text-white"
+                  aria-hidden="true"
+                />
+              </div>
             </div>
-            <div
-              onClick={() => swiper.slideNext()}
-              className="relative h-[50px] w-[50px] cursor-pointer rounded-full bg-white/10 duration-200 hover:bg-orange"
-            >
-              <ArrowRightIcon
-                className="absolute--centered h-4 w-4 text-white"
-                aria-hidden="true"
-              />
-            </div>
-          </div>
+          ) : null}
         </div>
       ) : null}
     </div>

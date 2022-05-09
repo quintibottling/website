@@ -33,7 +33,7 @@ function TecnologyPage({ locale, data, technology, machines }) {
       model={technology.model}
     >
       <Head>{renderMetaTags(technology.seo.concat(data.site.favicon))}</Head>
-      <ProdutcHero data={technology} />
+      <ProdutcHero data={technology} locale={locale} />
       <section className="mt-10 xl:mt-16">
         <div className="container--small">
           {technology.introBlock.map((block) => {
