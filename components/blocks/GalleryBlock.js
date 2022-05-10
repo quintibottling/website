@@ -10,7 +10,7 @@ export default function GalleryBlock({ locale, record }) {
       <Swiper
         modules={[Navigation, A11y]}
         spaceBetween={0}
-        navigation
+        navigation={record.sliders.lenght > 1 ? true : false}
         slidesPerView={1}
       >
         {record.sliders.map((slider, i) => (
