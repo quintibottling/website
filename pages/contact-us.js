@@ -106,7 +106,7 @@ export default function ContactPage({ locale, site, page, info }) {
       <section>
         <div className="container--small">
           {page.form.map((block) => (
-            <PostContent key={block.id} record={block} />
+            <PostContent key={block.id} record={block} locale={locale} />
           ))}
         </div>
       </section>
