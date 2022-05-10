@@ -49,7 +49,11 @@
     "compatible": "Compatibile con:",
     "backNews": "Torna alle news",
     "share": "Condividi",
-    "otherNews": "Altre News"
+    "otherNews": "Altre News",
+    "vino": "Vino",
+    "olio": "Olio",
+    "liquori": "Liquori",
+    "birra": "Birra"
   },
   "en": {
     "it": "Ita",
@@ -101,6 +105,10 @@
     "compatible": "Compatible with:",
     "backNews": "Back to news",
     "share": "Share",
-    "otherNews": "Other News"
+    "otherNews": "Other News",
+    "vino": "Wine",
+    "olio": "Olive Oil",
+    "liquori": "Spirits",
+    "birra": "Beer"
   }
 }
