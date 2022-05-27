@@ -8,11 +8,17 @@ import PostContent from "components/PostContent";
 import Layout from "components/Layout";
 import NewsHero from "components/hero/NewsHero";
 import ShareToSocial from "components/ShareToSocial";
+import { useRouter } from "next/router";
 
 import * as queries from "lib/queries";
 import fetchDato from "lib/dato";
 
 function BlogPost({ blogPost, allNews, site, locale }) {
+  const router = useRouter();
+  const path = Object(router.asPath);
+  const lang = locale == "it" ? "" : `/${locale}`;
+  const url = `https://quintibottling.com${lang}${path}`;
+
   return (
     <>
       <Layout
@@ -40,7 +46,7 @@ function BlogPost({ blogPost, allNews, site, locale }) {
               </div>
               <div className="md:sticky md:top-0">
                 <div className="border-t border-pink pt-1 md:col-span-1">
-                  <ShareToSocial locale={locale} />
+                  <ShareToSocial locale={locale} url={url} />
                 </div>
               </div>
             </div>
