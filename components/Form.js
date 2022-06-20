@@ -98,7 +98,7 @@ export default function FormComponent({ locale, titlePage }) {
         subject: `Contatto dalla pagina ${titlePage}`,
         from_name: "www.quintibottling.com",
         Nome: formValues.name,
-        Cognome: formValues.surname,
+        Azienda: formValues.company,
         Email: formValues.email,
         "Numero di telefono": formValues.phone,
         Messaggio: formValues.messagge,
@@ -126,7 +126,7 @@ export default function FormComponent({ locale, titlePage }) {
         <Formik
           initialValues={{
             name: "",
-            surname: "",
+            company: "",
             email: "",
             phone: "",
             messagge: "",
@@ -134,7 +134,7 @@ export default function FormComponent({ locale, titlePage }) {
           }}
           validationSchema={Yup.object({
             name: Yup.string().max(30, "min30").required("fieldRequest"),
-            surname: Yup.string().max(30, "min30").required("fieldRequest"),
+            company: Yup.string().required("fieldRequest"),
             email: Yup.string().email("emailNoValid").required("fieldRequest"),
             phone: Yup.string()
               .matches(phoneRegExp, "phoneNoValid")
@@ -160,12 +160,12 @@ export default function FormComponent({ locale, titlePage }) {
                 placeholder={`${translate("firstName", locale)}`}
               />
               <MyTextInput
-                label={`${translate("lastName", locale)}`}
+                label={`${translate("company", locale)}`}
                 locale={locale}
-                name="surname"
-                id="surname"
+                name="company"
+                id="company"
                 type="text"
-                placeholder={`${translate("lastName", locale)}`}
+                placeholder={`${translate("company", locale)}`}
               />
               <MyTextInput
                 label="Email"
