@@ -18,7 +18,9 @@ export default function ProductHero({ locale, data }) {
                 <>{data.title}</>
               ) : null}
             </div>
-            <h1 className="text-3xl lg:text-5xl">{data.titleHero}</h1>
+            <h1 className="text-3xl lg:text-4xl xl:text-5xl">
+              {data.titleHero}
+            </h1>
             <h2 className="max-w-[530px] opacity-80 lg:text-lg">
               {data.textHero}
             </h2>
@@ -45,7 +47,7 @@ export default function ProductHero({ locale, data }) {
               alt={data.mobileImage.responsiveImage.alt}
               title={data.mobileImage.responsiveImage.title}
             />
-            <div className="image--cover relative hidden h-[50vw] max-h-[500px] overflow-hidden rounded-b-[50px] md:block xl:h-[30vw]">
+            <div className="image--cover relative hidden h-full max-h-[500px] overflow-hidden rounded-b-[50px] md:block xl:h-[30vw]">
               <DatoImage
                 data={data.deskImage.responsiveImage}
                 alt={data.deskImage.responsiveImage.alt}

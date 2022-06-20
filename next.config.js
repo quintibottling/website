@@ -4,8 +4,8 @@
 // module.exports = withBundleAnalyzer({})
 
 module.exports = {
-  siteUrl: process.env.SITE_URL,
-  generateRobotsTxt: true,
+  // siteUrl: process.env.SITE_URL,
+  // generateRobotsTxt: true,
   reactStrictMode: true,
   i18n: {
     locales: ["it", "en"],
