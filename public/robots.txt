@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: http://quintibottling.com/
+Host: https://quintibottling.com/
 
 # Sitemaps
-Sitemap: http://quintibottling.com/sitemap.xml
+Sitemap: https://quintibottling.com/sitemap.xml
