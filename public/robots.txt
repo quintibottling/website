@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: http://quintibottling.com/
+
+# Sitemaps
+Sitemap: http://quintibottling.com/sitemap.xml
