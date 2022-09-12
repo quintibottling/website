@@ -15,6 +15,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Component {...pageProps} />
       <Script
+        id="iubenda-cs"
         src="//cdn.iubenda.com/cs/iubenda_cs.js"
         strategy="afterInteractive"
       />

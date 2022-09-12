@@ -5,7 +5,7 @@ import { renderHTML } from "lib/utils";
 
 export default function TecnologyCard({ locale, data, i, machine }) {
   let prefix;
-  if (i < 10) {
+  if (i < 9) {
     prefix = 0;
   }
 
@@ -19,21 +19,19 @@ export default function TecnologyCard({ locale, data, i, machine }) {
                 open ? "" : "border-b"
               } flex w-full items-center justify-between py-3 first-of-type:border-t focus:outline-none lg:py-6`}
             >
-              <div className="">
+              <div className="flex items-center">
                 <span className="pr-3 text-xs text-gold lg:pt-0 lg:pr-6 lg:text-base">
                   {prefix}
                   {i + 1}
                 </span>
-                {data.request == true ? (
-                  <div
-                    className={`${machine.product.code} mr-3 inline-block h-3 w-3 lg:mr-6 lg:h-4 lg:w-4`}
-                  />
-                ) : (
-                  ""
-                )}
                 <span className={`${open ? "text-orange" : ""} lg:text-2xl`}>
                   {data.title}
                 </span>
+                {data.request == true ? (
+                  <div
+                    className={`${machine.product.code} ml-3 inline-block h-3 w-3 lg:ml-6 lg:h-4 lg:w-4`}
+                  />
+                ) : null}
               </div>
               {open ? (
                 <MinusIcon className="mt-1 h-4 w-4 text-orange lg:mt-0 lg:h-6 lg:w-6" />
