@@ -14,14 +14,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Component {...pageProps} />
-      <Script
-        id="iubenda-cs"
-        src="//cdn.iubenda.com/cs/iubenda_cs.js"
-        strategy="afterInteractive"
-      />
+      <Script id="iubenda-cs" src="//cdn.iubenda.com/cs/iubenda_cs.js" />
       <Script
         id="iubenda"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
           var _iub = _iub || [];
@@ -30,6 +25,7 @@ function MyApp({ Component, pageProps }) {
             "siteId":${IUBENDA_SITE_ID},
             "cookiePolicyId":${translate("cookiePolicyId", locale)},
             perPurposeConsent: true,
+            consentOnContinuedBrowsing: false,
             consentOnDocument: true,
             purposes: "1, 3, 4",
             "banner":{

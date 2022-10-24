@@ -46,9 +46,13 @@ export async function getStaticPaths() {
   return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params, locale }) {
+export async function getStaticProps({ params, locale, preview }) {
   const { slug } = params;
-  const response = await fetchDato(queries.getCompanyPage, { slug, locale });
+  const response = await fetchDato(
+    queries.getCompanyPage,
+    { slug, locale },
+    preview
+  );
   const data = await fetchDato(queries.site, { locale });
   return {
     props: {

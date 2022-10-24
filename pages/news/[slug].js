@@ -87,10 +87,14 @@ export async function getStaticPaths() {
   return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params, locale }) {
+export async function getStaticProps({ params, locale, preview }) {
   const { slug } = params;
   const site = await fetchDato(queries.site, { locale });
-  const response = await fetchDato(queries.getBlogPost, { slug, locale });
+  const response = await fetchDato(
+    queries.getBlogPost,
+    { slug, locale },
+    preview
+  );
   const responseBlogIndex = await fetchDato(queries.getBlogIndex, { locale });
   return {
     props: {
