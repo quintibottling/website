@@ -16,6 +16,7 @@ import TitleTextBlock from "./blocks/TitleTextBlock.js";
 import TwoColumnBlock from "./blocks/TwoColumnBlock.js";
 import CertificationBlock from "./blocks/CertificationBlock.js";
 import VideoBlock from "./blocks/VideoBlock.js";
+import FunctionsPlusBlock from "./blocks/FunctionsPlusBlock.js";
 
 export default function PostContent({ record, locale, background, titlePage }) {
   switch (record.model) {
@@ -81,5 +82,9 @@ export default function PostContent({ record, locale, background, titlePage }) {
       return <CertificationBlock record={record} locale={locale} />;
     case "video_block":
       return <VideoBlock record={record} locale={locale} />;
+    case "functions_plus_block":
+      return <FunctionsPlusBlock record={record} locale={locale} />;
+    default:
+      return record.model;
   }
 }
