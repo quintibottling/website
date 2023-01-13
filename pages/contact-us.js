@@ -49,7 +49,7 @@ export default function ContactPage({ locale, site, page, info }) {
             </div>
             <div>
               <div className="mb-1 text-sm text-black/80 lg:text-base">
-                After Sales
+                Support
               </div>
               <Link href={`tel:${info.afterSale}`}>
                 <a title="tel" className="hover:text-orange">
