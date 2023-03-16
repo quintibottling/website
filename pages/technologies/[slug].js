@@ -65,10 +65,12 @@ function TecnologyPage({ locale, data, technology, machines }) {
                 ({ id }, index) => !idsCheck.includes(id, index + 1)
               );
               productArray = [];
+              const products =
+                resultProd.length > 0 ? resultProd : tDetail.products;
               return (
                 <TecDetailCard
                   data={tDetail}
-                  products={resultProd}
+                  products={products}
                   locale={locale}
                 />
               );
