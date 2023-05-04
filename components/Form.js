@@ -101,6 +101,8 @@ export default function FormComponent({ locale, titlePage }) {
         Azienda: formValues.company,
         Email: formValues.email,
         "Numero di telefono": formValues.phone,
+        Paese: formValues.country,
+        Website: formValues.website,
         Messaggio: formValues.messagge,
       }),
     });
@@ -130,6 +132,8 @@ export default function FormComponent({ locale, titlePage }) {
             email: "",
             phone: "",
             messagge: "",
+            country: "",
+            website: "",
             acceptedTerms: false,
           }}
           validationSchema={Yup.object({
@@ -182,6 +186,22 @@ export default function FormComponent({ locale, titlePage }) {
                 id="phone"
                 type="number"
                 placeholder={`${translate("phone", locale)}`}
+              />
+              <MyTextInput
+                label={`${translate("country", locale)}`}
+                locale={locale}
+                name="country"
+                id="country"
+                type="text"
+                placeholder={`${translate("country", locale)}`}
+              />
+              <MyTextInput
+                label={`${translate("website", locale)}`}
+                locale={locale}
+                name="website"
+                id="website"
+                type="url"
+                placeholder={`${translate("website", locale)}`}
               />
               <div className="lg:col-span-2">
                 <MyTextarea
