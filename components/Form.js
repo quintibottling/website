@@ -144,6 +144,7 @@ export default function FormComponent({ locale, titlePage }) {
               .matches(phoneRegExp, "phoneNoValid")
               .required("fieldRequest"),
             messagge: Yup.string().required("fieldRequest"),
+            country: Yup.string().required("fieldRequest"),
             acceptedTerms: Yup.boolean()
               .required("fieldRequest")
               .oneOf([true], "acceptCondition"),
