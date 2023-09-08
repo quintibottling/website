@@ -22,6 +22,7 @@
     "fieldRequest": "* Campo richiesto",
     "phoneNoValid": "Numero di telefono non valido",
     "emailNoValid": "Email non valida",
+    "websiteNoValid": "Sito web non valido",
     "privacy_before": "Letta la",
     "privacy_after": "accetto ai sensi del Regolamento UE 2016/679 (GDPR)",
     "404title": "Pagina non trovata",
@@ -55,7 +56,9 @@
     "vino": "Vino",
     "olio": "Olio",
     "liquori": "Liquori",
-    "birra": "Birra"
+    "birra": "Birra", 
+    "formSuccessText": "Messaggio inviato con successo. Grazie per averci contattato!",
+    "formErrorText": "Errore. Messaggio non inviato"
   },
   "en": {
     "it": "Ita",
@@ -80,6 +83,7 @@
     "fieldRequest": "* Field request",
     "phoneNoValid": "Phone number is not valid",
     "emailNoValid": "Email format is not valid",
+    "websiteNoValid": "Website format is not valid",
     "privacy_before": "I've read and agree with the",
     "privacy_after": "according to UE 2016/679 (GDPR)",
     "404title": "Page not found",
@@ -113,6 +117,8 @@
     "vino": "Wine",
     "olio": "Olive Oil",
     "liquori": "Spirits",
-    "birra": "Beer"
+    "birra": "Beer",
+    "formSuccessText": "Message sent. Thank you!",
+    "formErrorText": "Error. Message not sent"
   }
 }

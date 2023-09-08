@@ -4,7 +4,7 @@ import Link from "next/link";
 import * as Yup from "yup";
 import { useRouter } from "next/router";
 import { ArrowRightIcon } from "@heroicons/react/solid";
-import Script from "next/script";
+import FormMessage from "./blocks/FormMessage";
 
 import translate from "lib/locales";
 
@@ -85,8 +85,9 @@ const MyCheckbox = ({ locale, children, ...props }) => {
 };
 
 export default function FormComponent({ locale, titlePage }) {
+  const [result, setResult] = React.useState("");
   async function handleSubmit(formValues) {
-    // console.log("formValues", formValues);
+    //console.log("formValues", formValues);
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: {
@@ -95,7 +96,7 @@ export default function FormComponent({ locale, titlePage }) {
       },
       body: JSON.stringify({
         apikey: WEB3FORMS_KEY,
-        subject: `Contatto dalla pagina ${titlePage}`,
+        subject: `Contatto dalla pagina ${pageTitleForEmail}`,
         from_name: "www.quintibottling.com",
         Nome: formValues.name,
         Azienda: formValues.company,
@@ -107,14 +108,20 @@ export default function FormComponent({ locale, titlePage }) {
       }),
     });
     const result = await response.json();
-    // if (result.success) {
-    //   console.log(result);
-    // }
+    if (result.success) {
+      setResult("success");
+    } else {
+      setResult("error");
+    }
   }
 
   const router = useRouter();
+  const pageTitle = titlePage? titlePage : router.asPath.split('/').pop().replace(/-/g, ' ')
+  const pageTitleForEmail = pageTitle.charAt(0).toUpperCase() + pageTitle.slice(1);
+
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+  const websiteRegExp =  /^((http|https):\/\/)?(www.)?(?!.*(http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+(\/)?.([\w\?[a-zA-Z-_%\/@?]+)*([^\/\w\?[a-zA-Z0-9_-]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/;
 
   return (
     <>
@@ -145,13 +152,15 @@ export default function FormComponent({ locale, titlePage }) {
               .required("fieldRequest"),
             messagge: Yup.string().required("fieldRequest"),
             country: Yup.string().required("fieldRequest"),
+            website: Yup.string()
+              .matches(websiteRegExp, "websiteNoValid").required("fieldRequest"),
             acceptedTerms: Yup.boolean()
               .required("fieldRequest")
               .oneOf([true], "acceptCondition"),
           })}
           onSubmit={(formValues) => {
             handleSubmit(formValues);
-            router.push("/");
+            // router.push("/");
           }}
         >
           <Form>
@@ -201,7 +210,7 @@ export default function FormComponent({ locale, titlePage }) {
                 locale={locale}
                 name="website"
                 id="website"
-                type="url"
+                type="text"
                 placeholder={`${translate("website", locale)}`}
               />
               <div className="lg:col-span-2">
@@ -256,6 +265,7 @@ export default function FormComponent({ locale, titlePage }) {
             </div>
           </Form>
         </Formik>
+        <FormMessage status={result} locale={locale} />
       </div>
     </>
   );

@@ -23,7 +23,7 @@ function LanguageSwitcher({ locale, model, alts, altsProduct, handleClose }) {
               )}
               <Link href={resolveLink(model, l, link, productLink)} locale={l}>
                 <a
-                  onClick={() => handleClose()}
+                  onClick={() => handleClose}
                   className={`${
                     isActive ? "" : "text-white/70"
                   } text-white duration-200 hover:text-orange lg:-mt-[1px] lg:ml-8 lg:block`}
