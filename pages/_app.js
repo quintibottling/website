@@ -21,6 +21,14 @@ function MyApp({ Component, pageProps }) {
           __html: `
           var _iub = _iub || [];
           _iub.csConfiguration = {
+            "askConsentAtCookiePolicyUpdate":true,
+            "countryDetection":true,
+            "enableFadp":true,
+            "enableLgpd":true,
+            "lgpdAppliesGlobally":false,
+            "perPurposeConsent":true,
+            "whitelabel":true,
+            "tcfPurposes":{"2":"consent_only","7":"consent_only","8":"consent_only","9":"consent_only","10":"consent_only","11":"consent_only"},
             "lang":"${locale}",
             "siteId":${IUBENDA_SITE_ID},
             "cookiePolicyId":${translate("cookiePolicyId", locale)},
@@ -29,9 +37,13 @@ function MyApp({ Component, pageProps }) {
             consentOnDocument: true,
             purposes: "1, 3, 4",
             "banner":{
+              "prependOnBody":true,
+              "listPurposes":true,
+              "showPurposesToggles":true,
+              "explicitWithdrawal":true,
               "acceptButtonDisplay":true,
               "customizeButtonDisplay":true,
-              "position":"float-bottom-right",
+              "position":"float-top-center",
               "closeButtonDisplay":false,
               "acceptButtonColor":"#6d5b31",
               "acceptButtonCaptionColor":"white",
@@ -42,7 +54,8 @@ function MyApp({ Component, pageProps }) {
               "textColor":"#ffffff",
               "backgroundColor":"#27231B",
               "rejectButtonDisplay":true,
-              "closeButtonRejects":true
+              "closeButtonRejects":true,
+              "logo":"/logo/quinti_white.svg"
             },
             callback: {
               onPreferenceExpressedOrNotNeeded: function(preference) {
@@ -75,8 +88,23 @@ function MyApp({ Component, pageProps }) {
         `,
         }}
       />
+      <Script
+        type="text/javascript"
+        src="//cdn.iubenda.com/cs/tcf/stub-v2.js"
+      ></Script>
+      <Script
+        type="text/javascript"
+        src="//cdn.iubenda.com/cs/tcf/safe-tcf-v2.js"
+      ></Script>
+      <Script
+        type="text/javascript"
+        src="//cdn.iubenda.com/cs/iubenda_cs.js"
+        charset="UTF-8"
+        async
+      ></Script>
     </>
   );
 }
 
 export default MyApp;
+

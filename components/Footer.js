@@ -233,6 +233,18 @@ export default function Footer({ locale, site }) {
                     >
                       Cookie Policy
                     </a>
+                    <span className="px-1"> - </span>
+                    <a
+                      href="#"
+                      target="_blank"
+                      title={`${translate(
+                        "externaLink",
+                        locale
+                      )} {translate("preferencePolicy", locale)}`}
+                      className="iubenda-cs-preferences-link duration-200 hover:text-orange"
+                    >
+                      {translate("preferencePolicy", locale)}
+                    </a>
                   </div>
                 </div>
               </div>

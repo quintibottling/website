@@ -58,7 +58,8 @@
     "liquori": "Liquori",
     "birra": "Birra", 
     "formSuccessText": "Messaggio inviato con successo. Grazie per averci contattato!",
-    "formErrorText": "Errore. Messaggio non inviato"
+    "formErrorText": "Errore. Messaggio non inviato",
+    "preferencePolicy": "Preferenze privacy"
   },
   "en": {
     "it": "Ita",
@@ -119,6 +120,7 @@
     "liquori": "Spirits",
     "birra": "Beer",
     "formSuccessText": "Message sent. Thank you!",
-    "formErrorText": "Error. Message not sent"
+    "formErrorText": "Error. Message not sent",
+    "preferencePolicy": "Privacy preferences"
   }
 }
