@@ -25,7 +25,6 @@ function MyApp({ Component, pageProps }) {
             "countryDetection":true,
             "enableFadp":true,
             "enableLgpd":true,
-            "enableTcf": true,
             "lgpdAppliesGlobally":false,
             "googleAdditionalConsentMode": true,
             "perPurposeConsent":true,
