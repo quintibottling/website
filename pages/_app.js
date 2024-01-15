@@ -22,30 +22,25 @@ function MyApp({ Component, pageProps }) {
           var _iub = _iub || [];
           _iub.csConfiguration = {
             "askConsentAtCookiePolicyUpdate":true,
+            "cookiePolicyInOtherWindow":true,
             "countryDetection":true,
             "enableFadp":true,
             "enableLgpd":true,
             "lgpdAppliesGlobally":false,
-            "googleAdditionalConsentMode": true,
             "perPurposeConsent":true,
-            "whitelabel":true,
-            "tcfPurposes":{"2":"consent_only","7":"consent_only","8":"consent_only","9":"consent_only","10":"consent_only","11":"consent_only"},
             "lang":"${locale}",
+            "whitelabel":true,
             "siteId":${IUBENDA_SITE_ID},
             "cookiePolicyId":${translate("cookiePolicyId", locale)},
-            perPurposeConsent: true,
-            consentOnContinuedBrowsing: false,
-            consentOnDocument: true,
             purposes: "1, 3, 4",
             "banner":{
               "prependOnBody":true,
-              "listPurposes":true,
               "showPurposesToggles":true,
-              "explicitWithdrawal":true,
               "acceptButtonDisplay":true,
-              "customizeButtonDisplay":true,
-              "position":"float-top-center",
               "closeButtonDisplay":false,
+              "explicitWithdrawal":true,
+              "listPurposes":true,
+              "position":"bottom",
               "acceptButtonColor":"#6d5b31",
               "acceptButtonCaptionColor":"white",
               "customizeButtonColor":"#6d5b31",
@@ -58,11 +53,6 @@ function MyApp({ Component, pageProps }) {
               "closeButtonRejects":true,
               "logo":"/logo/quinti_white.svg"
             },
-            callback: {
-              onPreferenceExpressedOrNotNeeded: function(preference) {
-                window.consentIsGiven = preference;
-              }
-            }
           }
           `,
         }}
@@ -90,22 +80,19 @@ function MyApp({ Component, pageProps }) {
         }}
       />
       <Script
+        id="autoblocking"
         type="text/javascript"
-        src="//cdn.iubenda.com/cs/tcf/stub-v2.js"
-      ></Script>
+        src={`https://cs.iubenda.com/autoblocking/${IUBENDA_SITE_ID}.js`}
+      />
       <Script
-        type="text/javascript"
-        src="//cdn.iubenda.com/cs/tcf/safe-tcf-v2.js"
-      ></Script>
-      <Script
+        id="iubenda_cs"
         type="text/javascript"
         src="//cdn.iubenda.com/cs/iubenda_cs.js"
         charset="UTF-8"
-        async
-      ></Script>
+        async={true}
+      />
     </>
   );
 }
 
 export default MyApp;
-
