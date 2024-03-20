@@ -111,7 +111,7 @@ export default function Home({
   );
 }
 
-export async function getStaticProps({ locale = "it", preview }) {
+export async function getStaticProps({ locale = 'en', preview }) {
   const response = await fetchDato(queries.getHomepage, { locale }, preview);
   const site = await fetchDato(queries.site, { locale });
   return {

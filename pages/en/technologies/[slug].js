@@ -101,22 +101,16 @@ function TecnologyPage({ locale, data, technology, machines }) {
 }
 
 export async function getStaticPaths() {
-  const response = await fetchDato(queries.getAllTechnologies);
-  const routesWithLocales = response.tecnologies.reduce((all, tecnology) => {
-    const { slugs } = tecnology;
-    const slugXLocale = slugs.map(({ locale, slug }) => {
-      return { slug, locale };
-    });
-    return [...all, ...slugXLocale];
-  }, []);
-  const paths = routesWithLocales.map(({ slug, locale }) => ({
+  const response = await fetchDato(queries.getAllTechnologies, {
+    locale: 'en',
+  });
+  const paths = response.tecnologies.map(({ slug, locale }) => ({
     params: { slug },
-    locale,
   }));
   return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params, locale }) {
+export async function getStaticProps({ params, locale = 'en' }) {
   const { slug } = params;
   const response = await fetchDato(queries.getTecnology, { slug, locale });
   const data = await fetchDato(queries.site, { locale });

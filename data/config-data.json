@@ -1,0 +1,31 @@
+{
+  "defaultLocale": "it",
+  "locales": ["it", "en"],
+
+  "translations": {
+    "azienda": {
+      "en": "company"
+    },
+    "prodotti": {
+      "en": "products"
+    },
+    "olio": {
+      "en": "olive-oil"
+    },
+    "liquori": {
+      "en": "spirits"
+    },
+    "birra": {
+      "en": "beer"
+    },
+    "vino": {
+      "en": "wine"
+    },
+    "tecnologie": {
+      "en": "technologies"
+    },
+    "contatti": {
+      "en": "contact-us"
+    }
+  }
+}

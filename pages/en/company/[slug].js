@@ -31,22 +31,16 @@ function CompanyPage({ locale, data, companyPage }) {
 }
 
 export async function getStaticPaths() {
-  const response = await fetchDato(queries.getAllCompanyPages);
-  const routesWithLocales = response.companyPages.reduce((all, companyPage) => {
-    const { slugs } = companyPage;
-    const slugXLocale = slugs.map(({ locale, slug }) => {
-      return { slug, locale };
-    });
-    return [...all, ...slugXLocale];
-  }, []);
-  const paths = routesWithLocales.map(({ slug, locale }) => ({
+  const response = await fetchDato(queries.getAllCompanyPages, {
+    locale: 'en',
+  });
+  const paths = response.companyPages.map(({ slug }) => ({
     params: { slug },
-    locale,
   }));
   return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params, locale, preview }) {
+export async function getStaticProps({ params, locale = 'en', preview }) {
   const { slug } = params;
   const response = await fetchDato(
     queries.getCompanyPage,

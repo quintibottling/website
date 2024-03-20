@@ -92,7 +92,7 @@ function BlogIndex({ blogIndex, items, itemsForPage, site, locale }) {
   );
 }
 
-export async function getStaticProps({ locale = "it", preview }) {
+export async function getStaticProps({ locale = 'en', preview }) {
   let flag = true;
   let articles = {};
   let page = 0;

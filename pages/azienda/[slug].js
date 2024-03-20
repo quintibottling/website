@@ -7,16 +7,21 @@ import * as queries from "lib/queries";
 import fetchDato from "lib/dato";
 import CompanyHero from "components/hero/CompanyHero";
 
-function EditorialPage({ locale, data, page }) {
+function CompanyPage({ locale, data, companyPage }) {
   return (
-    <Layout alts={page.alts} site={data} locale={locale} model={page.model}>
-      <Head>{renderMetaTags(page.seo.concat(data.site.favicon))}</Head>
-      <CompanyHero data={page} />
+    <Layout
+      alts={companyPage.alts}
+      site={data}
+      locale={locale}
+      model={companyPage.model}
+    >
+      <Head>{renderMetaTags(companyPage.seo.concat(data.site.favicon))}</Head>
+      <CompanyHero data={companyPage} locale={locale} />
       <section>
-        {page.body.map((block) => {
+        {companyPage.body.map((block) => {
           return (
             <div key={block.id}>
-              <PostContent record={block} locale={locale} />
+              <PostContent record={block} background="light" locale={locale} />
             </div>
           );
         })}
@@ -26,10 +31,10 @@ function EditorialPage({ locale, data, page }) {
 }
 
 export async function getStaticPaths() {
-  const response = await fetchDato(queries.getAllEditorialPages, {
+  const response = await fetchDato(queries.getAllCompanyPages, {
     locale: "it",
   });
-  const paths = response.editorialPages.map(({ slug }) => ({
+  const paths = response.companyPages.map(({ slug }) => ({
     params: { slug },
   }));
   return { paths, fallback: false };
@@ -38,7 +43,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params, locale = "it", preview }) {
   const { slug } = params;
   const response = await fetchDato(
-    queries.getEditorialPage,
+    queries.getCompanyPage,
     { slug, locale },
     preview
   );
@@ -46,10 +51,10 @@ export async function getStaticProps({ params, locale = "it", preview }) {
   return {
     props: {
       locale,
-      page: response.editorialPage,
+      companyPage: response.companyPage,
       data,
     },
   };
 }
 
-export default EditorialPage;
+export default CompanyPage;

@@ -165,22 +165,14 @@ function ProductDetail({ locale, data, product, allTecnology, machines }) {
 }
 
 export async function getStaticPaths() {
-  const response = await fetchDato(queries.getAllProducts);
-  const routesWithLocales = response.products.reduce((all, product) => {
-    const { slugs } = product;
-    const slugXLocale = slugs.map(({ locale, slug }) => {
-      return { slug, locale };
-    });
-    return [...all, ...slugXLocale];
-  }, []);
-  const paths = routesWithLocales.map(({ slug, locale }) => ({
+  const response = await fetchDato(queries.getAllProducts, { locale: 'en' });
+  const paths = response.products.map(({ slug }) => ({
     params: { slug },
-    locale,
   }));
   return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params, locale }) {
+export async function getStaticProps({ params, locale = 'en' }) {
   const { slug } = params;
   const response = await fetchDato(queries.getProduct, { slug, locale });
   const data = await fetchDato(queries.site, { locale });

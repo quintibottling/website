@@ -16,7 +16,7 @@ import fetchDato from "lib/dato";
 function BlogPost({ blogPost, allNews, site, locale }) {
   const router = useRouter();
   const path = Object(router.asPath);
-  const lang = locale == "it" ? "" : `/${locale}`;
+  const lang = locale == 'en' ? "" : `/${locale}`;
   const url = `https://quintibottling.com${lang}${path}`;
 
   return (
@@ -84,7 +84,7 @@ export async function getStaticPaths() {
   const allArticles = await getAllArticlesPaged(
     queries.getAllBlogPosts,
     0,
-    "it",
+    'en',
     []
   );
   const paths = allArticles.map(({ slug }) => ({
@@ -93,7 +93,7 @@ export async function getStaticPaths() {
   return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params, locale = "it", preview }) {
+export async function getStaticProps({ params, locale = 'en', preview }) {
   const { slug } = params;
   const site = await fetchDato(queries.site, { locale });
   const response = await fetchDato(

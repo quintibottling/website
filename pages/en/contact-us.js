@@ -119,7 +119,7 @@ export default function ContactPage({ locale, site, page, info }) {
   );
 }
 
-export async function getStaticProps({ locale }) {
+export async function getStaticProps({ locale = 'en' }) {
   const response = await fetchDato(queries.getContactPage, { locale });
   const site = await fetchDato(queries.site, { locale });
   return {

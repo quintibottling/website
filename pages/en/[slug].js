@@ -27,7 +27,7 @@ function EditorialPage({ locale, data, page }) {
 
 export async function getStaticPaths() {
   const response = await fetchDato(queries.getAllEditorialPages, {
-    locale: "it",
+    locale: 'en',
   });
   const paths = response.editorialPages.map(({ slug }) => ({
     params: { slug },
@@ -35,7 +35,7 @@ export async function getStaticPaths() {
   return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params, locale = "it", preview }) {
+export async function getStaticProps({ params, locale = 'en', preview }) {
   const { slug } = params;
   const response = await fetchDato(
     queries.getEditorialPage,

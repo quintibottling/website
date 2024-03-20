@@ -13,26 +13,28 @@ import OptionalCard from "components/OptionalCard";
 
 function MachineDetail({ locale, machine, data }) {
   const altsProduct = [
-    { locale: "it", value: "olio" },
-    { locale: "en", value: "olive-oil" },
+    { locale: "it", value: "birra" },
+    { locale: "en", value: "beer" },
   ];
   const requestTecnology = [];
+
   machine.tecnology.map((tecnology) => {
     if (tecnology.request == true) {
       requestTecnology.push(tecnology.title);
     }
   });
+  console.log("sss", machine.product.slug);
   return (
     <Layout
       alts={machine.alts}
       site={data}
       locale={locale}
       model={machine.model}
+      product={machine.product}
       altsProduct={altsProduct}
     >
       <Head>{renderMetaTags(machine.seo.concat(data.site.favicon))}</Head>
       <MachineHero locale={locale} data={machine} category={machine.product} />
-
       <section className="mt-10 xl:mt-16">
         <div className="container--small">
           {machine.textHero && (
@@ -175,22 +177,16 @@ function MachineDetail({ locale, machine, data }) {
 }
 
 export async function getStaticPaths() {
-  const response = await fetchDato(queries.getAllOilMachines);
-  const routesWithLocales = response.oilMachines.reduce((all, machine) => {
-    const { slugs } = machine;
-    const slugXLocale = slugs.map(({ locale, slug }) => {
-      return { slug, locale };
-    });
-    return [...all, ...slugXLocale];
-  }, []);
-  const paths = routesWithLocales.map(({ slug, locale }) => ({
+  const response = await fetchDato(queries.getAllBeerMachines, {
+    locale: "it",
+  });
+  const paths = response.beerMachines.map(({ slug }) => ({
     params: { slug },
-    locale,
   }));
   return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params, locale }) {
+export async function getStaticProps({ params, locale = "it" }) {
   const { slug } = params;
   const response = await fetchDato(queries.getMachine, { slug, locale });
   const data = await fetchDato(queries.site, { locale });
@@ -198,7 +194,6 @@ export async function getStaticProps({ params, locale }) {
     props: {
       locale,
       machine: response.machine,
-      // allProducts: response.allProducts,
       data,
     },
   };

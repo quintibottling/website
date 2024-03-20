@@ -11,33 +11,30 @@ import translate from "lib/locales";
 import TecnologyCard from "components/TecnologyCard";
 import OptionalCard from "components/OptionalCard";
 
-function MachineDetail({ locale, machine, data }) {
+function MachineDetail({ locale, machine, data, allProducts }) {
   const altsProduct = [
-    { locale: "it", value: "birra" },
-    { locale: "en", value: "beer" },
+    { locale: "it", value: "liquori" },
+    { locale: "en", value: "spirits" },
   ];
   const requestTecnology = [];
-
   machine.tecnology.map((tecnology) => {
     if (tecnology.request == true) {
       requestTecnology.push(tecnology.title);
     }
   });
-  console.log("sss", machine.product.slug);
   return (
     <Layout
       alts={machine.alts}
       site={data}
       locale={locale}
       model={machine.model}
-      product={machine.product}
       altsProduct={altsProduct}
     >
       <Head>{renderMetaTags(machine.seo.concat(data.site.favicon))}</Head>
       <MachineHero locale={locale} data={machine} category={machine.product} />
       <section className="mt-10 xl:mt-16">
         <div className="container--small">
-          {machine.textHero && (
+          {machine.textIntro && (
             <div className="text-black lg:text-lg">
               {renderHTML(machine.textIntro)}
             </div>
@@ -177,22 +174,16 @@ function MachineDetail({ locale, machine, data }) {
 }
 
 export async function getStaticPaths() {
-  const response = await fetchDato(queries.getAllBeerMachines);
-  const routesWithLocales = response.beerMachines.reduce((all, machine) => {
-    const { slugs } = machine;
-    const slugXLocale = slugs.map(({ locale, slug }) => {
-      return { slug, locale };
-    });
-    return [...all, ...slugXLocale];
-  }, []);
-  const paths = routesWithLocales.map(({ slug, locale }) => ({
+  const response = await fetchDato(queries.getAllSpiritMachines, {
+    locale: "it",
+  });
+  const paths = response.spiritMachines.map(({ slug }) => ({
     params: { slug },
-    locale,
   }));
   return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params, locale }) {
+export async function getStaticProps({ params, locale = "it" }) {
   const { slug } = params;
   const response = await fetchDato(queries.getMachine, { slug, locale });
   const data = await fetchDato(queries.site, { locale });
@@ -200,7 +191,6 @@ export async function getStaticProps({ params, locale }) {
     props: {
       locale,
       machine: response.machine,
-      // allProducts: response.allProducts,
       data,
     },
   };
