@@ -21,7 +21,7 @@ function LanguageSwitcher({ locale, model, alts, altsProduct, handleClose }) {
               {i > 0 && (
                 <span className="px-2 text-xs text-white lg:px-0">-</span>
               )}
-              <Link href={resolveLink(model, l, link, productLink)} locale={l}>
+              <Link href={resolveLink(model, l, link, productLink)}>
                 <a
                   onClick={() => handleClose}
                   className={`${
