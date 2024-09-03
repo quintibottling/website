@@ -180,30 +180,30 @@ export default function Footer({ locale, site }) {
                   </div>
                   <div className="text-xs opacity-70">
                     <a
+                      href="https://cantiere.agency"
+                      title={`${translate(
+                        "externalLink",
+                        locale
+                      )} Realizzazione siti web Firenze`}
+                      className="duration-200 hover:text-orange"
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      Realizzazione siti web Firenze
+                    </a>
+                    <a
                       href="//www.cantierecreativo.net"
                       title={`${translate(
                         "externalLink",
                         locale
                       )} Cantiere Creativo Agenzia web Firenze`}
-                      className="duration-200 hover:text-orange"
+                      className="ml-1 duration-200 hover:text-orange"
                       target="_blank"
                       rel="noreferrer noopener"
                     >
-                      Design & dev Cantiere Creativo
+                      by Cantiere Creativo
                     </a>
                     <span className="px-1"> - </span>
-                    <a
-                      href="//datocms.com"
-                      title={`${translate(
-                        "externalLink",
-                        locale
-                      )} Cantiere Creativo Agenzia web Firenze`}
-                      className="duration-200 hover:text-orange"
-                      target="_blank"
-                      rel="noreferrer noopener"
-                    >
-                      Made with DatoCMS
-                    </a>
                   </div>
                   <div className="text-xs opacity-70">
                     <a
