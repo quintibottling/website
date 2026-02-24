@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuova Richiesta Preventivo - Configuratore</title>
+</head>
+<body style="margin:0;padding:0;background-color:#FCF7F0;font-family:Georgia,'Times New Roman',serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#FCF7F0;">
+    <tr>
+      <td align="center" style="padding:40px 16px;">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+
+          <!-- Header -->
+          <tr>
+            <td style="background-color:#27231B;padding:28px 40px;border-radius:16px 16px 0 0;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <h1 style="margin:0;font-size:18px;font-weight:400;color:#D4BD7A;letter-spacing:2px;text-transform:uppercase;">Quinti Bottling</h1>
+                  </td>
+                  <td align="right">
+                    <span style="display:inline-block;background-color:#F49600;color:#ffffff;font-size:11px;font-weight:600;padding:6px 14px;border-radius:50px;text-transform:uppercase;letter-spacing:1px;">Nuova richiesta</span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="background-color:#ffffff;padding:40px;">
+
+              <!-- Title -->
+              <p style="margin:0 0 4px;font-size:12px;color:#CE7F00;text-transform:uppercase;letter-spacing:1.5px;">Configuratore</p>
+              <h2 style="margin:0 0 8px;font-size:24px;font-weight:400;color:#232019;">
+                Nuova richiesta di preventivo
+              </h2>
+              <p style="margin:0 0 32px;font-size:14px;color:#6A6868;">
+                Ricevuta dal configuratore online il giorno {{data}}
+              </p>
+
+              <!-- Machine Config Box -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#27231B;border-radius:12px;margin-bottom:28px;">
+                <tr>
+                  <td style="padding:24px 28px;">
+                    <p style="margin:0 0 4px;font-size:11px;color:#BCB3A8;text-transform:uppercase;letter-spacing:1px;">Macchina selezionata</p>
+                    <p style="margin:0;font-size:22px;color:#D4BD7A;font-weight:600;">Diamond Oil {{macchina}}</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Configuration Details -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#FCF7F0;border-radius:12px;margin-bottom:28px;">
+                <tr>
+                  <td style="padding:24px 28px;">
+                    <p style="margin:0 0 4px;font-size:11px;color:#6A6868;text-transform:uppercase;letter-spacing:1px;">Funzioni Base</p>
+                    <p style="margin:0 0 20px;font-size:14px;color:#232019;line-height:22px;">{{funzioni}}</p>
+
+                    <p style="margin:0 0 4px;font-size:11px;color:#6A6868;text-transform:uppercase;letter-spacing:1px;">Funzioni Plus</p>
+                    <p style="margin:0;font-size:14px;color:#232019;line-height:22px;">{{optional}}</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Divider -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr><td style="border-top:1px solid #E5D7B4;padding-top:28px;"></td></tr>
+              </table>
+
+              <!-- Contact Info -->
+              <p style="margin:0 0 16px;font-size:12px;color:#CE7F00;text-transform:uppercase;letter-spacing:1.5px;">Dati del cliente</p>
+
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #E5D7B4;border-radius:12px;margin-bottom:28px;">
+                <!-- Row 1: Nome / Cognome -->
+                <tr>
+                  <td width="50%" style="padding:16px 20px 12px;border-bottom:1px solid #E5D7B4;vertical-align:top;">
+                    <p style="margin:0 0 2px;font-size:10px;color:#6A6868;text-transform:uppercase;letter-spacing:0.5px;">Nome</p>
+                    <p style="margin:0;font-size:15px;color:#232019;font-weight:600;">{{nome}}</p>
+                  </td>
+                  <td width="50%" style="padding:16px 20px 12px;border-bottom:1px solid #E5D7B4;border-left:1px solid #E5D7B4;vertical-align:top;">
+                    <p style="margin:0 0 2px;font-size:10px;color:#6A6868;text-transform:uppercase;letter-spacing:0.5px;">Cognome</p>
+                    <p style="margin:0;font-size:15px;color:#232019;font-weight:600;">{{cognome}}</p>
+                  </td>
+                </tr>
+                <!-- Row 2: Azienda / Partita IVA -->
+                <tr>
+                  <td width="50%" style="padding:12px 20px;border-bottom:1px solid #E5D7B4;vertical-align:top;">
+                    <p style="margin:0 0 2px;font-size:10px;color:#6A6868;text-transform:uppercase;letter-spacing:0.5px;">Azienda</p>
+                    <p style="margin:0;font-size:15px;color:#232019;font-weight:600;">{{azienda}}</p>
+                  </td>
+                  <td width="50%" style="padding:12px 20px;border-bottom:1px solid #E5D7B4;border-left:1px solid #E5D7B4;vertical-align:top;">
+                    <p style="margin:0 0 2px;font-size:10px;color:#6A6868;text-transform:uppercase;letter-spacing:0.5px;">Partita IVA</p>
+                    <p style="margin:0;font-size:15px;color:#232019;font-weight:600;">{{partita_iva}}</p>
+                  </td>
+                </tr>
+                <!-- Row 3: Telefono / Email -->
+                <tr>
+                  <td width="50%" style="padding:12px 20px 16px;vertical-align:top;">
+                    <p style="margin:0 0 2px;font-size:10px;color:#6A6868;text-transform:uppercase;letter-spacing:0.5px;">Telefono</p>
+                    <p style="margin:0;font-size:15px;color:#232019;font-weight:600;">
+                      <a href="tel:{{telefono}}" style="color:#232019;text-decoration:none;">{{telefono}}</a>
+                    </p>
+                  </td>
+                  <td width="50%" style="padding:12px 20px 16px;border-left:1px solid #E5D7B4;vertical-align:top;">
+                    <p style="margin:0 0 2px;font-size:10px;color:#6A6868;text-transform:uppercase;letter-spacing:0.5px;">Email</p>
+                    <p style="margin:0;font-size:15px;color:#232019;font-weight:600;">
+                      <a href="mailto:{{email}}" style="color:#6D5B31;text-decoration:underline;">{{email}}</a>
+                    </p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Message -->
+              <!--{{#if messaggio}}-->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#FCF7F0;border-radius:12px;border-left:4px solid #F49600;margin-bottom:28px;">
+                <tr>
+                  <td style="padding:20px 24px;">
+                    <p style="margin:0 0 4px;font-size:10px;color:#6A6868;text-transform:uppercase;letter-spacing:0.5px;">Messaggio del cliente</p>
+                    <p style="margin:0;font-size:14px;color:#232019;line-height:22px;font-style:italic;">{{messaggio}}</p>
+                  </td>
+                </tr>
+              </table>
+              <!--{{/if}}-->
+
+              <!-- Divider -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr><td style="border-top:1px solid #E5D7B4;padding-top:28px;"></td></tr>
+              </table>
+
+              <!-- Quick Actions -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="center" style="padding:0 0 8px;">
+                    <p style="margin:0 0 16px;font-size:13px;color:#6A6868;">Rispondi direttamente al cliente:</p>
+                    <table role="presentation" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td style="padding:0 6px;">
+                          <a href="mailto:{{email}}" style="display:inline-block;background-color:#F49600;color:#ffffff;text-decoration:none;font-size:13px;font-weight:600;padding:12px 28px;border-radius:50px;">Rispondi via email</a>
+                        </td>
+                        <td style="padding:0 6px;">
+                          <a href="tel:{{telefono}}" style="display:inline-block;background-color:#27231B;color:#ffffff;text-decoration:none;font-size:13px;font-weight:600;padding:12px 28px;border-radius:50px;">Chiama</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background-color:#27231B;padding:24px 40px;border-radius:0 0 16px 16px;text-align:center;">
+              <p style="margin:0;font-size:12px;color:#BCB3A8;">
+                Email generata automaticamente dal configuratore di <span style="color:#D4BD7A;">quintibottling.com</span>
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

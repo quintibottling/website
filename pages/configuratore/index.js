@@ -1,112 +1,124 @@
-import Head from 'next/head';
-import Link from 'next/link';
-import { ArrowRightIcon } from '@heroicons/react/solid';
+import Head from "next/head";
+import Link from "next/link";
+import { ArrowRightIcon, CheckIcon, XIcon } from "@heroicons/react/solid";
+import { renderMetaTags } from "react-datocms";
+import { Image as DatoImage } from "react-datocms";
+import { useMemo } from "react";
 
-import Layout from 'components/Layout';
-import * as queries from 'lib/queries';
-import fetchDato from 'lib/dato';
+import Layout from "components/Layout";
+import * as queries from "lib/queries";
+import fetchDato from "lib/dato";
 
 const TIER_COLORS = {
-  start: 'border-green',
-  intermediate: 'border-gold',
-  pro: 'border-orange',
+  start: "border-green",
+  intermediate: "border-gold",
+  pro: "border-orange",
 };
 
-const TIER_LEVELS = {
-  start: 'Livello 1',
-  intermediate: 'Livello 2',
-  pro: 'Livello 3',
-};
+export default function ConfiguratoreIndex({
+  locale,
+  site,
+  machines,
+  configurator,
+}) {
+  const allFunctions = useMemo(() => {
+    const fnMap = new Map();
+    machines.forEach((machine) => {
+      machine.functions.forEach((fn) => {
+        if (!fnMap.has(fn.id)) {
+          fnMap.set(fn.id, { id: fn.id, title: fn.title });
+        }
+      });
+    });
+    return Array.from(fnMap.values());
+  }, [machines]);
 
-const TIER_TEXT_COLORS = {
-  start: 'text-green',
-  intermediate: 'text-gold',
-  pro: 'text-orange',
-};
-
-export default function ConfiguratoreIndex({ locale, site, machines }) {
   return (
     <Layout site={site} locale={locale} model="configurator">
-      <Head>
-        <title>Configuratore Diamond Oil | Quinti Bottling</title>
-        <meta
-          name="description"
-          content="Configura la tua linea di imbottigliamento Diamond Oil. Scegli tra Start, Intermediate e Pro."
-        />
-      </Head>
-
-      <div className="min-h-screen bg-gray">
+      <Head>{renderMetaTags(configurator.seo.concat(site.site.favicon))}</Head>
+      <div className="min-h-screen">
         <div className="container--standard">
-          {/* Header */}
-          <div className="mb-12 text-center">
-            <div className="mb-4 flex items-center justify-center gap-2">
-              <div className="h-2 w-2 rounded-full bg-gold"></div>
-              <span className="text-xs uppercase tracking-widest text-black/60">
-                Scegli la tua macchina
-              </span>
+          <div className="mb-6 md:flex md:gap-12">
+            <div className="mb-6 lg:w-1/2">
+              <h1 className="text-2xl font-semibold text-orange lg:text-2xl xl:text-3xl">
+                {configurator.title}
+              </h1>
+              <p className="mx-auto max-w-2xl text-2xl font-semibold xl:text-3xl">
+                {configurator.titleHero}
+              </p>
             </div>
-            <h1 className="mb-4 text-3xl font-bold text-black lg:text-5xl">
-              Diamond Oil
-            </h1>
-            <p className="mx-auto max-w-2xl text-base text-black/70">
-              Configura la linea di imbottigliamento perfetta per le tue esigenze.
-              Seleziona una macchina per iniziare.
-            </p>
+            <div
+              dangerouslySetInnerHTML={{ __html: configurator.text }}
+              className="lg:w-1/2"
+            />
           </div>
-
-          {/* Machine Cards */}
-          <div className="grid gap-6 md:grid-cols-3 lg:gap-8">
+          <div className="xl:gap-18 mx-auto grid max-w-[1300px] gap-6 pt-12 md:grid-cols-3 lg:gap-16">
             {machines.map((machine) => {
-              const colorClass = TIER_COLORS[machine.slug] || 'border-gold';
-              const textColorClass = TIER_TEXT_COLORS[machine.slug] || 'text-gold';
-              const level = TIER_LEVELS[machine.slug] || '';
-              const fixedFunctions = machine.functions.filter(fn => fn.fixed);
-              const optionalFunctions = machine.functions.filter(fn => !fn.fixed);
+              const colorClass = TIER_COLORS[machine.slug] || "border-gold";
+              const machineFnIds = new Set(
+                machine.functions.map((fn) => fn.id),
+              );
 
               return (
                 <Link key={machine.id} href={`/configuratore/${machine.slug}`}>
-                  <a className={`group block overflow-hidden rounded-lg border-2 bg-pink-light transition-all duration-300 hover:shadow-lg ${colorClass}`}>
-                    {/* Badge */}
+                  <a
+                    className={`group block overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-lg ${colorClass}`}
+                  >
                     <div className="p-6">
-                      <div className={`mb-4 inline-block rounded px-3 py-1 ${
-                        machine.slug === 'start' ? 'bg-green' :
-                        machine.slug === 'intermediate' ? 'bg-gold' : 'bg-orange'
-                      }`}>
-                        <span className="text-xxs font-semibold uppercase tracking-wider text-white">
-                          {level}
-                        </span>
-                      </div>
-
-                      {/* Title */}
-                      <h3 className="mb-1 text-xl font-semibold text-black lg:text-2xl">
-                        Diamond Oil
-                      </h3>
-                      <h4 className={`mb-4 text-2xl font-bold lg:text-3xl ${textColorClass}`}>
-                        {machine.title.toUpperCase()}
-                      </h4>
-
-                      {/* Functions list */}
-                      <div className="mb-6 space-y-2">
-                        {fixedFunctions.slice(0, 3).map(fn => (
-                          <div
-                            key={fn.id}
-                            className="flex items-center gap-2 text-sm text-black/70"
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h3 className="text-md text-black lg:text-lg">
+                            Diamond Oil
+                          </h3>
+                          <h4
+                            className={`mb-4 text-xl font-bold md:text-base lg:text-lg`}
                           >
-                            <span className="text-gold">+</span>
-                            <span>{fn.title}</span>
+                            {machine.title.toUpperCase()}
+                          </h4>
+                        </div>
+                        <div className="rounded-full bg-orange p-4 md:p-2 lg:p-4">
+                          <div className="flex items-center gap-2 text-white transition-colors">
+                            <ArrowRightIcon className="h-6 w-6 transition-transform group-hover:translate-x-1" />
                           </div>
-                        ))}
-                        {optionalFunctions.length > 0 && (
-                          <div className="text-sm text-black/50">
-                            + {optionalFunctions.length} funzioni configurabili
-                          </div>
-                        )}
+                        </div>
                       </div>
-
-                      {/* CTA */}
-                      <div className="flex items-center gap-2 text-gold transition-colors group-hover:text-gold-light">
-                        <span className="text-sm font-medium">Configura</span>
-                        <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      <DatoImage
+                        data={machine.previewImage.responsiveImage}
+                        alt={machine.previewImage.responsiveImage.alt}
+                        title={machine.previewImage.responsiveImage.title}
+                      />
+                      {machine.description && (
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: machine.description,
+                          }}
+                          className="py-4 text-xxs text-black/60"
+                        />
+                      )}
+                      <div className="text-xxs font-bold text-black/80">
+                        Funzioni
+                      </div>
+                      <div className="my-4 space-y-2">
+                        {allFunctions.map((fn) => {
+                          const hasFn = machineFnIds.has(fn.id);
+                          return (
+                            <div
+                              key={fn.id}
+                              className="flex items-center justify-between gap-2 text-xs"
+                            >
+                              <span className="text-black/60">{fn.title}</span>
+                              {hasFn ? (
+                                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#58D44F]">
+                                  <CheckIcon className="h-3 w-3 text-white" />
+                                </span>
+                              ) : (
+                                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gray-dark/60">
+                                  <XIcon className="h-3 w-3 text-white" />
+                                </span>
+                              )}
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
                   </a>
@@ -120,14 +132,18 @@ export default function ConfiguratoreIndex({ locale, site, machines }) {
   );
 }
 
-export async function getStaticProps({ locale = 'it', preview }) {
-  const response = await fetchDato(queries.getConfigurator, { locale }, preview);
+export async function getStaticProps({ locale = "it", preview }) {
+  const response = await fetchDato(
+    queries.getConfigurator,
+    { locale },
+    preview,
+  );
   const site = await fetchDato(queries.site, { locale });
 
   // Sort machines by tier order
   const tierOrder = { start: 1, intermediate: 2, pro: 3 };
   const sortedMachines = [...(response?.allMachineConfs || [])].sort(
-    (a, b) => tierOrder[a.slug] - tierOrder[b.slug]
+    (a, b) => tierOrder[a.slug] - tierOrder[b.slug],
   );
 
   return {
@@ -135,6 +151,7 @@ export async function getStaticProps({ locale = 'it', preview }) {
       locale,
       site,
       machines: sortedMachines,
+      configurator: response?.confPage,
     },
   };
 }

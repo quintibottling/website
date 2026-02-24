@@ -276,6 +276,7 @@ export default function ConfiguratoreMachine({
                       <FunctionOption
                         key={fn.id}
                         item={fn}
+                        locale={locale}
                         isActive={true}
                         isFixed={true}
                         onInfo={() => openSidebar(fn, 'function')}
@@ -300,6 +301,7 @@ export default function ConfiguratoreMachine({
                         <FunctionOption
                           key={fn.id}
                           item={fn}
+                          locale={locale}
                           isActive={functionState[fn.id]}
                           isFixed={false}
                           onToggle={toggleFunction}
@@ -324,6 +326,7 @@ export default function ConfiguratoreMachine({
                     <FunctionOption
                       key={opt.id}
                       item={opt}
+                      locale={locale}
                       isActive={plusState[opt.id]}
                       isFixed={false}
                       onToggle={togglePlus}
@@ -427,6 +430,7 @@ export default function ConfiguratoreMachine({
         isFixed={sidebarItem?.type === 'function' && sidebarItem?.item?.fixed}
         onToggle={sidebarToggle}
         locale={locale}
+        allMachines={allMachines}
       />
 
       {/* Tier Change Popup */}

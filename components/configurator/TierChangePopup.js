@@ -1,10 +1,12 @@
-import { Fragment } from 'react';
-import { Dialog, Transition } from '@headlessui/react';
+import { Fragment } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { ArrowRightIcon } from "@heroicons/react/solid";
+import translate from "lib/locales";
 
 const TIER_LABELS = {
-  start: 'START',
-  intermediate: 'INTERMEDIATE',
-  pro: 'PRO',
+  start: "Start",
+  intermediate: "Intermediate",
+  pro: "Pro",
 };
 
 export default function TierChangePopup({
@@ -15,8 +17,8 @@ export default function TierChangePopup({
   toTier,
   locale,
 }) {
-  const fromLabel = TIER_LABELS[fromTier] || fromTier?.toUpperCase();
-  const toLabel = TIER_LABELS[toTier] || toTier?.toUpperCase();
+  const fromLabel = TIER_LABELS[fromTier];
+  const toLabel = TIER_LABELS[toTier];
 
   return (
     <Transition.Root show={isOpen} as={Fragment}>
@@ -47,50 +49,54 @@ export default function TierChangePopup({
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="relative w-full max-w-lg transform overflow-hidden rounded-2xl bg-pink-light p-6 shadow-xl transition-all">
-              {/* Icon */}
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gold/20">
-                <span className="text-3xl">🔄</span>
+            <div className="relative w-full max-w-lg transform overflow-hidden rounded-2xl bg-white p-6 shadow-xl transition-all lg:max-w-2xl lg:p-12">
+              <div className="text-center text-xs uppercase text-orange-dark">
+                {translate("tierUpgradeTitle", locale)}
               </div>
 
-              {/* Title */}
-              <h3 className="mb-2 text-center text-2xl font-bold text-black">
-                Cambio Macchina
-              </h3>
-
               {/* Message */}
-              <p className="mb-6 text-center text-base text-black/70">
-                Questa configurazione richiede il passaggio alla macchina {toLabel}.
+              <p className="my-2 text-center text-sm lg:text-lg">
+                {translate("tierUpgradeMsg", locale)}{" "}
+                <span className="font-bold">{toLabel}</span>.
               </p>
 
               {/* Tier change visualization */}
-              <div className="mb-8 flex items-center justify-center gap-4">
-                <div className="flex flex-col items-center rounded-lg border border-pink bg-white px-6 py-4">
-                  <span className="mb-1 text-xs uppercase text-black/50">Da</span>
-                  <span className="text-lg font-bold text-black">{fromLabel}</span>
+              <div className="mb-8 mt-6 flex items-center justify-center gap-2 bg-gray-dark/10 p-6">
+                <div className="flex flex-col items-center rounded-sm border border-pink bg-white p-2 py-4 text-xs lg:p-8 lg:text-base">
+                  <span className="mb-1 text-black/50">Diamond</span>
+                  <span className="font-bold uppercase text-black lg:text-lg">
+                    {fromLabel}
+                  </span>
                 </div>
-                <div className="text-2xl text-gold">→</div>
-                <div className="flex flex-col items-center rounded-lg border border-gold bg-gold/10 px-6 py-4">
-                  <span className="mb-1 text-xs uppercase text-black/50">A</span>
-                  <span className="text-lg font-bold text-gold">{toLabel}</span>
+                <div className="flex h-5 w-5 items-center justify-center lg:h-10 lg:w-10">
+                  <ArrowRightIcon
+                    className="block h-5 w-5 text-orange-dark lg:h-8 lg:w-8"
+                    aria-hidden="true"
+                  />
+                </div>
+                <div className="flex flex-col items-center rounded-sm border border-[#709A33] bg-[#709A33] px-2 py-4 text-white lg:p-8 lg:text-base">
+                  <span className="mb-1">Diamond</span>
+                  <span className="font-bold uppercase lg:text-lg">
+                    {toLabel}
+                  </span>
                 </div>
               </div>
 
               {/* Actions */}
-              <div className="flex gap-3">
+              <div className="gap-3 space-y-2 md:flex md:space-y-0">
                 <button
                   type="button"
-                  className="flex-1 rounded-lg border border-brown/20 bg-white px-4 py-3 text-sm font-medium text-black transition-colors hover:bg-pink"
-                  onClick={onClose}
+                  className="w-full rounded-full border border-orange-dark bg-orange-dark px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-orange-dark/80"
+                  onClick={onConfirm}
                 >
-                  Resta su {fromLabel}
+                  {translate("goTo", locale)} {toLabel}
                 </button>
                 <button
                   type="button"
-                  className="flex-1 rounded-lg bg-gold px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-gold-light"
-                  onClick={onConfirm}
+                  className="w-full rounded-full border border-black bg-white px-4 py-3 text-sm font-medium text-black transition-colors hover:bg-pink"
+                  onClick={onClose}
                 >
-                  Vai a {toLabel}
+                  {translate("stayOn", locale)} {fromLabel}
                 </button>
               </div>
             </div>

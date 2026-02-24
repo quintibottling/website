@@ -13,10 +13,13 @@ module.exports = {
         },
         gray: {
           DEFAULT: "#EEE9D7",
-          dark: "#8C8C8C",
+          dark: "#6A6868",
         },
         brown: "#27231B",
-        orange: "#F49600",
+        orange: {
+          DEFAULT: "#F49600",
+          dark: "#CE7F00",
+        },
         gold: {
           DEFAULT: "#6D5B31",
           light: "#A99159",
@@ -28,6 +31,7 @@ module.exports = {
         green: {
           DEFAULT: "#323E2F",
           light: "#B6E0AC",
+          dark: "#709A33",
         },
         purple: {
           DEFAULT: "#3E2F39",

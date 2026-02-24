@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conferma Richiesta Preventivo - Quinti Bottling</title>
+</head>
+<body style="margin:0;padding:0;background-color:#FCF7F0;font-family:Georgia,'Times New Roman',serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#FCF7F0;">
+    <tr>
+      <td align="center" style="padding:40px 16px;">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+
+          <!-- Header -->
+          <tr>
+            <td style="background-color:#27231B;padding:32px 40px;border-radius:16px 16px 0 0;text-align:center;">
+              <h1 style="margin:0;font-size:20px;font-weight:400;color:#D4BD7A;letter-spacing:2px;text-transform:uppercase;">Quinti Bottling</h1>
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="background-color:#ffffff;padding:40px;">
+
+              <!-- Greeting -->
+              <p style="margin:0 0 8px;font-size:12px;color:#CE7F00;text-transform:uppercase;letter-spacing:1.5px;">Conferma richiesta</p>
+              <h2 style="margin:0 0 24px;font-size:24px;font-weight:400;color:#232019;">
+                Grazie <strong>{{nome}}</strong>,<br>abbiamo ricevuto la tua richiesta.
+              </h2>
+              <p style="margin:0 0 32px;font-size:16px;line-height:26px;color:#232019;">
+                Ti confermiamo che la tua richiesta di preventivo è stata presa in carico. Il nostro team ti ricontatterà il prima possibile con una proposta personalizzata.
+              </p>
+
+              <!-- Divider -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr><td style="border-top:1px solid #E5D7B4;padding-top:28px;"></td></tr>
+              </table>
+
+              <!-- Configuration Summary -->
+              <p style="margin:0 0 16px;font-size:12px;color:#6A6868;text-transform:uppercase;letter-spacing:1.5px;">La tua configurazione</p>
+
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#FCF7F0;border-radius:12px;padding:24px;margin-bottom:28px;">
+                <tr>
+                  <td style="padding:24px;">
+                    <p style="margin:0 0 4px;font-size:12px;color:#6A6868;text-transform:uppercase;letter-spacing:1px;">Macchina</p>
+                    <p style="margin:0 0 20px;font-size:18px;color:#6D5B31;font-weight:600;">Diamond Oil {{macchina}}</p>
+
+                    <p style="margin:0 0 4px;font-size:12px;color:#6A6868;text-transform:uppercase;letter-spacing:1px;">Funzioni Base</p>
+                    <p style="margin:0 0 20px;font-size:14px;color:#232019;line-height:22px;">{{funzioni}}</p>
+
+                    <p style="margin:0 0 4px;font-size:12px;color:#6A6868;text-transform:uppercase;letter-spacing:1px;">Funzioni Plus</p>
+                    <p style="margin:0;font-size:14px;color:#232019;line-height:22px;">{{optional}}</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Divider -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr><td style="border-top:1px solid #E5D7B4;padding-top:28px;"></td></tr>
+              </table>
+
+              <!-- Contact Details -->
+              <p style="margin:0 0 16px;font-size:12px;color:#6A6868;text-transform:uppercase;letter-spacing:1.5px;">I tuoi dati</p>
+
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+                <tr>
+                  <td width="50%" style="padding:0 8px 12px 0;vertical-align:top;">
+                    <p style="margin:0 0 2px;font-size:11px;color:#6A6868;text-transform:uppercase;">Nome</p>
+                    <p style="margin:0;font-size:14px;color:#232019;">{{nome}}</p>
+                  </td>
+                  <td width="50%" style="padding:0 0 12px 8px;vertical-align:top;">
+                    <p style="margin:0 0 2px;font-size:11px;color:#6A6868;text-transform:uppercase;">Cognome</p>
+                    <p style="margin:0;font-size:14px;color:#232019;">{{cognome}}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="50%" style="padding:0 8px 12px 0;vertical-align:top;">
+                    <p style="margin:0 0 2px;font-size:11px;color:#6A6868;text-transform:uppercase;">Azienda</p>
+                    <p style="margin:0;font-size:14px;color:#232019;">{{azienda}}</p>
+                  </td>
+                  <td width="50%" style="padding:0 0 12px 8px;vertical-align:top;">
+                    <p style="margin:0 0 2px;font-size:11px;color:#6A6868;text-transform:uppercase;">Partita IVA</p>
+                    <p style="margin:0;font-size:14px;color:#232019;">{{partita_iva}}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="50%" style="padding:0 8px 12px 0;vertical-align:top;">
+                    <p style="margin:0 0 2px;font-size:11px;color:#6A6868;text-transform:uppercase;">Telefono</p>
+                    <p style="margin:0;font-size:14px;color:#232019;">{{telefono}}</p>
+                  </td>
+                  <td width="50%" style="padding:0 0 12px 8px;vertical-align:top;">
+                    <p style="margin:0 0 2px;font-size:11px;color:#6A6868;text-transform:uppercase;">Email</p>
+                    <p style="margin:0;font-size:14px;color:#232019;">{{email}}</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Message (if present) -->
+              <!--{{#if messaggio}}-->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+                <tr>
+                  <td>
+                    <p style="margin:0 0 4px;font-size:11px;color:#6A6868;text-transform:uppercase;">Messaggio</p>
+                    <p style="margin:0;font-size:14px;color:#232019;line-height:22px;">{{messaggio}}</p>
+                  </td>
+                </tr>
+              </table>
+              <!--{{/if}}-->
+
+              <!-- Divider -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr><td style="border-top:1px solid #E5D7B4;padding-top:28px;"></td></tr>
+              </table>
+
+              <!-- CTA -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="center" style="padding:8px 0 0;">
+                    <p style="margin:0 0 20px;font-size:14px;color:#6A6868;text-align:center;">Nel frattempo, scopri tutte le nostre soluzioni:</p>
+                    <a href="https://www.quintibottling.com" style="display:inline-block;background-color:#F49600;color:#ffffff;text-decoration:none;font-size:14px;font-weight:600;padding:14px 32px;border-radius:50px;letter-spacing:0.5px;">Visita il sito</a>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background-color:#27231B;padding:28px 40px;border-radius:0 0 16px 16px;text-align:center;">
+              <p style="margin:0 0 8px;font-size:13px;color:#D4BD7A;">Quinti Bottling S.r.l.</p>
+              <p style="margin:0 0 16px;font-size:12px;color:#BCB3A8;line-height:20px;">
+                Via dell'Industria, 5 - 50056 Montelupo Fiorentino (FI)<br>
+                Tel. +39 0571 51536 &nbsp;|&nbsp; info@quintibottling.com
+              </p>
+              <p style="margin:0;font-size:11px;color:#BCB3A8;">
+                <a href="https://www.quintibottling.com/privacy-policy" style="color:#BCB3A8;text-decoration:underline;">Privacy Policy</a>
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

@@ -1,30 +1,33 @@
-import { Fragment, useState } from 'react';
-import { Dialog, Transition } from '@headlessui/react';
-import { XIcon } from '@heroicons/react/outline';
-import { ArrowRightIcon, CheckCircleIcon } from '@heroicons/react/solid';
-import { Formik, Form, useField } from 'formik';
-import * as Yup from 'yup';
-import Link from 'next/link';
-import translate from 'lib/locales';
-
-const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_W3F;
+import { Fragment, useState } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { XIcon } from "@heroicons/react/outline";
+import { ArrowRightIcon, CheckIcon } from "@heroicons/react/solid";
+import { Formik, Form, useField } from "formik";
+import * as Yup from "yup";
+import Link from "next/link";
+import translate from "lib/locales";
 
 const MyTextInput = ({ locale, label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <div>
-      <label className="mb-1 block text-xs font-medium text-black/70" htmlFor={props.id || props.name}>
+      <label
+        className="mb-1 block text-xxs text-black"
+        htmlFor={props.id || props.name}
+      >
         {label}
       </label>
       <input
-        className={`w-full rounded-lg border bg-white px-4 py-3 text-sm transition-colors focus:border-gold focus:outline-none ${
-          meta.touched && meta.error ? 'border-red-light' : 'border-pink'
+        className={`w-full rounded-md border bg-white px-4 py-3 text-xs transition-colors focus:border-gold focus:outline-none ${
+          meta.touched && meta.error ? "border-red-light" : "border-black/40"
         }`}
         {...field}
         {...props}
       />
       {meta.touched && meta.error && (
-        <div className="mt-1 text-xs text-red-light">{translate(meta.error, locale)}</div>
+        <div className="mt-1 text-xs text-red-light">
+          {translate(meta.error, locale)}
+        </div>
       )}
     </div>
   );
@@ -34,33 +37,38 @@ const MyTextarea = ({ locale, label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <div>
-      <label className="mb-1 block text-xs font-medium text-black/70" htmlFor={props.id || props.name}>
+      <label
+        className="mb-1 block text-xs font-medium text-black/70"
+        htmlFor={props.id || props.name}
+      >
         {label}
       </label>
       <textarea
         rows="4"
-        className={`w-full rounded-lg border bg-white px-4 py-3 text-sm transition-colors focus:border-gold focus:outline-none ${
-          meta.touched && meta.error ? 'border-red-light' : 'border-pink'
+        className={`w-full rounded-lg border bg-white px-4 py-3 text-xs transition-colors focus:border-gold focus:outline-none ${
+          meta.touched && meta.error ? "border-red-light" : "border-pink"
         }`}
         {...field}
         {...props}
       />
       {meta.touched && meta.error && (
-        <div className="mt-1 text-xs text-red-light">{translate(meta.error, locale)}</div>
+        <div className="mt-1 text-xs text-red-light">
+          {translate(meta.error, locale)}
+        </div>
       )}
     </div>
   );
 };
 
 const MyCheckbox = ({ locale, children, ...props }) => {
-  const [field, meta] = useField({ ...props, type: 'checkbox' });
+  const [field, meta] = useField({ ...props, type: "checkbox" });
   return (
     <div>
       <label className="flex cursor-pointer items-start gap-3">
         <input
           type="checkbox"
           className={`mt-1 h-4 w-4 rounded border-pink accent-gold ${
-            meta.touched && meta.error ? 'border-red-light' : ''
+            meta.touched && meta.error ? "border-red-light" : ""
           }`}
           {...field}
           {...props}
@@ -68,57 +76,55 @@ const MyCheckbox = ({ locale, children, ...props }) => {
         <span className="text-xs text-black/70">{children}</span>
       </label>
       {meta.touched && meta.error && (
-        <div className="mt-1 text-xs text-red-light">{translate(meta.error, locale)}</div>
+        <div className="mt-1 text-xs text-red-light">
+          {translate(meta.error, locale)}
+        </div>
       )}
     </div>
   );
 };
 
-export default function QuoteForm({
-  isOpen,
-  onClose,
-  configSummary,
-  locale,
-}) {
+export default function QuoteForm({ isOpen, onClose, configSummary, locale }) {
   const [status, setStatus] = useState(null); // null, 'success', 'error'
 
   const handleSubmit = async (formValues) => {
     try {
-      // Build configuration summary for email
-      const configText = [
-        `Macchina: ${configSummary?.machine?.title || 'N/A'}`,
-        `Funzioni: ${configSummary?.functions?.map(f => f.title).join(', ') || 'N/A'}`,
-        `Optional: ${configSummary?.plusFunctions?.map(f => f.title).join(', ') || 'Nessuno'}`,
-      ].join('\n');
+      const payload = {
+        nome: formValues.name,
+        cognome: formValues.surname,
+        azienda: formValues.company,
+        partita_iva: formValues.vat,
+        telefono: formValues.phone,
+        email: formValues.email,
+        messaggio: formValues.message,
+        macchina: configSummary?.machine?.title || "N/A",
+        funzioni:
+          configSummary?.functions?.map((f) => f.title).join(", ") || "N/A",
+        optional:
+          configSummary?.plusFunctions?.map((f) => f.title).join(", ") ||
+          "Nessuno",
+      };
 
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          apikey: WEB3FORMS_KEY,
-          subject: `Richiesta preventivo configuratore - ${configSummary?.machine?.title}`,
-          from_name: 'www.quintibottling.com',
-          Nome: formValues.name,
-          Cognome: formValues.surname,
-          Azienda: formValues.company,
-          Email: formValues.email,
-          Telefono: formValues.phone,
-          Messaggio: formValues.message,
-          'Configurazione': configText,
-        }),
+      const formData = new URLSearchParams();
+      Object.entries(payload).forEach(([key, value]) => {
+        formData.append(key, value);
       });
 
-      const result = await response.json();
-      if (result.success) {
-        setStatus('success');
+      const response = await fetch(
+        "https://hooks.zapier.com/hooks/catch/426384/uc7wupg/",
+        {
+          method: "POST",
+          body: formData,
+        },
+      );
+
+      if (response.ok) {
+        setStatus("success");
       } else {
-        setStatus('error');
+        setStatus("error");
       }
     } catch (error) {
-      setStatus('error');
+      setStatus("error");
     }
   };
 
@@ -156,7 +162,7 @@ export default function QuoteForm({
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="relative w-full max-w-2xl transform overflow-hidden rounded-2xl bg-pink-light shadow-xl transition-all">
+            <div className="relative w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white shadow-xl transition-all">
               {/* Close button */}
               <button
                 onClick={handleClose}
@@ -165,159 +171,155 @@ export default function QuoteForm({
                 <XIcon className="h-5 w-5" />
               </button>
 
-              {status === 'success' ? (
+              {status === "success" ? (
                 // Success state
-                <div className="p-8 text-center">
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green/20">
-                    <CheckCircleIcon className="h-10 w-10 text-green" />
+                <div className="p-8 text-center lg:p-12">
+                  <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-green-dark">
+                    <CheckIcon className="h-12 w-12 text-white" />
                   </div>
-                  <h3 className="mb-2 text-2xl font-bold text-black">
-                    Richiesta Inviata!
+                  <h3 className="mt-4 block text-lg font-bold uppercase text-orange-dark">
+                    {translate("quoteSuccess", locale)}
                   </h3>
-                  <p className="mb-6 text-black/70">
-                    Grazie per averci contattato. Ti risponderemo il prima possibile.
+                  <p className="mb-6 text-lg text-black/80">
+                    {translate("quoteSuccessMsg", locale)}
                   </p>
                   <button
                     onClick={handleClose}
-                    className="rounded-lg bg-gold px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-gold-light"
+                    className="rounded-full border border-black px-6 py-3 text-sm font-medium text-black transition-colors hover:bg-gold-light"
                   >
-                    Chiudi
+                    {translate("close", locale)}
                   </button>
                 </div>
               ) : (
                 // Form state
                 <div className="p-6 lg:p-8">
                   {/* Header */}
-                  <div className="mb-6">
-                    <h3 className="text-2xl font-bold text-black">
-                      Richiedi Preventivo
+                  <div className="mb-6 text-center">
+                    <h3 className="text-xxs uppercase text-orange-dark">
+                      {translate("quoteTitle", locale)}
                     </h3>
                     <p className="mt-1 text-sm text-black/70">
-                      Compila il form per ricevere un preventivo personalizzato
+                      {translate("quoteSubtitle", locale)}
                     </p>
                   </div>
 
                   {/* Configuration Summary */}
-                  <div className="mb-6 rounded-lg border border-pink bg-white p-4">
-                    <h4 className="mb-2 text-xs font-semibold uppercase tracking-wide text-black/50">
-                      Riepilogo Configurazione
-                    </h4>
-                    <div className="mb-3 text-lg font-bold text-gold">
-                      Diamond Oil {configSummary?.machine?.title?.toUpperCase()}
+                  <div className="mb-6 rounded-lg text-center">
+                    <div className="mb-7 text-lg text-gold">
+                      Diamond Oil
+                      <span className="ml-1.5 font-bold uppercase">
+                        {configSummary?.machine?.title}
+                      </span>
                     </div>
-                    <div className="flex flex-wrap gap-2">
-                      {configSummary?.functions?.map((fn) => (
-                        <span
-                          key={fn.id}
-                          className="rounded bg-gold/10 px-2 py-1 text-xs font-medium text-gold"
-                        >
-                          {fn.title}
-                        </span>
-                      ))}
-                      {configSummary?.plusFunctions?.map((fn) => (
-                        <span
-                          key={fn.id}
-                          className="rounded bg-green/10 px-2 py-1 text-xs font-medium text-green"
-                        >
-                          {fn.title}
-                        </span>
-                      ))}
-                    </div>
+                    <p className="mt-1 mb-8 text-sm text-black/70">
+                      {translate("quoteDescription", locale)}
+                    </p>
                   </div>
 
                   {/* Form */}
                   <Formik
                     initialValues={{
-                      name: '',
-                      surname: '',
-                      company: '',
-                      email: '',
-                      phone: '',
-                      message: '',
+                      name: "",
+                      surname: "",
+                      company: "",
+                      vat: "",
+                      phone: "",
+                      email: "",
+                      message: "",
                       acceptedTerms: false,
                     }}
                     validationSchema={Yup.object({
-                      name: Yup.string().required('fieldRequest'),
-                      surname: Yup.string().required('fieldRequest'),
-                      company: Yup.string().required('fieldRequest'),
-                      email: Yup.string().email('emailNoValid').required('fieldRequest'),
-                      phone: Yup.string().required('fieldRequest'),
+                      name: Yup.string().required("fieldRequest"),
+                      surname: Yup.string().required("fieldRequest"),
+                      company: Yup.string().required("fieldRequest"),
+                      vat: Yup.string().required("fieldRequest"),
+                      phone: Yup.string().required("fieldRequest"),
+                      email: Yup.string()
+                        .email("emailNoValid")
+                        .required("fieldRequest"),
                       acceptedTerms: Yup.boolean()
-                        .required('fieldRequest')
-                        .oneOf([true], 'acceptCondition'),
+                        .required("fieldRequest")
+                        .oneOf([true], "acceptCondition"),
                     })}
                     onSubmit={handleSubmit}
                   >
-                    <Form>
-                      <div className="grid gap-4 lg:grid-cols-2">
+                    <Form className="">
+                      <div className="grid gap-4 bg-gray-dark/5 p-6 lg:grid-cols-2">
                         <MyTextInput
-                          label="Nome *"
+                          label={`${translate("firstName", locale)} *`}
                           locale={locale}
                           name="name"
                           type="text"
-                          placeholder="Nome"
+                          placeholder={translate("firstName", locale)}
                         />
                         <MyTextInput
-                          label="Cognome *"
+                          label={`${translate("lastName", locale)} *`}
                           locale={locale}
                           name="surname"
                           type="text"
-                          placeholder="Cognome"
+                          placeholder={translate("lastName", locale)}
                         />
                         <MyTextInput
-                          label="Azienda *"
+                          label={`${translate("company", locale)} *`}
                           locale={locale}
                           name="company"
                           type="text"
-                          placeholder="Azienda"
+                          placeholder={translate("company", locale)}
                         />
                         <MyTextInput
-                          label="Telefono *"
+                          label={`${translate("vat", locale)} *`}
+                          locale={locale}
+                          name="vat"
+                          type="text"
+                          placeholder={translate("vat", locale)}
+                        />
+                        <MyTextInput
+                          label={`${translate("phone", locale)} *`}
                           locale={locale}
                           name="phone"
                           type="tel"
-                          placeholder="Telefono"
+                          placeholder={translate("phone", locale)}
+                        />
+                        <MyTextInput
+                          label={`${translate("email", locale)} *`}
+                          locale={locale}
+                          name="email"
+                          type="email"
+                          placeholder={translate("email", locale)}
                         />
                         <div className="lg:col-span-2">
-                          <MyTextInput
-                            label="Email *"
-                            locale={locale}
-                            name="email"
-                            type="email"
-                            placeholder="Email"
-                          />
-                        </div>
-                        <div className="lg:col-span-2">
                           <MyTextarea
-                            label="Messaggio o richieste particolari"
+                            label={translate("messageLabel", locale)}
                             locale={locale}
                             name="message"
-                            placeholder="Scrivi qui..."
+                            placeholder={translate("writePlaceholder", locale)}
                           />
                         </div>
                         <div className="lg:col-span-2">
                           <MyCheckbox name="acceptedTerms" locale={locale}>
-                            Accetto la{' '}
+                            {translate("acceptPrivacy", locale)}{" "}
                             <Link href="/privacy-policy">
-                              <a className="underline hover:text-gold">Privacy Policy</a>
-                            </Link>{' '}
+                              <a className="underline hover:text-gold">
+                                Privacy Policy
+                              </a>
+                            </Link>{" "}
                             *
                           </MyCheckbox>
                         </div>
                       </div>
 
-                      {status === 'error' && (
+                      {status === "error" && (
                         <div className="mt-4 rounded-lg bg-red-light/10 p-3 text-sm text-red-light">
-                          Si è verificato un errore. Riprova più tardi.
+                          {translate("quoteError", locale)}
                         </div>
                       )}
 
-                      <div className="mt-6">
+                      <div className="mt-6 text-center">
                         <button
                           type="submit"
-                          className="group flex w-full items-center justify-center gap-2 rounded-lg bg-gold px-6 py-4 text-sm font-medium text-white transition-colors hover:bg-gold-light lg:w-auto"
+                          className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-orange-dark px-6 py-4 text-sm font-medium text-white transition-colors hover:bg-gold-light lg:w-auto lg:px-10"
                         >
-                          <span>Invia Richiesta</span>
+                          <span>{translate("quoteSubmit", locale)}</span>
                           <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </button>
                       </div>
