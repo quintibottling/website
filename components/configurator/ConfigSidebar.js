@@ -203,7 +203,7 @@ export default function ConfigSidebar({
                           )}
                           <button
                             onClick={onClose}
-                            className="w-full rounded-full border border-black bg-white px-4 py-3 text-sm font-medium text-black transition-colors hover:bg-pink"
+                            className="w-full rounded-full border border-black bg-white px-4 py-3 text-sm font-medium text-black transition-colors hover:bg-gray-dark/10"
                           >
                             {translate("goBack", locale)}
                           </button>

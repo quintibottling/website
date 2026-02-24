@@ -86,17 +86,17 @@ export default function TierChangePopup({
               <div className="gap-3 space-y-2 md:flex md:space-y-0">
                 <button
                   type="button"
+                  className="w-full rounded-full border border-black bg-white px-4 py-3 text-sm font-medium text-black transition-colors hover:bg-gray-dark/10"
+                  onClick={onClose}
+                >
+                  {translate("stayOn", locale)} {fromLabel}
+                </button>
+                <button
+                  type="button"
                   className="w-full rounded-full border border-orange-dark bg-orange-dark px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-orange-dark/80"
                   onClick={onConfirm}
                 >
                   {translate("goTo", locale)} {toLabel}
-                </button>
-                <button
-                  type="button"
-                  className="w-full rounded-full border border-black bg-white px-4 py-3 text-sm font-medium text-black transition-colors hover:bg-pink"
-                  onClick={onClose}
-                >
-                  {translate("stayOn", locale)} {fromLabel}
                 </button>
               </div>
             </div>

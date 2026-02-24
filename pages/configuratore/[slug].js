@@ -24,9 +24,9 @@ const STEPS = [
 ];
 
 const TIER_BADGE = {
-  start: { label: "Base", color: "bg-gray-dark" },
-  intermediate: { label: "Intermediate", color: "bg-gray-dark" },
-  pro: { label: "PRO", color: "bg-gray-dark" },
+  start: { label: "Base", color: "bg-[#DDD2B8] text-black" },
+  intermediate: { label: "Intermediate", color: "bg-gray-dark text-white" },
+  pro: { label: "PRO", color: "bg-gray-dark text-white" },
 };
 
 export default function ConfiguratoreMachine({
@@ -113,21 +113,32 @@ export default function ConfiguratoreMachine({
   );
 
   // Determine required machine based on active functions
+  // Find the lowest-tier machine whose function set contains ALL active functions
   const determineRequiredMachine = useCallback(
     (testFunctionState) => {
-      const sortedMachines = [...allMachines].sort(
-        (a, b) => TIER_ORDER[b.slug] - TIER_ORDER[a.slug],
+      const activeIds = new Set(
+        Object.entries(testFunctionState)
+          .filter(([, active]) => active)
+          .map(([id]) => id),
       );
+
+      const sortedMachines = [...allMachines].sort(
+        (a, b) => TIER_ORDER[a.slug] - TIER_ORDER[b.slug],
+      );
+
       for (const machine of sortedMachines) {
-        const machineFunctionIds = machine.functions.map((fn) => fn.id);
-        const allActive = machineFunctionIds.every(
-          (id) => testFunctionState[id],
+        const machineFunctionIds = new Set(
+          machine.functions.map((fn) => fn.id),
         );
-        if (allActive) {
+        const containsAll = [...activeIds].every((id) =>
+          machineFunctionIds.has(id),
+        );
+        if (containsAll) {
           return machine;
         }
       }
-      return allMachines.find((m) => m.slug === "start") || allMachines[0];
+
+      return sortedMachines[sortedMachines.length - 1];
     },
     [allMachines],
   );
@@ -145,7 +156,10 @@ export default function ConfiguratoreMachine({
 
       const requiredMachine = determineRequiredMachine(newState);
 
-      if (requiredMachine.slug !== currentMachine.slug) {
+      if (
+        requiredMachine.slug !== currentMachine.slug &&
+        TIER_ORDER[requiredMachine.slug] > TIER_ORDER[currentMachine.slug]
+      ) {
         setPendingNavigation({
           from: currentMachine.slug,
           to: requiredMachine.slug,
@@ -430,8 +444,8 @@ export default function ConfiguratoreMachine({
         <div className="container--standard py-12">
           <div className="grid items-start gap-12 lg:grid-cols-2 xl:grid-cols-12">
             {/* Left: Machine image carousel */}
-            <div className="top-40 flex flex-col items-center lg:sticky xl:col-span-7">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg">
+            <div className="top-40 flex flex-col items-center lg:sticky xl:col-span-8">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border">
                 {currentGallery.length > 0 &&
                   currentGallery[currentImageIndex]?.responsiveImage && (
                     <DatoImage
@@ -444,7 +458,7 @@ export default function ConfiguratoreMachine({
                         currentGallery[currentImageIndex].responsiveImage
                           .title || ""
                       }
-                      objectFit="contain"
+                      objectFit="cover"
                       layout="fill"
                     />
                   )}
@@ -467,9 +481,7 @@ export default function ConfiguratoreMachine({
               )}
             </div>
 
-            {/* Right: Step content */}
-            <div className="xl:col-span-5">
-              {/* Step 1: Funzioni Base */}
+            <div className="xl:col-span-4">
               {currentStep === 1 && (
                 <>
                   <h2 className="mb-4 border-b pb-2 lg:mb-6 lg:text-lg">
@@ -490,7 +502,7 @@ export default function ConfiguratoreMachine({
                         isFixed={true}
                         onInfo={() => openSidebar(fn, "function")}
                         badgeText="Di serie"
-                        badgeColor="bg-[#709A33]"
+                        badgeColor="bg-[#DDD2B8] text-black"
                       />
                     ))}
                   </div>
@@ -523,7 +535,7 @@ export default function ConfiguratoreMachine({
                   </div>
 
                   {/* Navigation buttons */}
-                  <div className="flex flex-col gap-2 pt-4 md:flex-row">
+                  <div className="flex flex-col gap-2 pt-4">
                     <button
                       onClick={() => setCurrentStep(2)}
                       className="flex-1 rounded-full bg-black py-2 text-sm font-medium text-white transition-colors hover:bg-black/80 lg:py-4"
@@ -566,7 +578,7 @@ export default function ConfiguratoreMachine({
                   </div>
 
                   {/* Navigation buttons */}
-                  <div className="flex flex-col gap-2 pt-4 md:flex-row">
+                  <div className="flex flex-col gap-2 pt-4">
                     <button
                       onClick={() => setCurrentStep(3)}
                       className="flex-1 rounded-full bg-black py-2 text-sm font-medium text-white transition-colors hover:bg-black/80 lg:py-4"
@@ -642,7 +654,7 @@ export default function ConfiguratoreMachine({
                   </div>
 
                   {/* Navigation buttons */}
-                  <div className="flex flex-col gap-2 pt-4 md:flex-row">
+                  <div className="flex flex-col gap-2 pt-4">
                     <button
                       onClick={() => setShowQuoteForm(true)}
                       className="group flex flex-1 items-center justify-center gap-2 rounded-full bg-orange-dark py-2 text-sm font-medium text-white transition-colors hover:bg-black/80 lg:py-4"

@@ -27,7 +27,7 @@ export default function FunctionOption({
         </div>
         {badgeText && (
           <span
-            className={`shrink-0 rounded-md px-2 py-px text-xxs text-[11px] uppercase text-white ${badgeColor}`}
+            className="shrink-0 rounded-md bg-[#DDD2B8] px-2 py-px text-xxs text-[11px] uppercase text-black"
           >
             {badgeText}
           </span>
@@ -35,6 +35,10 @@ export default function FunctionOption({
       </div>
     );
   }
+
+  const badgeClasses = isActive
+    ? "bg-[#DDD2B8] text-black"
+    : "bg-gray-dark text-white";
 
   return (
     <div
@@ -62,20 +66,22 @@ export default function FunctionOption({
           <div
             className={`flex h-5 w-5 shrink-0 items-center justify-center rounded border bg-white transition-all ${
               isActive
-                ? "border-gold bg-gold"
+                ? "border-green-dark bg-green-dark"
                 : "border-gray-dark bg-gray-dark/10"
             }`}
           >
             {isActive && <CheckIcon className="h-4 w-4 text-white" />}
           </div>
-          <span className="text-[11px] text-black">
-            {isActive ? translate("remove", locale) : translate("addLabel", locale)}
-          </span>
+          {/*<span className="text-[11px] text-black">
+            {isActive
+              ? translate("remove", locale)
+              : translate("addLabel", locale)}
+          </span>*/}
         </div>
       </div>
       {badgeText && (
         <span
-          className={`shrink-0 rounded-md px-2 py-px text-xxs text-[11px] uppercase text-white ${badgeColor}`}
+          className={`shrink-0 rounded-md px-2 py-px text-xxs text-[11px] uppercase ${badgeClasses}`}
         >
           {badgeText}
         </span>
