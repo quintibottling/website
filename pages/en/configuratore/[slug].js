@@ -499,7 +499,7 @@ export async function getStaticProps({ params, locale = 'en', preview }) {
       currentMachine,
       allMachines: sortedMachines,
       allFunctions,
-      optionals: response.allOptionals,
+      optionals: response.allOptionalConfs,
     },
   };
 }

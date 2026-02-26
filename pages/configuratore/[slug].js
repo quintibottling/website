@@ -766,7 +766,7 @@ export async function getStaticProps({ params, locale = "it", preview }) {
       currentMachine,
       allMachines: sortedMachines,
       allFunctions,
-      optionals: response.allOptionals,
+      optionals: response.allOptionalConfs,
     },
   };
 }
