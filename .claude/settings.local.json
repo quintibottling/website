@@ -5,7 +5,15 @@
       "Bash(curl:*)",
       "Bash(python3:*)",
       "Bash(npx next dev:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(grep:*)",
+      "Bash(git:*)",
+      "Bash(npm ls:*)",
+      "Bash(tail:*)",
+      "Bash(node:*)",
+      "Bash(source:*)",
+      "Bash(diff:*)",
+      "Bash(netlify status:*)"
     ]
   }
 }

@@ -28,7 +28,7 @@ function Header(props) {
       >
         <div className="px-4 sm:px-6 xl:px-12">
           <div className="xl:container xl:mx-auto">
-            <div className="flex items-center justify-between py-6 lg:justify-start lg:space-x-5">
+            <div className="flex items-center justify-between py-6 lg:justify-start lg:space-x-3 xl:space-x-5">
               <div className="flex items-center justify-start lg:w-0 lg:flex-1">
                 <Link href="/" locale={locale} key="homepage">
                   <a title="Homepage" className="h-[35px]">
@@ -48,7 +48,7 @@ function Header(props) {
                   <MenuAlt3Icon className="h-9 w-9" aria-hidden="true" />
                 </Popover.Button>
               </div>
-              <Popover.Group as="nav" className="hidden space-x-5 lg:flex">
+              <Popover.Group as="nav" className="hidden space-x-3 lg:flex lg:flex-nowrap lg:items-center xl:space-x-5">
                 <Popover className="relative">
                   {({ open, close }) => (
                     <>
@@ -278,6 +278,21 @@ function Header(props) {
                   >
                     <span className="text-white duration-200 hover:text-orange">
                       {site.contactPage.labelMenu}
+                    </span>
+                  </a>
+                </Link>
+                <Link href="/configuratore" locale={locale}>
+                  <a
+                    key="configuratore"
+                    title={translate("configurator", locale)}
+                    className={`${
+                      Object(router.pathname).indexOf("configuratore") > -1
+                        ? "border-b-2 border-orange"
+                        : "none"
+                    }`}
+                  >
+                    <span className="text-white duration-200 hover:text-orange">
+                      {translate("configurator", locale)}
                     </span>
                   </a>
                 </Link>

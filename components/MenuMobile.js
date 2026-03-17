@@ -240,6 +240,14 @@ export default function MenuMobile({ site, locale, model, alts, altsProduct }) {
                           </span>
                         </a>
                       </Link>
+                      {/* // Mobile Configuratore */}
+                      <Link locale={locale} href="/configuratore">
+                        <a title={translate("configurator", locale)} className="">
+                          <span className={`menu_item`}>
+                            {translate("configurator", locale)}
+                          </span>
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </nav>

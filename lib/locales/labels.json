@@ -85,7 +85,8 @@
     "compatibility": "Compatibilità",
     "removeFromConfig": "Rimuovi dalla configurazione",
     "addToConfig": "Aggiungi alla configurazione",
-    "goBack": "Torna indietro"
+    "goBack": "Torna indietro",
+    "configurator": "Configuratore"
   },
   "en": {
     "it": "Ita",
@@ -173,6 +174,7 @@
     "compatibility": "Compatibility",
     "removeFromConfig": "Remove from configuration",
     "addToConfig": "Add to configuration",
-    "goBack": "Go back"
+    "goBack": "Go back",
+    "configurator": "Configurator"
   }
 }
