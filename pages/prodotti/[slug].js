@@ -14,17 +14,21 @@ import translate from "lib/locales";
 
 function ProductDetail({ locale, data, product, allTecnology, machines }) {
   const machineCheck = [];
+  const machineCheckTab = [];
 
   // Check machines of the products
   machines.map((machine) => {
     if (Object.values(machine.product).indexOf(product.id) > -1) {
       machineCheck.push(machine);
+      if (!machine.noTab) {
+        machineCheckTab.push(machine);
+      }
     }
   });
 
   // remove duplicate array from object
   const allTecnologyArray = [];
-  machineCheck.map((machine) =>
+  machineCheckTab.map((machine) =>
     machine.tecnology.map((tecnology) => {
       allTecnologyArray.push(tecnology);
     })
@@ -42,7 +46,7 @@ function ProductDetail({ locale, data, product, allTecnology, machines }) {
 
   // remove duplicate array from object
   const allOptionalArray = [];
-  machineCheck.map((machine) =>
+  machineCheckTab.map((machine) =>
     machine.optional.map((optional) => {
       allOptionalArray.push(optional);
     })
@@ -116,7 +120,7 @@ function ProductDetail({ locale, data, product, allTecnology, machines }) {
         <div className="rounded-b-[30px] bg-white pb-12 lg:rounded-b-[50px] lg:pb-16 xl:pb-20">
           <ComparisonTab
             locale={locale}
-            machines={machineCheck}
+            machines={machineCheckTab}
             product={product}
             resultAllTecnologyArray={orderedTecnology}
           />

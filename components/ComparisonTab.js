@@ -11,7 +11,7 @@ export default function ComparisonTab({
   return (
     <>
       <div className="overflow-x-scroll pl-4 pb-4 lg:pl-10 xl:container xl:mx-auto xl:overflow-x-auto xl:pl-10 2xl:pl-28">
-        <table>
+        <table className="w-full">
           <tr>
             <td></td>
             {machines.map((machine) => (
