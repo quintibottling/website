@@ -33,7 +33,7 @@ function MachineDetail({ locale, machine, data, allProducts }) {
       <Head>{renderMetaTags(machine.seo.concat(data.site.favicon))}</Head>
       <MachineHero locale={locale} data={machine} category={machine.product} />
       <section className="mt-10 xl:mt-16">
-        <div className="container--small">
+        <div className="container--small grid gap-10 lg:gap-16">
           {machine.textIntro && (
             <div className="text-black lg:text-lg">
               {renderHTML(machine.textIntro)}

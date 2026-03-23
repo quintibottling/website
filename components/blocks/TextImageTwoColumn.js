@@ -5,14 +5,13 @@ import { renderHTML } from "lib/utils";
 export default function TextImageTwoColumn({ locale, record, background }) {
   if (record.configurator) {
     return (
-      <div className="max-w-screen relative ml-[calc(-50vw+50%)] mr-[calc(-50vw+50%)] overflow-hidden rounded-[20px] bg-[#B6E0AC] px-6 py-20 md:py-24 lg:py-28 xl:rounded-[50px]">
+      <div className="max-w-screen relative ml-[calc(-50vw+50%)] mr-[calc(-50vw+50%)] flex  items-center justify-center overflow-hidden rounded-[20px] bg-[#B6E0AC] px-6 py-12 md:py-32 xl:rounded-[50px] 2xl:py-48">
         <div className="pointer-events-none absolute inset-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={record.image.responsiveImage.src}
-            srcSet={record.image.responsiveImage.srcSet}
+            src={record.banner.responsiveImage.src}
+            srcSet={record.banner.responsiveImage.srcSet}
             sizes="100vw"
-            alt={record.image.responsiveImage.alt || ""}
+            alt={record.banner.responsiveImage.alt || ""}
             className="h-full w-full object-cover"
           />
         </div>

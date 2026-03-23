@@ -11,7 +11,7 @@ import translate from "lib/locales";
 import TecnologyCard from "components/TecnologyCard";
 import OptionalCard from "components/OptionalCard";
 
-function MachineDetail({ locale, machine, data }) {
+function MachineDetail({ locale, machine, data, blockContent }) {
   const altsProduct = [
     { locale: "it", value: "olio" },
     { locale: "en", value: "olive-oil" },
@@ -34,7 +34,7 @@ function MachineDetail({ locale, machine, data }) {
       <MachineHero locale={locale} data={machine} category={machine.product} />
 
       <section className="mt-10 xl:mt-16">
-        <div className="container--small">
+        <div className="container--small grid gap-10 lg:gap-16">
           {machine.textHero && (
             <div className="text-black lg:text-lg">
               {renderHTML(machine.textIntro)}
@@ -152,6 +152,21 @@ function MachineDetail({ locale, machine, data }) {
           </div>
         </div>
       </section>
+      {blockContent && blockContent.length > 0 && (
+        <section className="container--standard">
+          <div className="grid gap-y-10 xl:gap-y-24">
+            {blockContent.map((block) => (
+              <div key={block.id}>
+                <PostContent
+                  record={block}
+                  background="light"
+                  locale={locale}
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
       <section>
         <div className="-mb-8 rounded-t-[30px] bg-white pb-8 lg:rounded-t-[50px]">
           <div className="container--small">
@@ -188,10 +203,14 @@ export async function getStaticProps({ params, locale = "it" }) {
   const { slug } = params;
   const response = await fetchDato(queries.getMachine, { slug, locale });
   const data = await fetchDato(queries.site, { locale });
+  const configuratorBlock = response.homepage?.blockContent?.filter(
+    (block) => block.configurator
+  ) || [];
   return {
     props: {
       locale,
       machine: response.machine,
+      blockContent: configuratorBlock,
       data,
     },
   };
