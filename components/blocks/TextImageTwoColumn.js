@@ -1,9 +1,12 @@
 import PostContent from "components/PostContent";
 import { Image as DatoImage } from "react-datocms";
-import { renderHTML } from "lib/utils";
+import { renderHTML, resolveLink } from "lib/utils";
+import Link from "next/link";
+import Button from "components/Button";
 
 export default function TextImageTwoColumn({ locale, record, background }) {
   if (record.configurator) {
+    const confUrl = resolveLink("conf_page", locale);
     return (
       <div className="max-w-screen relative ml-[calc(-50vw+50%)] mr-[calc(-50vw+50%)] flex  items-center justify-center overflow-hidden rounded-[20px] bg-[#B6E0AC] px-6 py-12 md:py-32 xl:rounded-[50px] 2xl:py-48">
         <div className="pointer-events-none absolute inset-0">
@@ -25,11 +28,11 @@ export default function TextImageTwoColumn({ locale, record, background }) {
           <div className="mt-6 inline-flex items-center justify-center lg:mt-8">
             {record.link.map((block) => (
               <div key={block.id}>
-                <PostContent
-                  record={block}
-                  background="light"
-                  locale={locale}
-                />
+                <Link href={confUrl}>
+                  <a title={`Link ${block.label}`}>
+                    <Button data={block.label} background="light" />
+                  </a>
+                </Link>
               </div>
             ))}
           </div>
