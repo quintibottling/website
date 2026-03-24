@@ -16,7 +16,7 @@ export default function SlideMachine({
       <DatoImage
         className={`${
           isActive ? "translate-x-0" : "translate-x-full"
-        } relative z-20 delay-100 duration-[1s]`}
+        } relative z-20 max-w-full delay-100 duration-[1s]`}
         data={slide.responsiveImage}
         alt={slide.responsiveImage.alt}
         title={slide.responsiveImage.title}

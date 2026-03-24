@@ -6,7 +6,7 @@ import "swiper/css/navigation";
 
 export default function GalleryBlock({ locale, record }) {
   return (
-    <div className="blockGallery">
+    <div className="blockGallery max-w-[calc(1280px-6rem)] overflow-hidden">
       <Swiper
         modules={[Navigation, A11y]}
         spaceBetween={0}
@@ -14,24 +14,22 @@ export default function GalleryBlock({ locale, record }) {
         slidesPerView={1}
       >
         {record.sliders.map((slider, i) => (
-          <div key={slider.key}>
-            <SwiperSlide>
-              <div className="relative h-[270px] max-h-[600px] w-full overflow-hidden md:h-[40vw]">
-                <DatoImage
-                  className="image--cover w-full lg:block"
-                  data={slider.image.responsiveImage}
-                  alt={slider.image.responsiveImage.alt}
-                  title={slider.image.responsiveImage.title}
-                  layout="fill"
-                />
+          <SwiperSlide key={slider.id || i}>
+            <div className="relative h-[270px] max-h-[600px] w-full overflow-hidden md:h-[40vw]">
+              <DatoImage
+                className="image--cover w-full lg:block"
+                data={slider.image.responsiveImage}
+                alt={slider.image.responsiveImage.alt}
+                title={slider.image.responsiveImage.title}
+                layout="fill"
+              />
+            </div>
+            {slider.description && (
+              <div className="pt-2 text-center text-xs text-black/70 lg:pt-8 lg:text-base">
+                {slider.description}
               </div>
-              {slider.description && (
-                <div className="pt-2 text-center text-xs text-black/70 lg:pt-8 lg:text-base">
-                  {slider.description}
-                </div>
-              )}
-            </SwiperSlide>
-          </div>
+            )}
+          </SwiperSlide>
         ))}
       </Swiper>
     </div>

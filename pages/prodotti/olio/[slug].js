@@ -8,7 +8,6 @@ import * as queries from "lib/queries";
 import fetchDato from "lib/dato";
 import MachineHero from "components/hero/MachineHero";
 import translate from "lib/locales";
-import OptionalCard from "components/OptionalCard";
 
 function MachineDetail({ locale, machine, data, blockContent }) {
   const altsProduct = [
@@ -61,26 +60,6 @@ function MachineDetail({ locale, machine, data, blockContent }) {
           </div>
         </section>
       )}
-      <section>
-        <div className="container--small">
-          {machine.product.introPlus.map((block) => {
-            return (
-              <div key={block.id}>
-                <PostContent
-                  record={block}
-                  background="light"
-                  locale={locale}
-                />
-              </div>
-            );
-          })}
-          <div className="grid divide-y divide-pink md:grid-cols-3 md:gap-x-4 md:gap-y-4 md:divide-y-0 lg:gap-x-4 xl:gap-x-10">
-            {machine.optional.map((data) => (
-              <OptionalCard locale={locale} data={data} />
-            ))}
-          </div>
-        </div>
-      </section>
       <section>
         <div className="rounded-[30pt] bg-brown pb-8 lg:rounded-[50pt]">
           <div className="container--small">
@@ -158,9 +137,9 @@ export async function getStaticProps({ params, locale = "it" }) {
   const { slug } = params;
   const response = await fetchDato(queries.getMachine, { slug, locale });
   const data = await fetchDato(queries.site, { locale });
-  const configuratorBlock = response.homepage?.blockContent?.filter(
-    (block) => block.configurator
-  ) || [];
+  const configuratorBlock = slug === "diamond-oil"
+    ? response.homepage?.blockContent?.filter((block) => block.configurator) || []
+    : [];
   return {
     props: {
       locale,
