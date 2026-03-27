@@ -13,7 +13,8 @@
       "Bash(node:*)",
       "Bash(source:*)",
       "Bash(diff:*)",
-      "Bash(netlify status:*)"
+      "Bash(netlify status:*)",
+      "Bash(find /Users/guidosquillace/Repos/quinti-bottling/pages -type f -name *.js -o -name *.jsx)"
     ]
   }
 }

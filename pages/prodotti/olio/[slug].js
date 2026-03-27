@@ -207,7 +207,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params, locale = "it" }) {
   const { slug } = params;
-  const response = await fetchDato(queries.getMachine, { slug, locale });
+  const response = await fetchDato(queries.getMachine, { slug, locale, product: "109839746" });
   const data = await fetchDato(queries.site, { locale });
   const configuratorBlock = slug === "diamond-oil"
     ? response.homepage?.blockContent?.filter((block) => block.configurator) || []

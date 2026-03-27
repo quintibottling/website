@@ -188,7 +188,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params, locale = "it" }) {
   const { slug } = params;
-  const response = await fetchDato(queries.getMachine, { slug, locale });
+  const response = await fetchDato(queries.getMachine, { slug, locale, product: "109839755" });
   const data = await fetchDato(queries.site, { locale });
   return {
     props: {
