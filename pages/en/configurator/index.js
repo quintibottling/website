@@ -60,7 +60,7 @@ export default function ConfiguratoreIndex({
               );
 
               return (
-                <Link key={machine.id} href={`/en/configurator/${machine.slug}`}>
+                <Link key={machine.id} href={`/configuratore/${machine.slug}`}>
                   <a
                     className={`group block overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-lg ${colorClass}`}
                   >
@@ -132,7 +132,7 @@ export default function ConfiguratoreIndex({
   );
 }
 
-export async function getStaticProps({ locale = "en", preview }) {
+export async function getStaticProps({ locale = 'en', preview }) {
   const response = await fetchDato(
     queries.getConfigurator,
     { locale },

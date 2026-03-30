@@ -17,10 +17,10 @@ import fetchDato from "lib/dato";
 const TIER_ORDER = { start: 1, intermediate: 2, pro: 3 };
 
 const STEPS = [
-  { id: 1, label: "Base Functions" },
-  { id: 2, label: "Plus Functions" },
-  { id: 3, label: "Summary" },
-  { id: 4, label: "Send Request" },
+  { id: 1, label: "Funzioni Base" },
+  { id: 2, label: "Funzioni Plus" },
+  { id: 3, label: "Riepilogo" },
+  { id: 4, label: "Invia Richiesta" },
 ];
 
 const TIER_BADGE = {
@@ -192,7 +192,7 @@ export default function ConfiguratoreMachine({
       );
       const targetSlug = pendingNavigation.to;
       setPendingNavigation(null);
-      router.push(`/en/configurator/${targetSlug}`);
+      router.push(`/configuratore/${targetSlug}`);
     }
   }, [pendingNavigation, plusState, router]);
 
@@ -324,11 +324,11 @@ export default function ConfiguratoreMachine({
     <Layout site={site} locale={locale} model="conf_page">
       <Head>
         <title>
-          Diamond Oil {currentMachine.title} - Configurator | Quinti Bottling
+          Diamond Oil {currentMachine.title} - Configuratore | Quinti Bottling
         </title>
         <meta
           name="description"
-          content={`Configure your Diamond Oil ${currentMachine.title}. Customize the functions and request a quote.`}
+          content={`Configura la tua Diamond Oil ${currentMachine.title}. Personalizza le funzioni e richiedi un preventivo.`}
         />
       </Head>
 
@@ -338,7 +338,7 @@ export default function ConfiguratoreMachine({
           <div className="flex flex-col gap-4 py-5 md:flex-row md:items-center md:justify-between">
             <div>
               <span className="text-xxs uppercase tracking-wider">
-                Version
+                Versione
               </span>
               <h1 className="text-lg lg:text-xl">
                 Diamond Oil{" "}
@@ -353,7 +353,7 @@ export default function ConfiguratoreMachine({
                 type="button"
                 aria-haspopup="listbox"
                 aria-expanded={stepDropdownOpen}
-                aria-label="Select step"
+                aria-label="Seleziona fase"
                 onClick={() => setStepDropdownOpen((prev) => !prev)}
                 onKeyDown={(e) => {
                   if (e.key === "Escape") setStepDropdownOpen(false);
@@ -383,7 +383,7 @@ export default function ConfiguratoreMachine({
               {stepDropdownOpen && (
                 <ul
                   role="listbox"
-                  aria-label="Configuration steps"
+                  aria-label="Fasi di configurazione"
                   aria-activedescendant={`step-option-${currentStep}`}
                   className="absolute left-0 right-0 z-50 mt-1 overflow-hidden rounded-lg border border-black/10 bg-white shadow-lg"
                 >
@@ -485,12 +485,12 @@ export default function ConfiguratoreMachine({
               {currentStep === 1 && (
                 <>
                   <h2 className="mb-4 border-b pb-2 lg:mb-6 lg:text-lg">
-                    <span className="font-bold">Base</span> Functions
+                    Funzioni <span className="font-bold">Base</span>
                   </h2>
 
                   {/* Fixed functions */}
                   <h3 className="mb-3 text-xxs font-bold uppercase tracking-wider">
-                    Standard functions
+                    Funzioni di serie
                   </h3>
                   <div className="mb-8 space-y-3">
                     {fixedFunctions.map((fn) => (
@@ -501,7 +501,7 @@ export default function ConfiguratoreMachine({
                         isActive={true}
                         isFixed={true}
                         onInfo={() => openSidebar(fn, "function")}
-                        badgeText="Standard"
+                        badgeText="Di serie"
                         badgeColor="bg-[#DDD2B8] text-black"
                       />
                     ))}
@@ -509,7 +509,7 @@ export default function ConfiguratoreMachine({
 
                   {/* Optional functions */}
                   <h3 className="mb-3 text-xxs font-bold uppercase tracking-wider">
-                    Optional functions
+                    Funzioni opzionali
                   </h3>
                   <div className="mb-8 space-y-3">
                     {optionalFunctions.map((fn) => {
@@ -540,25 +540,25 @@ export default function ConfiguratoreMachine({
                       onClick={() => setCurrentStep(2)}
                       className="flex-1 rounded-full bg-black py-2 text-sm font-medium text-white transition-colors hover:bg-black/80 lg:py-4"
                     >
-                      Go to plus functions
+                      Vai alle funzioni plus
                     </button>
-                    <Link href="/en/configurator">
+                    <Link href="/configuratore">
                       <a className="block rounded-full border border-black px-4 py-2 text-center text-sm font-medium text-black transition-colors hover:bg-black/5 md:block lg:py-4 lg:px-8">
-                        Back to start
+                        Torna all&apos;inizio
                       </a>
                     </Link>
                   </div>
                 </>
               )}
 
-              {/* Step 2: Plus Functions */}
+              {/* Step 2: Funzioni Plus */}
               {currentStep === 2 && (
                 <>
                   <h2 className="mb-2 text-2xl">
-                    <span className="font-bold">Plus</span> Functions
+                    Funzioni <span className="font-bold">Plus</span>
                   </h2>
                   <p className="mb-8 text-sm text-black/60">
-                    Additional accessories available for all versions
+                    Accessori aggiuntivi disponibili per tutte le versioni
                   </p>
 
                   <div className="space-y-3">
@@ -583,23 +583,23 @@ export default function ConfiguratoreMachine({
                       onClick={() => setCurrentStep(3)}
                       className="flex-1 rounded-full bg-black py-2 text-sm font-medium text-white transition-colors hover:bg-black/80 lg:py-4"
                     >
-                      Go to summary
+                      Vai al riepilogo
                     </button>
                     <button
                       onClick={() => setCurrentStep(1)}
                       className="rounded-full border border-black px-4 py-2 text-sm font-medium text-black transition-colors hover:bg-black/5 lg:py-4 lg:px-8"
                     >
-                      Back to base functions
+                      Torna alle funzioni base
                     </button>
                   </div>
                 </>
               )}
 
-              {/* Step 3: Summary */}
+              {/* Step 3: Riepilogo */}
               {currentStep === 3 && (
                 <>
                   <h2 className="mb-4 text-xl text-orange-dark">
-                    Your machine
+                    La tua macchina
                   </h2>
 
                   <div className="mb-6 rounded-lg bg-white">
@@ -615,7 +615,7 @@ export default function ConfiguratoreMachine({
                     {/* Active base functions */}
                     <div className="mb-4 mt-2 border-t pt-8">
                       <span className="block pb-2 text-sm font-semibold uppercase tracking-wider text-black">
-                        Base Functions
+                        Funzioni Base
                       </span>
                       <ul className="mt-2 space-y-2">
                         {activeFunctions.map((fn) => (
@@ -634,7 +634,7 @@ export default function ConfiguratoreMachine({
                     {activePlus.length > 0 && (
                       <div>
                         <span className="mt-8 block pb-2 text-sm font-semibold uppercase tracking-wider text-black">
-                          Plus Functions
+                          Funzioni Plus
                         </span>
                         <div className="mt-2 space-y-2">
                           {activePlus.map((opt) => (
@@ -659,14 +659,14 @@ export default function ConfiguratoreMachine({
                       onClick={() => setShowQuoteForm(true)}
                       className="group flex flex-1 items-center justify-center gap-2 rounded-full bg-orange-dark py-2 text-sm font-medium text-white transition-colors hover:bg-black/80 lg:py-4"
                     >
-                      Request a quote
+                      Richiedi preventivo
                       <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </button>
                     <button
                       onClick={() => setCurrentStep(2)}
                       className="rounded-full border border-black px-4 py-2 text-sm font-medium text-black transition-colors hover:bg-black/5 lg:py-4 lg:px-8"
                     >
-                      Back to plus functions
+                      Torna alle funzioni plus
                     </button>
                   </div>
                 </>
@@ -715,7 +715,7 @@ export default function ConfiguratoreMachine({
 }
 
 export async function getStaticPaths() {
-  const response = await fetchDato(queries.getConfigurator, { locale: "en" });
+  const response = await fetchDato(queries.getConfigurator, { locale: 'en' });
 
   const paths = (response?.allMachineConfs || []).map((machine) => ({
     params: { slug: machine.slug },
@@ -727,7 +727,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params, locale = "en", preview }) {
+export async function getStaticProps({ params, locale = 'en', preview }) {
   const response = await fetchDato(
     queries.getConfigurator,
     { locale },

@@ -13,7 +13,7 @@ import OptionalCard from "components/OptionalCard";
 
 function MachineDetail({ locale, machine, data, blockContent }) {
   const altsProduct = [
-    { locale: "it", value: "olio" },
+    { locale: 'en', value: "olio" },
     { locale: "en", value: "olive-oil" },
   ];
   const isDiamondOil = machine.slug === "diamond-oil";
