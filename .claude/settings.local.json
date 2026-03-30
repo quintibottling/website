@@ -14,7 +14,17 @@
       "Bash(source:*)",
       "Bash(diff:*)",
       "Bash(netlify status:*)",
-      "Bash(find /Users/guidosquillace/Repos/quinti-bottling/pages -type f -name *.js -o -name *.jsx)"
+      "Bash(find /Users/guidosquillace/Repos/quinti-bottling/pages -type f -name *.js -o -name *.jsx)",
+      "Bash(find /Users/guidosquillace/Repos/quinti-bottling -type f \\\\\\(-name *i18n* -o -name *locale* -o -name *translation* \\\\\\))",
+      "Bash(nvm ls:*)",
+      "Bash(fnm ls:*)",
+      "Read(//Users/guidosquillace/.nvm/versions/**)",
+      "Bash(nvm use:*)",
+      "Bash(fnm use:*)",
+      "Bash(npm install:*)",
+      "Bash(find /Users/guidosquillace/Repos/quinti-bottling/pages/prodotti/olio -type f -name *.js -o -name *.jsx -o -name *.ts -o -name *.tsx)",
+      "Bash(find /Users/guidosquillace/Repos/quinti-bottling/pages/en/products -type f -name *.js -o -name *.jsx)",
+      "Bash(find /Users/guidosquillace/Repos/quinti-bottling/components -type f \\\\\\(-name *oil* -o -name *product* \\\\\\))"
     ]
   }
 }

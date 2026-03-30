@@ -281,12 +281,12 @@ function Header(props) {
                     </span>
                   </a>
                 </Link>
-                <Link href="/configuratore" locale={locale}>
+                <Link href={resolveLink("conf_page", locale)} locale={locale}>
                   <a
                     key="configuratore"
                     title={translate("configurator", locale)}
                     className={`${
-                      Object(router.pathname).indexOf("configuratore") > -1
+                      Object(router.pathname).indexOf(translate("configurator_url", locale)) > -1
                         ? "border-b-2 border-orange"
                         : "none"
                     }`}

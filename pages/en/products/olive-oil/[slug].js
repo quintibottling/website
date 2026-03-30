@@ -11,11 +11,12 @@ import translate from "lib/locales";
 import TecnologyCard from "components/TecnologyCard";
 import OptionalCard from "components/OptionalCard";
 
-function MachineDetail({ locale, machine, data }) {
+function MachineDetail({ locale, machine, data, blockContent }) {
   const altsProduct = [
-    { locale: 'en', value: "olio" },
+    { locale: "it", value: "olio" },
     { locale: "en", value: "olive-oil" },
   ];
+  const isDiamondOil = machine.slug === "diamond-oil";
   const requestTecnology = [];
   machine.tecnology.map((tecnology) => {
     if (tecnology.request == true) {
@@ -53,64 +54,84 @@ function MachineDetail({ locale, machine, data }) {
           })}
         </div>
       </section>
-      <section>
-        <div className="rounded-[30pt] bg-white pb-8 lg:rounded-[50pt]">
-          <div className="container--small">
-            {machine.introFunction.map((block) => {
-              return (
+      {isDiamondOil ? (
+        blockContent && blockContent.length > 0 && (
+          <section className="container--standard">
+            <div className="grid gap-y-10 xl:gap-y-24">
+              {blockContent.map((block) => (
                 <div key={block.id}>
                   <PostContent
                     record={block}
-                    background="white"
+                    background="light"
                     locale={locale}
                   />
                 </div>
-              );
-            })}
-            <div className="font-bold text-black/80 lg:text-lg">
-              {translate("compoment-no-remove", locale)} (
-              <div
-                className={`${machine.product.code} mx-1 inline-block h-3 w-3`}
-              />
-              ):
+              ))}
             </div>
-            <span className="text-black/80 lg:text-lg">
-              {requestTecnology.join(", ")}
-            </span>
-          </div>
-          <div className="mx-auto mb-6 px-4 lg:px-10 xl:container 2xl:px-28">
-            {machine.tecnology.map((tecnology, i) => (
-              <TecnologyCard
-                key={tecnology.id}
-                data={tecnology}
-                locale={locale}
-                machine={machine}
-                i={i}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-      <section>
-        <div className="container--small">
-          {machine.product.introPlus.map((block) => {
-            return (
-              <div key={block.id}>
-                <PostContent
-                  record={block}
-                  background="light"
-                  locale={locale}
-                />
+          </section>
+        )
+      ) : (
+        <>
+          <section>
+            <div className="rounded-[30pt] bg-white pb-8 lg:rounded-[50pt]">
+              <div className="container--small">
+                {machine.introFunction.map((block) => {
+                  return (
+                    <div key={block.id}>
+                      <PostContent
+                        record={block}
+                        background="white"
+                        locale={locale}
+                      />
+                    </div>
+                  );
+                })}
+                <div className="font-bold text-black/80 lg:text-lg">
+                  {translate("compoment-no-remove", locale)} (
+                  <div
+                    className={`${machine.product.code} mx-1 inline-block h-3 w-3`}
+                  />
+                  ):
+                </div>
+                <span className="text-black/80 lg:text-lg">
+                  {requestTecnology.join(", ")}
+                </span>
               </div>
-            );
-          })}
-          <div className="grid divide-y divide-pink md:grid-cols-3 md:gap-x-4 md:gap-y-4 md:divide-y-0 lg:gap-x-4 xl:gap-x-10">
-            {machine.optional.map((data) => (
-              <OptionalCard locale={locale} data={data} />
-            ))}
-          </div>
-        </div>
-      </section>
+              <div className="mx-auto mb-6 px-4 lg:px-10 xl:container 2xl:px-28">
+                {machine.tecnology.map((tecnology, i) => (
+                  <TecnologyCard
+                    key={tecnology.id}
+                    data={tecnology}
+                    locale={locale}
+                    machine={machine}
+                    i={i}
+                  />
+                ))}
+              </div>
+            </div>
+          </section>
+          <section>
+            <div className="container--small">
+              {machine.product.introPlus.map((block) => {
+                return (
+                  <div key={block.id}>
+                    <PostContent
+                      record={block}
+                      background="light"
+                      locale={locale}
+                    />
+                  </div>
+                );
+              })}
+              <div className="grid divide-y divide-pink md:grid-cols-3 md:gap-x-4 md:gap-y-4 md:divide-y-0 lg:gap-x-4 xl:gap-x-10">
+                {machine.optional.map((data) => (
+                  <OptionalCard locale={locale} data={data} />
+                ))}
+              </div>
+            </div>
+          </section>
+        </>
+      )}
       <section>
         <div className="rounded-[30pt] bg-brown pb-8 lg:rounded-[50pt]">
           <div className="container--small">
@@ -188,10 +209,14 @@ export async function getStaticProps({ params, locale = 'en' }) {
   const { slug } = params;
   const response = await fetchDato(queries.getMachine, { slug, locale, product: "109839746" });
   const data = await fetchDato(queries.site, { locale });
+  const configuratorBlock = slug === "diamond-oil"
+    ? response.homepage?.blockContent?.filter((block) => block.configurator) || []
+    : [];
   return {
     props: {
       locale,
       machine: response.machine,
+      blockContent: configuratorBlock,
       data,
     },
   };
