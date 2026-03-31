@@ -13,15 +13,10 @@ import QuoteForm from "components/configurator/QuoteForm";
 
 import * as queries from "lib/queries";
 import fetchDato from "lib/dato";
+import translate from "lib/locales";
+import { resolveLink } from "lib/utils";
 
 const TIER_ORDER = { start: 1, intermediate: 2, pro: 3 };
-
-const STEPS = [
-  { id: 1, label: "Funzioni Base" },
-  { id: 2, label: "Funzioni Plus" },
-  { id: 3, label: "Riepilogo" },
-  { id: 4, label: "Invia Richiesta" },
-];
 
 const TIER_BADGE = {
   start: { label: "Base", color: "bg-[#DDD2B8] text-black" },
@@ -39,6 +34,13 @@ export default function ConfiguratoreMachine({
 }) {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
+
+  const STEPS = [
+    { id: 1, label: translate("conf_step_base", locale) },
+    { id: 2, label: translate("conf_step_plus", locale) },
+    { id: 3, label: translate("conf_step_summary", locale) },
+    { id: 4, label: translate("conf_step_request", locale) },
+  ];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Get function IDs that belong to current machine
@@ -192,7 +194,7 @@ export default function ConfiguratoreMachine({
       );
       const targetSlug = pendingNavigation.to;
       setPendingNavigation(null);
-      router.push(`/configuratore/${targetSlug}`);
+      router.push(`${resolveLink("conf_page", locale)}/${targetSlug}`);
     }
   }, [pendingNavigation, plusState, router]);
 
@@ -324,11 +326,11 @@ export default function ConfiguratoreMachine({
     <Layout site={site} locale={locale} model="conf_page">
       <Head>
         <title>
-          Diamond Oil {currentMachine.title} - Configuratore | Quinti Bottling
+          Diamond Oil {currentMachine.title} - {translate("conf_meta_title_prefix", locale)} | Quinti Bottling
         </title>
         <meta
           name="description"
-          content={`Configura la tua Diamond Oil ${currentMachine.title}. Personalizza le funzioni e richiedi un preventivo.`}
+          content={translate("conf_meta_description", locale).replace("{title}", currentMachine.title)}
         />
       </Head>
 
@@ -338,7 +340,7 @@ export default function ConfiguratoreMachine({
           <div className="flex flex-col gap-4 py-5 md:flex-row md:items-center md:justify-between">
             <div>
               <span className="text-xxs uppercase tracking-wider">
-                Versione
+                {translate("conf_version", locale)}
               </span>
               <h1 className="text-lg lg:text-xl">
                 Diamond Oil{" "}
@@ -353,7 +355,7 @@ export default function ConfiguratoreMachine({
                 type="button"
                 aria-haspopup="listbox"
                 aria-expanded={stepDropdownOpen}
-                aria-label="Seleziona fase"
+                aria-label={translate("conf_select_step", locale)}
                 onClick={() => setStepDropdownOpen((prev) => !prev)}
                 onKeyDown={(e) => {
                   if (e.key === "Escape") setStepDropdownOpen(false);
@@ -383,7 +385,7 @@ export default function ConfiguratoreMachine({
               {stepDropdownOpen && (
                 <ul
                   role="listbox"
-                  aria-label="Fasi di configurazione"
+                  aria-label={translate("conf_steps_label", locale)}
                   aria-activedescendant={`step-option-${currentStep}`}
                   className="absolute left-0 right-0 z-50 mt-1 overflow-hidden rounded-lg border border-black/10 bg-white shadow-lg"
                 >
@@ -485,12 +487,12 @@ export default function ConfiguratoreMachine({
               {currentStep === 1 && (
                 <>
                   <h2 className="mb-4 border-b pb-2 lg:mb-6 lg:text-lg">
-                    Funzioni <span className="font-bold">Base</span>
+                    {translate("conf_step_base", locale)}
                   </h2>
 
                   {/* Fixed functions */}
                   <h3 className="mb-3 text-xxs font-bold uppercase tracking-wider">
-                    Funzioni di serie
+                    {translate("conf_fixed_functions", locale)}
                   </h3>
                   <div className="mb-8 space-y-3">
                     {fixedFunctions.map((fn) => (
@@ -501,7 +503,7 @@ export default function ConfiguratoreMachine({
                         isActive={true}
                         isFixed={true}
                         onInfo={() => openSidebar(fn, "function")}
-                        badgeText="Di serie"
+                        badgeText={translate("conf_fixed_badge", locale)}
                         badgeColor="bg-[#DDD2B8] text-black"
                       />
                     ))}
@@ -509,7 +511,7 @@ export default function ConfiguratoreMachine({
 
                   {/* Optional functions */}
                   <h3 className="mb-3 text-xxs font-bold uppercase tracking-wider">
-                    Funzioni opzionali
+                    {translate("conf_optional_functions", locale)}
                   </h3>
                   <div className="mb-8 space-y-3">
                     {optionalFunctions.map((fn) => {
@@ -540,11 +542,11 @@ export default function ConfiguratoreMachine({
                       onClick={() => setCurrentStep(2)}
                       className="flex-1 rounded-full bg-black py-2 text-sm font-medium text-white transition-colors hover:bg-black/80 lg:py-4"
                     >
-                      Vai alle funzioni plus
+                      {translate("conf_go_plus", locale)}
                     </button>
-                    <Link href="/configuratore">
+                    <Link href={resolveLink("conf_page", locale)}>
                       <a className="block rounded-full border border-black px-4 py-2 text-center text-sm font-medium text-black transition-colors hover:bg-black/5 md:block lg:py-4 lg:px-8">
-                        Torna all&apos;inizio
+                        {translate("conf_go_back_start", locale)}
                       </a>
                     </Link>
                   </div>
@@ -555,10 +557,10 @@ export default function ConfiguratoreMachine({
               {currentStep === 2 && (
                 <>
                   <h2 className="mb-2 text-2xl">
-                    Funzioni <span className="font-bold">Plus</span>
+                    {translate("conf_step_plus", locale)}
                   </h2>
                   <p className="mb-8 text-sm text-black/60">
-                    Accessori aggiuntivi disponibili per tutte le versioni
+                    {translate("conf_plus_subtitle", locale)}
                   </p>
 
                   <div className="space-y-3">
@@ -583,13 +585,13 @@ export default function ConfiguratoreMachine({
                       onClick={() => setCurrentStep(3)}
                       className="flex-1 rounded-full bg-black py-2 text-sm font-medium text-white transition-colors hover:bg-black/80 lg:py-4"
                     >
-                      Vai al riepilogo
+                      {translate("conf_go_summary", locale)}
                     </button>
                     <button
                       onClick={() => setCurrentStep(1)}
                       className="rounded-full border border-black px-4 py-2 text-sm font-medium text-black transition-colors hover:bg-black/5 lg:py-4 lg:px-8"
                     >
-                      Torna alle funzioni base
+                      {translate("conf_go_back_base", locale)}
                     </button>
                   </div>
                 </>
@@ -599,7 +601,7 @@ export default function ConfiguratoreMachine({
               {currentStep === 3 && (
                 <>
                   <h2 className="mb-4 text-xl text-orange-dark">
-                    La tua macchina
+                    {translate("conf_your_machine", locale)}
                   </h2>
 
                   <div className="mb-6 rounded-lg bg-white">
@@ -615,7 +617,7 @@ export default function ConfiguratoreMachine({
                     {/* Active base functions */}
                     <div className="mb-4 mt-2 border-t pt-8">
                       <span className="block pb-2 text-sm font-semibold uppercase tracking-wider text-black">
-                        Funzioni Base
+                        {translate("conf_step_base", locale)}
                       </span>
                       <ul className="mt-2 space-y-2">
                         {activeFunctions.map((fn) => (
@@ -634,7 +636,7 @@ export default function ConfiguratoreMachine({
                     {activePlus.length > 0 && (
                       <div>
                         <span className="mt-8 block pb-2 text-sm font-semibold uppercase tracking-wider text-black">
-                          Funzioni Plus
+                          {translate("conf_step_plus", locale)}
                         </span>
                         <div className="mt-2 space-y-2">
                           {activePlus.map((opt) => (
@@ -659,14 +661,14 @@ export default function ConfiguratoreMachine({
                       onClick={() => setShowQuoteForm(true)}
                       className="group flex flex-1 items-center justify-center gap-2 rounded-full bg-orange-dark py-2 text-sm font-medium text-white transition-colors hover:bg-black/80 lg:py-4"
                     >
-                      Richiedi preventivo
+                      {translate("conf_request_quote", locale)}
                       <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </button>
                     <button
                       onClick={() => setCurrentStep(2)}
                       className="rounded-full border border-black px-4 py-2 text-sm font-medium text-black transition-colors hover:bg-black/5 lg:py-4 lg:px-8"
                     >
-                      Torna alle funzioni plus
+                      {translate("conf_go_back_plus", locale)}
                     </button>
                   </div>
                 </>

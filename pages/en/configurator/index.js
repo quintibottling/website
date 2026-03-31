@@ -8,6 +8,8 @@ import { useMemo } from "react";
 import Layout from "components/Layout";
 import * as queries from "lib/queries";
 import fetchDato from "lib/dato";
+import translate from "lib/locales";
+import { resolveLink } from "lib/utils";
 
 const TIER_COLORS = {
   start: "border-green",
@@ -60,7 +62,7 @@ export default function ConfiguratoreIndex({
               );
 
               return (
-                <Link key={machine.id} href={`/configuratore/${machine.slug}`}>
+                <Link key={machine.id} href={`${resolveLink("conf_page", locale)}/${machine.slug}`}>
                   <a
                     className={`group block overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-lg ${colorClass}`}
                   >
@@ -96,7 +98,7 @@ export default function ConfiguratoreIndex({
                         />
                       )}
                       <div className="text-xxs font-bold text-black/80">
-                        Funzioni
+                        {translate("conf_functions", locale)}
                       </div>
                       <div className="my-4 space-y-2">
                         {allFunctions.map((fn) => {

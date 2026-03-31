@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { renderMetaTags } from "react-datocms";
-import { renderHTML } from "lib/utils";
+import { renderHTML, PRODUCT_ALTS } from "lib/utils";
 
 import PostContent from "components/PostContent";
 import Layout from "components/Layout";
@@ -12,10 +12,7 @@ import TecnologyCard from "components/TecnologyCard";
 import OptionalCard from "components/OptionalCard";
 
 function MachineDetail({ locale, machine, data }) {
-  const altsProduct = [
-    { locale: "it", value: "vino" },
-    { locale: "en", value: "wine" },
-  ];
+  const altsProduct = PRODUCT_ALTS.vino;
   const requestTecnology = [];
   machine.tecnology.map((tecnology) => {
     if (tecnology.request == true) {
