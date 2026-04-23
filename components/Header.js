@@ -20,7 +20,7 @@ function Header(props) {
   const router = useRouter();
 
   return (
-    <header className="relative z-40">
+    <header className="relative z-[60]">
       <Popover
         className={`${
           model == "machine" ? "" : "bg-brown"
@@ -48,7 +48,10 @@ function Header(props) {
                   <MenuAlt3Icon className="h-9 w-9" aria-hidden="true" />
                 </Popover.Button>
               </div>
-              <Popover.Group as="nav" className="hidden space-x-3 lg:flex lg:flex-nowrap lg:items-center xl:space-x-5">
+              <Popover.Group
+                as="nav"
+                className="hidden space-x-3 lg:flex lg:flex-nowrap lg:items-center xl:space-x-5"
+              >
                 <Popover className="relative">
                   {({ open, close }) => (
                     <>
@@ -63,7 +66,7 @@ function Header(props) {
                         <ChevronDownIcon
                           className={classNames(
                             open ? "rotate-180 text-orange" : "text-gold-light",
-                            "mt ml-1 h-6 w-6 "
+                            "mt ml-1 h-6 w-6 ",
                           )}
                           aria-hidden="true"
                         />
@@ -78,7 +81,7 @@ function Header(props) {
                         leaveFrom="opacity-100 translate-y-0"
                         leaveTo="opacity-0 translate-y-1"
                       >
-                        <Popover.Panel className="absolute z-10 -ml-4 mt-3 w-auto max-w-md transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2">
+                        <Popover.Panel className="absolute z-[60] -ml-4 mt-3 w-auto max-w-md transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2">
                           <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                             <div className="relative grid divide-y divide-black/5 bg-white text-xs">
                               {site.allCompanyPages.map((item) => (
@@ -86,7 +89,7 @@ function Header(props) {
                                   href={resolveLink(
                                     item.model,
                                     locale,
-                                    item.slug
+                                    item.slug,
                                   )}
                                   locale={locale}
                                 >
@@ -122,7 +125,7 @@ function Header(props) {
                         <ChevronDownIcon
                           className={classNames(
                             open ? "rotate-180 text-orange" : "text-gold-light",
-                            "mt ml-1 h-6 w-6 "
+                            "mt ml-1 h-6 w-6 ",
                           )}
                           aria-hidden="true"
                         />
@@ -137,7 +140,7 @@ function Header(props) {
                         leaveFrom="opacity-100 translate-y-0"
                         leaveTo="opacity-0 translate-y-1"
                       >
-                        <Popover.Panel className="absolute z-10 -ml-4 mt-3 w-auto max-w-md transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2">
+                        <Popover.Panel className="absolute z-[60] -ml-4 mt-3 w-auto max-w-md transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2">
                           <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                             <div className="relative grid divide-y divide-black/5 bg-white text-xs">
                               {site.allProducts.map((item) => (
@@ -145,7 +148,7 @@ function Header(props) {
                                   href={resolveLink(
                                     item.model,
                                     locale,
-                                    item.slug
+                                    item.slug,
                                   )}
                                   locale={locale}
                                 >
@@ -184,7 +187,7 @@ function Header(props) {
                         <ChevronDownIcon
                           className={classNames(
                             open ? "rotate-180 text-orange" : "text-gold-light",
-                            "mt ml-1 h-6 w-6 "
+                            "mt ml-1 h-6 w-6 ",
                           )}
                           aria-hidden="true"
                         />
@@ -199,7 +202,7 @@ function Header(props) {
                         leaveFrom="opacity-100 translate-y-0"
                         leaveTo="opacity-0 translate-y-1"
                       >
-                        <Popover.Panel className="absolute z-10 -ml-4 mt-3 w-auto max-w-md transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2">
+                        <Popover.Panel className="absolute z-[60] -ml-4 mt-3 w-auto max-w-md transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2">
                           <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                             <div className="relative grid divide-y divide-black/5 bg-white text-xs">
                               {site.allTecnologies.map((item) => (
@@ -207,7 +210,7 @@ function Header(props) {
                                   href={resolveLink(
                                     item.model,
                                     locale,
-                                    item.slug
+                                    item.slug,
                                   )}
                                   locale={locale}
                                 >
@@ -249,7 +252,7 @@ function Header(props) {
                         </span>
                       </a>
                     </Link>
-                  ) : null
+                  ) : null,
                 )}
                 <Link href={`/${site.indexNews.slug}`} locale={locale}>
                   <a
@@ -286,7 +289,9 @@ function Header(props) {
                     key="configuratore"
                     title={translate("configurator", locale)}
                     className={`${
-                      Object(router.pathname).indexOf(translate("configurator_url", locale)) > -1
+                      Object(router.pathname).indexOf(
+                        translate("configurator_url", locale),
+                      ) > -1
                         ? "border-b-2 border-orange"
                         : "none"
                     }`}
