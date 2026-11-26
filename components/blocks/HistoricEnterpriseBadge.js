@@ -7,6 +7,7 @@ export default function HistoricEnterpriseBadge({ locale }) {
       <Image
         src="/logo/camere-di-commercio.webp"
         alt={translate("historicEnterpriseLogoAlt", locale)}
+        unoptimized
         width={64}
         height={64}
         className="rounded-[2px] border border-white/25"
