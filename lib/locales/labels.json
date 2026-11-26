@@ -108,7 +108,13 @@
     "conf_fixed_badge": "Di serie",
     "conf_functions": "Funzioni",
     "conf_meta_title_prefix": "Configuratore",
-    "conf_meta_description": "Configura la tua Diamond Oil {title}. Personalizza le funzioni e richiedi un preventivo."
+    "conf_meta_description": "Configura la tua Diamond Oil {title}. Personalizza le funzioni e richiedi un preventivo.",
+    "historicEnterprise": "Impresa Storica d’Italia",
+    "historicEnterpriseRegister": "Registro Nazionale Unioncamere",
+    "historicEnterpriseLogoAlt": "Camere di Commercio d’Italia",
+    "prevSlide": "Slide precedente",
+    "nextSlide": "Slide successiva",
+    "discoverMachine": "Scopri la macchina"
   },
   "en": {
     "it": "Ita",
@@ -219,6 +225,12 @@
     "conf_fixed_badge": "Fixed",
     "conf_functions": "Functions",
     "conf_meta_title_prefix": "Configurator",
-    "conf_meta_description": "Configure your Diamond Oil {title}. Customize functions and request a quote."
+    "conf_meta_description": "Configure your Diamond Oil {title}. Customize functions and request a quote.",
+    "historicEnterprise": "Impresa Storica d’Italia",
+    "historicEnterpriseRegister": "Unioncamere National Register",
+    "historicEnterpriseLogoAlt": "Italian Chambers of Commerce",
+    "prevSlide": "Previous slide",
+    "nextSlide": "Next slide",
+    "discoverMachine": "Discover the machine"
   }
 }
